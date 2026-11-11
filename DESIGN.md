@@ -95,6 +95,7 @@ Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`,
 - `< 640px`: page padding 1.25rem, title 2rem, Notes list one column, blog date under the title, even gallery images offset 1.5rem.
 - `640–1099px`: Notes list two columns, blog title and date on one row.
 - `≥ 1100px`: home becomes two columns; the hero is sticky on the right.
+- `≥ 1400px`: the hero column grows so more of the ocean and city stay in frame.
 - `< 1400px`: margin notes flow inline after the paragraph.
 - `≥ 1400px`: margin notes sit in the 240 px right gutter.
 - 100% keyboard reachability at every width. No horizontal scroll except code blocks and media strips, which own their scroll container.

@@ -11,7 +11,7 @@ import { siteConfig } from '@/lib/site-config';
 export default function Home() {
   return (
     <article className="content-frame">
-      <div className="home-layout content:grid-cols-[minmax(0,1.75fr)_minmax(380px,1fr)] content:items-start content:gap-[clamp(2rem,3.6vw,3.75rem)] grid gap-8">
+      <div className="home-layout content:grid-cols-[minmax(0,1.75fr)_minmax(380px,1fr)] wide:grid-cols-[minmax(0,1.38fr)_minmax(380px,1fr)] content:items-start content:gap-[clamp(2rem,3.6vw,3.75rem)] grid gap-8">
         <div className="home-copy max-w-content w-full min-w-0">
           <h1 className="site-title font-reading text-ink-strong mb-[0.95em] text-[clamp(2.2rem,3.5vw,2.65rem)] leading-[1.15] font-semibold tracking-[-0.02em] text-balance">
             <Link
