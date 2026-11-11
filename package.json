@@ -7,9 +7,13 @@
     "lint": "bun lint --no-script --max-warnings=0 --allow-unsupported",
     "format": "bun fmt",
     "format:check": "bun fmt --check",
-    "check-types": "turbo run check-types"
+    "check-types": "turbo run check-types",
+    "typecheck": "turbo run check-types",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
     "prettier": "3.9.6",
     "turbo": "^2.11.10",
     "typescript": "7.0.2"
