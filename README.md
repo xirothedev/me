@@ -34,8 +34,9 @@ bun install
 bun dev                 # http://localhost:3000
 bun build
 bun start               # production server for apps/web
-bun run --cwd apps/web hero:build   # rebuild the hero WebP from the master art
-bun run --cwd apps/web og:build     # rebuild the 1200x630 OG card from the landscape art
+bun run --cwd apps/web hero:build     # rebuild the hero WebP from the master art
+bun run --cwd apps/web og:build       # rebuild the 1200x630 OG card from the landscape art
+bun run --cwd apps/web favicon:build  # rebuild the favicon and Apple touch icon
 
 bun test                # unit tests
 bun check               # lint, typecheck, and boundaries
@@ -47,6 +48,7 @@ bun fmt --check         # format check
 
 ```txt
 apps/web/
+  assets/brand/         favicon master art, not served
   assets/hero/          hero master art, not served
   assets/og/            landscape master art for the OG card
   content/              Notes, Blogs, Hospital, Home bios, Bookmarks
@@ -94,6 +96,8 @@ The avatar is still a temporary placeholder. Replace `apps/web/public/avatar.web
 The hero master is `apps/web/assets/hero/nha-trang.png` (3 MB, not served). From `apps/web`, `bun run hero:build` writes the served WebP at `public/media/hero/nha-trang.webp`.
 
 The OG card is `apps/web/src/app/opengraph-image.jpg` (1200x630). Its landscape master is `apps/web/assets/og/nha-trang-landscape.png`. From `apps/web`, `bun run og:build` rebuilds the card with ImageMagick and writes the JPEG.
+
+The favicon master is `apps/web/assets/brand/favicon-source.jpg`. The build crops to the eye so the mark stays readable at 16 px. From `apps/web`, `bun run favicon:build` writes `public/favicon.ico`, `public/favicon.png`, and `public/apple-icon.png`.
 
 Bookmark icons live in `apps/web/public/media/bookmarks/`. They are favicons from the linked sites, used at 16 px.
 

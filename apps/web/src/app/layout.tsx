@@ -43,7 +43,13 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     creator: siteConfig.handle,
   },
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: '/apple-icon.png',
+  },
 };
 
 export const viewport: Viewport = {

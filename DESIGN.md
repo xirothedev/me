@@ -93,7 +93,7 @@ import { ICON, Icon } from "@repo/ui";
 <Icon icon={ICON.play} label="Play" />;
 ```
 
-Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`, `rss`, `bot`, `dice`. No inline SVG, no Unicode glyphs, no icon package imports in app code. Decorative brand marks use the favicon or an image, not an icon.
+Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`, `rss`, `bot`, `dice`. No inline SVG, no Unicode glyphs, no icon package imports in app code. Decorative brand marks use the favicon or an image, not an icon. The favicon is a crop of the supplied illustration.
 
 ## 5. Responsive rules
 
