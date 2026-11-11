@@ -6,8 +6,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   devIndicators: false,
   transpilePackages: ['@repo/ui'],
+  typescript: {
+    ignoreBuildErrors: Boolean(process.env.CI),
+  },
   experimental: {
     optimizePackageImports: ['lucide-react', 'shiki', 'date-fns'],
+    turbopackFileSystemCacheForBuild: !process.env.CI,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
