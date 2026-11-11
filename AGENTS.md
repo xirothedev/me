@@ -22,3 +22,5 @@ Five canonical roles mapped to identical label strings. See `docs/agents/triage-
 ### Domain docs
 
 Multi-context layout. See `docs/agents/domain.md`.
+
+Packages are deep modules: see [packages/README.md](./packages/README.md) before adding or importing one.

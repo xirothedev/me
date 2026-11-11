@@ -9,9 +9,12 @@
     "format:check": "bun fmt --check",
     "check-types": "turbo run check-types",
     "typecheck": "turbo run check-types",
+    "lint:boundaries": "depcruise \"packages/**/*.ts\" \"packages/**/*.tsx\" \"packages/**/*.js\" \"packages/**/*.jsx\" \"packages/**/*.mjs\" \"packages/**/*.cjs\"",
+    "check": "bun run lint && bun run typecheck && bun run lint:boundaries",
     "prepare": "husky"
   },
   "devDependencies": {
+    "dependency-cruiser": "^18.7.2",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "prettier": "3.9.6",
