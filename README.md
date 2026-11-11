@@ -82,7 +82,7 @@ export const meta = {
 - `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and `bun build` pass.
 - The build renders 27 static routes.
 - Lighthouse scores 100 for accessibility, best practices, and SEO on `/`, `/hospital`, `/bookmarks`, and `/how-i-work`. `/lab` scores 100 for accessibility and best practices; its SEO score is lower because the page is `noindex` by design.
-- The home hero is an SVG scene over one local WebP: three masked planes, five palm canopies, foam, and sparkle. The ocean tide advances 6 px at rest and 18 px on hover; palms sway up to 1.2°; reduced motion shows the untouched image.
+- The home hero is an SVG scene over one local WebP: three masked planes, five palm canopies, foam, and sparkle. The ocean tide advances at rest and surges on hover; the park and city planes drift; palms sway up to 3°; reduced motion shows the untouched image.
 - The copy passed two independent review agents against `docs/plans/content-brief.md`; no blockers remain and every piece scores 2 or lower on the slop scale.
 
 ## Assets

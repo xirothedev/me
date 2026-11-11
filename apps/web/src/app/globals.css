@@ -222,7 +222,7 @@
     opacity: 0.08;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.65;
   }
 }
 
@@ -254,16 +254,16 @@
   }
 
   .hero-park {
-    transform: translateX(calc(var(--hero-sway) * (-1px - var(--hero-wind) * 2px)));
+    transform: translateX(calc(var(--hero-sway) * (-3px - var(--hero-wind) * 6px)));
   }
 
   .hero-city {
-    transform: translateX(calc(var(--hero-tide) * (0.5px + var(--hero-wind) * 1px)));
+    transform: translateX(calc(var(--hero-tide) * (1.5px + var(--hero-wind) * 3px)));
   }
 
   .hero-palm {
     transform-box: view-box;
-    transform: rotate(calc(var(--hero-gust) * (0.25deg + var(--hero-wind) * 0.95deg)));
+    transform: rotate(calc(var(--hero-gust) * (0.6deg + var(--hero-wind) * 2.4deg)));
     animation: hero-gust 5.6s ease-in-out infinite;
   }
 
