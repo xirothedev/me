@@ -1,8 +1,17 @@
+import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   reactCompiler: true,
+  devIndicators: false,
+  transpilePackages: ['@repo/ui'],
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'shiki', 'date-fns'],
+  },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
   turbopack: {
     rules: {
       '*.css': {
@@ -13,4 +22,22 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: ['remark-gfm'],
+    rehypePlugins: [
+      [
+        'rehype-pretty-code',
+        {
+          theme: { dark: 'github-dark', light: 'github-light' },
+          keepBackground: false,
+          defaultLang: 'text',
+        },
+      ],
+      'rehype-slug',
+    ],
+  },
+});
+
+export default withMDX(nextConfig);

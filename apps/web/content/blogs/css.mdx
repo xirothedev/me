@@ -1,0 +1,148 @@
+export const meta = {
+  title: 'How I’m Writing CSS in 2024',
+  description: 'Developer and writer.',
+  kind: 'blog',
+  label: "How I'm writing CSS",
+  date: '2024-01',
+};
+
+CSS in 2024 is amazing.
+
+- Cross-browser support for [nesting](https://caniuse.com/css-nesting), [`:has()`](https://caniuse.com/css-has), [container queries](https://caniuse.com/css-container-queries), and more<MarginNote number={1}>[linear() easing](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function), [subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid), [dynamic viewport units](https://web.dev/blog/viewport-units), [color spaces](https://developer.chrome.com/blog/meet-the-new-css-color-spaces), and [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer).</MarginNote>
+- [Powerful](https://stylexjs.com/) and [fast](https://lightningcss.dev/) new CSS tools
+- Many frameworks and compilers to help optimize CSS loading performance
+
+This post will be a collection of my notes and thoughts about the CSS ecosystem and the tools I’m currently using.
+
+<Heading id="user-experience" level={2}>
+  {'User Experience'}
+</Heading>
+
+What does a great experience look like loading stylesheets when visiting a website?
+
+1. Stylesheets should load as fast as possible (small file sizes)
+2. Stylesheets should not re-download unless changed (proper caching headers)
+3. The page content should have minimal or no layout shift
+4. Fonts should load as fast as possible and minimize layout shift
+
+<Heading id="developer-experience" level={2}>
+  {'Developer Experience'}
+</Heading>
+
+Our tools must help us create better user experiences. The developer experience, while important, can’t come before the user experience.
+
+How can the DX of the styling tools we use help us create a better UX?
+
+1. Prune unused styles, minify, and compress CSS for smaller file sizes
+2. Generate hashed file names to enable safe, immutable caching<MarginNote number={2}>Since the file names are guaranteed to be unique, you can set the `immutable` caching header to tell browsers the content will never change. This allows browsers to cache the file forever, which is great for performance.</MarginNote>
+3. Bundle CSS files together to make fewer network requests
+4. Prevent naming collisions to avoid visual regressions
+
+What about helping us write more maintainable, enjoyable CSS?
+
+1. Easy to delete styles when deleting corresponding UI code
+2. Easy to adhere to a design system or set of themes
+3. Editor feedback with TypeScript support, autocompletion, and linting
+4. Receive tooling feedback in-editor to prevent errors (type checking, linting)
+
+<Heading id="css-in-2024" level={2}>
+  {'CSS in 2024'}
+</Heading>
+
+Writing great styles without additional tooling is easier than ever.
+
+[This example I created](https://codesandbox.io/p/sandbox/async-http-jyftfw?file=%2Fstyles.css) uses many of the latest CSS features supported cross-browser without any build step. You might not need Sass or Less anymore!
+
+Does that mean the tooling is no longer necessary? For some people, yes.
+
+<Heading id="build-steps" level={3}>
+  {'Build Steps'}
+</Heading>
+
+To meet the design constraints above, you’ll likely need a build step.
+
+It’s unlikely all your users are on the latest browser versions. But more importantly, there will always be newer syntax you want to use that isn’t yet supported cross-browser.
+
+You _can_ manually write [@supports](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports) rules to check for browser support, but that’s only solving some of the problems. Rather than leaving the CSS optimization to humans, [why not let the machines handle it](https://csswizardry.com/2023/10/the-three-c-concatenate-compress-cache/)?
+
+<Heading id="compilation" level={3}>
+  {'Compilation'}
+</Heading>
+
+Compilers make the following workflow easy:
+
+1. Automatically remove any unused styles, bundle files together to make fewer network requests, add vendor prefixes, and minify the output by removing white spaces and comments
+2. Automatically generate unique file names, allowing frameworks to set caching headers like `immutable`, signaling to browsers the content will never change
+3. Specify target browsers ([browserslist](https://browsersl.ist/)) and have [syntax lowering](https://lightningcss.dev/transpilation.html) to compile modern CSS features to work with those browsers
+
+<Heading id="streaming-css" level={3}>
+  {'Streaming CSS'}
+</Heading>
+
+You visit Google to book a flight. It can’t precompute your intent, so you're given a search bar for the initial UI. You search "Flight SFO to NYC" and the server streams in a flights widget to select dates.
+
+There is no way Google could have included every possible widget ahead of time. Currency conversions, timers, live sports scores, you name it. The UI and styles for these widgets need to be dynamically streamed in.
+
+React (and Next.js) now support this pattern with [streaming SSR](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming) and [CSS](https://github.com/reactwg/react-18/discussions/108). In the React model, you define your UI as components which have dependencies on styles. How can we safely stream in styles for a widget without affecting anything on the page?
+
+Styles need to be scoped, or atomic, so that if they load earlier than the DOM content they're intended to style, they don’t alter the style of elements already on the page.
+
+For example, CSS Modules have styling rules scoped to the component that imports them. Tailwind uses atomic utility classes, which are compiled into a single stylesheet that’s loaded before any classes are used. StyleX generates atomic classes as well. Global styles don’t work well with streaming unless loaded at the beginning of the stream.
+
+<Heading id="my-recommendations" level={2}>
+  {'My Recommendations'}
+</Heading>
+
+<Heading id="css-modules" level={3}>
+  {'CSS Modules'}
+</Heading>
+
+CSS Modules are a small but impactful enhancement on top of vanilla CSS.
+
+They achieve our desired UX constraints and most (but not all) of our DX constraints. They're available in [almost every modern bundler and framework](https://github.com/css-modules/css-modules/blob/master/docs/get-started.md). You can copy and paste existing CSS selectors and they’ll work in a CSS Module without any changes.
+
+They can’t generate atomic styles. They don’t support using many themes (just CSS variables). And because the styling code lives outside your TypeScript files, you don’t get type safety and autocompletion. But those constraints might be fine for you.
+
+> [Lightning CSS](https://lightningcss.dev/), which supports CSS Modules, is used by Vite, and [soon by Tailwind](https://medium.com/@bomber.marek/whats-tailwind-oxide-engine-the-next-evolution-of-tailwind-css-32e7ef8e19a1) and [Next.js](https://twitter.com/leeerob/status/1740124461683409042). Tools like `postcss` and `autoprefixer` are being replaced by faster, [all-in-one Rust toolchains](/rust).
+
+<Heading id="tailwind-css" level={3}>
+  {'Tailwind CSS'}
+</Heading>
+
+Tailwind uses a compiler to generate only the classes used. So while the utility CSS framework contains _many_ possible class names, only the classes used (e.g. `"font-bold text-2xl"`) will be included in the single, compiled CSS file.
+
+Assuming you only write Tailwind code, your bundle will never be larger than the total set of used Tailwind classes. It’s extremely unlikely you would use them _all_. This means you have a fixed upper bound on the size of the generated CSS file, which is then minified, compressed, and cached for the best performance.
+
+You don’t have to _only_ write Tailwind styles. Tailwind classes are just utilities for normal CSS that adhere to a design system. You can mix and match Tailwind with CSS Modules, for example.
+
+Tailwind doesn’t come without tradeoffs. There’s a bucket of tools that pair with it:
+
+- [VS Code integration](https://tailwindcss.com/docs/editor-setup#intelli-sense-for-vs-code) for autocompletion, linting, syntax highlighting, and more
+- [Prettier integration](https://tailwindcss.com/docs/editor-setup#automatic-class-sorting-with-prettier) for automatic sorting of class names
+
+The most controversial part about Tailwind is the syntax. It’s both [loved](https://twitter.com/whiskeywebfm/status/1742222761018212460) and hated. I didn’t appreciate Tailwind until I built something with it, so I'd recommend trying that if your initial reaction is adverse.
+
+Here’s another version of the [first example](https://codesandbox.io/p/sandbox/async-http-jyftfw?file=%2Fstyles.css), but [written in Tailwind](https://codesandbox.io/p/sandbox/modern-sea-z7gkmc?file=%2Fstyles.css).
+
+<Heading id="stylex" level={3}>
+  {'StyleX'}
+</Heading>
+
+There are two issues with most CSS-in-JS libraries:
+
+1. **Performance:** Components must convert the styles written in JS into CSS to be inserted into the document when rendering. This can have a [significant](https://dev.to/srmagura/why-were-breaking-up-wiht-css-in-js-4g9b) cost and is why [libraries](https://panda-css.com/docs/overview/why-panda) are moving to "zero runtime" libraries like StyleX.
+2. **Compatibility:** Many existing CSS-in-JS libraries have added support for React’s streaming server-rendering, but are still incompatible with other performance optimizations like moving parts of your application to [React Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components).
+
+To solve these issues, "zero runtime" CSS-in-JS libraries like [Vanilla Extract](https://vanilla-extract.style/) and others have been created.
+
+StyleX is the latest CSS-in-JS library, which [solves these problems and more](https://stylexjs.com/docs/learn/thinking-in-stylex/). I'd recommend reading through ["Thinking in StyleX"](https://stylexjs.com/docs/learn/thinking-in-stylex/) if you want to dig in.
+
+Here’s another version of the [first example](https://codesandbox.io/p/sandbox/async-http-jyftfw?file=%2Fstyles.css), but [written in StyleX](https://codesandbox.io/p/devbox/cocky-tu-x7twwd?file=%2FApp.tsx). This was my first time using it. While it’s still new to open source (and the ecosystem reflects that), it’s _not_ a new library. It powers all the Meta sites: Facebook, Instagram, WhatsApp, and Threads.
+
+You still have to name things, though 🫠 Enter `buttonWrapperContainer`.
+
+<Heading id="conclusion" level={2}>
+  {'Conclusion'}
+</Heading>
+
+Is CSS... fun for me now? I guess so. I’m excited to see what the next few years bring.

@@ -5,19 +5,46 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "discover": "bun run scripts/discover-site.ts",
+    "fetch-media": "bun run scripts/fetch-media.ts",
+    "parity": "bun run scripts/parity.ts",
+    "check": "bun check",
+    "test": "bun test"
   },
   "dependencies": {
+    "@date-fns/tz": "^1.5.0",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.4.6",
+    "@repo/ui": "*",
+    "date-fns": "^4.4.0",
     "next": "16.4.6",
+    "next-themes": "^0.4.6",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@tailwindcss/turbopack": "4.3.3",
+    "@types/bun": "^1.4.4",
+    "@types/mdx": "^2.0.14",
     "@types/node": "^20",
+    "@types/pixelmatch": "^5.2.6",
+    "@types/pngjs": "^6.0.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "cheerio": "^1.2.0",
+    "domhandler": "^6.0.1",
+    "pixelmatch": "^8.0.0",
+    "playwright-core": "^1.65.0",
+    "pngjs": "^7.0.0",
+    "rehype-pretty-code": "^0.14.6",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^4.6.0",
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   },

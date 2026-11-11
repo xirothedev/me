@@ -1,69 +1,92 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import BioDefault from '@content/home/bio-default.mdx';
+import BioLong from '@content/home/bio-long.mdx';
+import { BioModes } from '@/components/home/bio-modes';
+import { Painting } from '@/components/home/painting';
+import { blogs, notes } from '@/content/registry';
+import { formatMonth } from '@/lib/format';
+import { siteConfig } from '@/lib/site-config';
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
-        <Image
-          className="h-5 w-[100px] dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl leading-10 font-semibold tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{' '}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{' '}
-            file.
+    <article className="content-frame">
+      <div className="home-layout content:grid-cols-[minmax(0,1.75fr)_minmax(380px,1fr)] content:items-start content:gap-[clamp(2rem,3.6vw,3.75rem)] grid gap-8">
+        <div className="home-copy max-w-content w-full min-w-0">
+          <h1 className="site-title font-reading text-ink-strong mb-[0.95em] text-[clamp(2.2rem,3.5vw,2.65rem)] leading-[1.15] font-semibold tracking-[-0.02em] text-balance">
+            <Link
+              href={siteConfig.socials.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-inherit no-underline transition-opacity hover:opacity-[0.72]"
+            >
+              <span className="relative top-[0.015em] mr-[0.015em] inline-block text-[1.1em] leading-0">
+                @
+              </span>
+              leerob
+            </Link>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
+
+          <BioModes defaultBio={<BioDefault />} longBio={<BioLong />} />
+
+          <div className="writing-index mt-14">
+            <section aria-labelledby="notes-heading">
+              <h2
+                id="notes-heading"
+                className="font-reading text-section text-ink-strong mb-[1.2rem] font-semibold tracking-[-0.02em] text-balance"
+              >
+                Notes
+              </h2>
+              <ul className="notes-list mt-[0.8em] list-[square] columns-1 gap-x-10 pl-[1.1em] sm:columns-2">
+                {notes.map((note) => (
+                  <li
+                    key={note.slug}
+                    className="marker:text-ink-soft/70 mb-[0.2rem] break-inside-avoid pl-[0.15em]"
+                  >
+                    <Link
+                      href={`/${note.slug}`}
+                      className="text-ink-soft decoration-ink-soft/30 hover:text-ink-muted underline decoration-1 underline-offset-[0.18em] transition-colors"
+                    >
+                      {note.meta.label ?? note.meta.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section aria-labelledby="blogs-heading" className="mt-14">
+              <h2
+                id="blogs-heading"
+                className="font-reading text-section text-ink-strong mb-[1.2rem] font-semibold tracking-[-0.02em] text-balance"
+              >
+                Blogs
+              </h2>
+              <div className="blogs-list">
+                {blogs.map((blog) => (
+                  <Link
+                    key={blog.slug}
+                    href={`/${blog.slug}`}
+                    className="border-line text-ink grid grid-cols-1 items-baseline gap-[0.15rem] border-b py-[0.72em] no-underline opacity-80 transition-opacity hover:opacity-100 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-5"
+                  >
+                    <span>{blog.meta.label ?? blog.meta.title}</span>
+                    {blog.meta.date ? (
+                      <time
+                        dateTime={blog.meta.date}
+                        className="font-ui text-date-sm text-ink-muted sm:text-date tracking-normal whitespace-nowrap tabular-nums"
+                      >
+                        {formatMonth(blog.meta.date)}
+                      </time>
+                    ) : null}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-12 w-full items-center justify-center gap-2 rounded-full px-5 transition-colors hover:bg-[#383838] md:w-[158px] dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="h-[14px] w-4 dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <aside className="home-visual content:sticky content:top-page content:block content:h-[calc(100svh-2*var(--spacing-page))] content:min-h-[min(72svh,760px)] content:overflow-hidden content:rounded-painting content:border content:border-line content:bg-surface hidden">
+          <Painting />
+        </aside>
+      </div>
+    </article>
   );
 }

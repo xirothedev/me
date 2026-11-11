@@ -1,0 +1,203 @@
+export const meta = {
+  title: 'Documentation',
+  description: 'How to build incredible developer documentation.',
+  kind: 'note',
+  label: 'Documentation',
+  order: 7,
+};
+
+Here’s how to build incredible developer documentation:
+
+<Toc
+  items={[
+    { href: '#fast', label: '1. Fast' },
+    { href: '#readable', label: '2. Readable' },
+    { href: '#helpful', label: '3. Helpful' },
+    { href: '#ai-native', label: '4. AI-native' },
+    { href: '#agent-ready', label: '5. Agent-ready' },
+    { href: '#polished', label: '6. Polished' },
+    { href: '#localized', label: '7. Localized' },
+    { href: '#responsive', label: '8. Responsive' },
+    { href: '#accessible', label: '9. Accessible' },
+    { href: '#universal', label: '10. Universal' },
+  ]}
+/>
+
+<ContentImage
+  src="/media/leerob-com-docs-design-25b872d4-60d039dd.webp"
+  alt="Documentation design example"
+  width={3498}
+  height={2236}
+  fullBleed
+/>
+
+<Heading id="fast" level={2}>
+  {'1. Fast'}
+</Heading>
+
+- Pages need to load as fast as possible (prefer static pages).
+- Optimize [image](https://nextjs.org/docs/app/getting-started/images), [font](https://nextjs.org/docs/app/getting-started/fonts), and [script](https://nextjs.org/docs/app/guides/scripts) loading.
+- Search needs to be extremely fast to load and view results.
+
+<DemoVideo
+  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/blog-assets/search.mp4"
+  width={2924}
+  height={1492}
+  fullBleed
+/>
+
+<Heading id="readable" level={2}>
+  {'2. Readable'}
+</Heading>
+
+- Be concise (make every token count).
+- Avoid technical jargon and idioms.
+- Optimize for skimming (good use of **bold**, _italic_, lists, headings, images, etc.).
+- Keep the first-time experience simple and slowly reveal complexity.
+- Ensure docs have many code examples you can copy/paste or [run](https://ui.shadcn.com/docs/registry/open-in-v0).
+
+<Heading id="helpful" level={2}>
+  {'3. Helpful'}
+</Heading>
+
+- Always document workarounds even if it’s a product gap.
+- Make it easy for readers to leave feedback on docs (e.g. typos).
+- [Automate checking](https://cursor.com/docs/cli/github-actions) for broken links on git pushes.
+- Create [learning material](https://cursor.com/learn) with a structured curriculum.
+- For any breaking change, include codemods and [migration guides](https://ai-sdk.dev/docs/migration-guides/migration-guide-5-0).
+
+<Heading id="ai-native" level={2}>
+  {'4. AI-native'}
+</Heading>
+
+- [Prefer cURL](https://x.com/karpathy/status/1914494203696177444) over "click" if possible.
+- [Prefer prompts](https://posthog.com/blog/envoy-wizard-llm-agent) over tutorials.
+- Add an "Ask AI" sidebar that can reference your docs pages.
+
+<DemoVideo
+  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/blog-assets/explain-more.mp4"
+  width={2918}
+  height={1486}
+  fullBleed
+/>
+
+<Heading id="agent-ready" level={2}>
+  {'5. Agent-ready'}
+</Heading>
+
+- Make it easy to copy/paste content into AI chatbots as Markdown.
+
+<DemoVideo
+  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/blog-assets/copy-page.mp4"
+  width={2918}
+  height={1486}
+  fullBleed
+/>
+
+- Support viewing pages as Markdown (just add `.md` [to the URL](https://cursor.com/docs/bugbot.md)).
+- Serve Markdown files when `Accept: text/markdown` is requested.
+- Serve an `llms.txt` file as a directory of Markdown files.
+
+<ContentImage
+  src="/media/leerob-com-llms-5920325b-acf28737.webp"
+  alt="LLMs documentation example"
+  width={1102}
+  height={542}
+/>
+
+<Heading id="polished" level={2}>
+  {'6. Polished'}
+</Heading>
+
+- Buttons should have generous hit areas (especially sidenavs).
+
+<DemoVideo
+  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/blog-assets/polish.mp4"
+  width={1034}
+  height={710}
+/>
+
+- Sidebars should retain scroll position and expanded state.
+- Ensure good active/hover states for elements.
+- Add [dynamic OG images](https://nextjs.org/docs/app/getting-started/metadata-and-og-images).
+
+<ContentImage
+  src="/media/leerob-com-og-images-2a4b63f5-000d155a.webp"
+  alt="Dynamic OG images example"
+  width={2186}
+  height={1510}
+/>
+
+- Every heading and section should be linkable with stable anchors.
+
+<ContentImage
+  src="/media/leerob-com-headings-acee0ddb-6f09e95a.webp"
+  alt="Linkable headings example"
+  width={1336}
+  height={892}
+/>
+
+- Related guides, APIs, and examples should reference and cross-link each other.
+- Add metadata/canonical tags to ensure docs show up cleanly in search.
+
+<Heading id="localized" level={2}>
+  {'7. Localized'}
+</Heading>
+
+- Don’t display `/en` in the URL by default.
+- Use [server-side routing](https://nextjs.org/docs/app/api-reference/file-conventions/proxy) to serve the correct language.
+- Localize static strings and docs content.
+
+<ContentImage
+  src="/media/leerob-com-i18n-9ba547fb-0473db84.webp"
+  alt="Internationalization example"
+  width={3498}
+  height={2236}
+  fullBleed
+/>
+
+<Heading id="responsive" level={2}>
+  {'8. Responsive'}
+</Heading>
+
+- Great [mobile menus](https://silkhq.com/) / Safari iOS support.
+- [Tooltips](https://ui.shadcn.com/docs/components/radix/tooltip) on desktop, [popovers](https://ui.shadcn.com/docs/components/radix/popover) on mobile.
+
+<DemoVideo
+  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/blog-assets/ios.mov"
+  width={1206}
+  height={2622}
+  fullBleed
+/>
+
+<Heading id="accessible" level={2}>
+  {'9. Accessible'}
+</Heading>
+
+- [Skip nav](https://www.w3schools.com/accessibility/accessibility_skip_links.php) to the main content.
+
+<DemoVideo
+  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/blog-assets/skip.mp4"
+  width={942}
+  height={530}
+/>
+
+- Ensure all images have `alt` text.
+- Respect `prefers-reduced-motion` system settings.
+
+<DemoVideo
+  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/blog-assets/reduced-motion.mp4"
+  width={2038}
+  height={1486}
+  fullBleed
+/>
+
+<Heading id="universal" level={2}>
+  {'10. Universal'}
+</Heading>
+
+- Ship docs-as-code for libraries with [JSDoc](https://jsdoc.app/) (or as a [package](https://github.com/nuxt/nuxt/pull/31353)).
+- Ship your docs as an MCP server like [Context7](https://context7.com/).
+- Ship your docs with your libraries in `node_modules`.
+- Ship [rules files](https://github.com/oven-sh/bun/blob/f8aed4826b9a730e31be5f8209368bfd41a52152/src/init/rule.md) (like `AGENTS.md`) with your product.
+- Ship [evals](https://github.com/get-convex/convex-evals) and recommend specific models for your product.
