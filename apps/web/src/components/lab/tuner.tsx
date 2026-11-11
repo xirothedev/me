@@ -81,8 +81,8 @@ export function Tuner() {
         onClick={active ? stop : start}
         className={`font-code rounded-md border px-3 py-1.5 text-sm transition-colors ${
           active
-            ? 'border-neutral-700 bg-neutral-800 text-white dark:border-neutral-300 dark:bg-white dark:text-black'
-            : 'text-ink-soft hover:text-ink-strong border-neutral-300 bg-transparent hover:border-neutral-400 dark:border-neutral-600 dark:hover:border-neutral-500'
+            ? 'border-neutral-700 bg-neutral-800 text-white'
+            : 'text-ink-soft hover:text-ink-strong border-neutral-300 bg-transparent hover:border-neutral-400'
         }`}
       >
         {active ? 'Stop Tuner' : 'Tuner'}
@@ -97,7 +97,7 @@ export function Tuner() {
       ) : null}
 
       {active ? (
-        <div className="mt-4 rounded-lg border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-700 dark:bg-neutral-900">
+        <div className="mt-4 rounded-lg border border-neutral-200 bg-neutral-50 p-5">
           <div className="text-center">
             <div className="text-ink-strong text-4xl font-bold tracking-tight transition-colors">
               {reading?.note ?? '—'}
@@ -108,17 +108,17 @@ export function Tuner() {
           </div>
 
           <div className="relative mt-4 h-10 select-none">
-            <div className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-neutral-200 dark:bg-neutral-700" />
-            <div className="absolute top-1/2 left-1/2 h-5 w-0.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-400 dark:bg-neutral-500" />
+            <div className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-neutral-200" />
+            <div className="absolute top-1/2 left-1/2 h-5 w-0.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-400" />
             {[0, 10, 20, 30, 40, 60, 70, 80, 90, 100].map((tick) => (
               <div
                 key={tick}
-                className="absolute top-1/2 h-2.5 w-px -translate-y-1/2 bg-neutral-300 dark:bg-neutral-600"
+                className="absolute top-1/2 h-2.5 w-px -translate-y-1/2 bg-neutral-300"
                 style={{ left: `${tick}%` }}
               />
             ))}
             <div
-              className="absolute top-1/2 h-8 w-0.5 -translate-y-1/2 rounded-full bg-neutral-900 transition-[left] duration-150 dark:bg-white"
+              className="absolute top-1/2 h-8 w-0.5 -translate-y-1/2 rounded-full bg-neutral-900 transition-[left] duration-150"
               style={{ left: `${marker}%` }}
             />
             <span className="font-ui text-ink-soft absolute top-0 left-0 text-[11px]">flat</span>
@@ -135,7 +135,7 @@ export function Tuner() {
             {STRINGS.map((string) => (
               <span
                 key={string.id}
-                className="font-code text-ink-soft flex size-6 items-center justify-center rounded-full border border-neutral-300 text-[11px] dark:border-neutral-600"
+                className="font-code text-ink-soft flex size-6 items-center justify-center rounded-full border border-neutral-300 text-[11px]"
               >
                 {string.label}
               </span>

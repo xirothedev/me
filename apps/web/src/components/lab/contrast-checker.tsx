@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-const DEFAULT_TEXT = '#15343d';
-const DEFAULT_BACKGROUND = '#f7f2e6';
+const DEFAULT_TEXT = '#0f3547';
+const DEFAULT_BACKGROUND = '#f1f8fb';
 
 function channel(value: number) {
   const normalized = value / 255;

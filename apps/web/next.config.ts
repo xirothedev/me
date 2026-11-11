@@ -42,7 +42,7 @@ const withMDX = createMDX({
       [
         'rehype-pretty-code',
         {
-          theme: { dark: 'github-dark', light: 'github-light' },
+          theme: 'github-light',
           keepBackground: false,
           defaultLang: 'text',
         },

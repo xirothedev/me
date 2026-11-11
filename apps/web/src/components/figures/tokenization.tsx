@@ -38,9 +38,7 @@ export function TokenizationFigure() {
               <span
                 key={piece.text}
                 className={`rounded-md px-2 py-0.5 transition-colors ${
-                  index === player.step - 1
-                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-200'
-                    : 'bg-neutral-200/70 dark:bg-neutral-700/60'
+                  index === player.step - 1 ? 'bg-blue-100 text-blue-700' : 'bg-neutral-200/70 '
                 }`}
               >
                 {piece.text}

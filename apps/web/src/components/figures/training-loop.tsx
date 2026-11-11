@@ -38,12 +38,12 @@ export function TrainingLoopFigure() {
         <div className="font-ui flex items-center justify-center gap-1.5 text-xs">
           {STEPS.map((label, index) => (
             <div key={label} className="flex items-center gap-1.5">
-              {index > 0 ? <span className="text-neutral-300 dark:text-neutral-600">→</span> : null}
+              {index > 0 ? <span className="text-neutral-300">→</span> : null}
               <span
                 className={`rounded-full px-2.5 py-1 transition-colors ${
                   index === player.step
-                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-200'
-                    : 'bg-neutral-200/60 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300'
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'bg-neutral-200/60 text-neutral-600'
                 }`}
               >
                 {label}
@@ -91,7 +91,7 @@ export function TrainingLoopFigure() {
           </svg>
 
           <div className="w-[150px] shrink-0">
-            <div className="font-ui text-[11px] tracking-[0.08em] text-neutral-500 uppercase dark:text-neutral-400">
+            <div className="font-ui text-[11px] tracking-[0.08em] text-neutral-500 uppercase">
               Loss
             </div>
             <div className="font-code mt-1 text-3xl font-semibold text-rose-500 tabular-nums">
@@ -105,7 +105,7 @@ export function TrainingLoopFigure() {
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeDasharray="3 4"
-                  className="text-neutral-300 dark:text-neutral-600"
+                  className="text-neutral-300"
                 />
                 <circle cx={dot.x} cy={dot.y} r="5" className="fill-rose-500 transition-all" />
               </svg>

@@ -14,19 +14,19 @@ const PRESETS: Record<
   Focused: {
     temperature: 0.2,
     caption: 'Focused: the model almost always picks the likely token',
-    color: 'text-blue-700 dark:text-blue-300',
+    color: 'text-blue-700 ',
     values: [82, 12, 4, 2, 0, 0],
   },
   Balanced: {
     temperature: 0.8,
     caption: 'Balanced: a mix of likely and diverse tokens',
-    color: 'text-emerald-700 dark:text-emerald-300',
+    color: 'text-emerald-700 ',
     values: [52, 25, 13, 6, 3, 2],
   },
   Creative: {
     temperature: 1.4,
     caption: 'Creative: less likely tokens get a real chance',
-    color: 'text-orange-700 dark:text-orange-300',
+    color: 'text-orange-700 ',
     values: [24, 20, 18, 15, 13, 10],
   },
 };
@@ -63,7 +63,7 @@ export function TemperatureFigure() {
       <div className="flex flex-col gap-3">
         <div className="font-code text-ink-strong flex items-center justify-center gap-2 text-sm">
           <span>The cat sat on the</span>
-          <span className="inline-block h-6 w-10 rounded-sm bg-neutral-200 dark:bg-neutral-700" />
+          <span className="inline-block h-6 w-10 rounded-sm bg-neutral-200" />
           <span>mat</span>
         </div>
 
@@ -71,7 +71,7 @@ export function TemperatureFigure() {
           {TOKENS.map((token, index) => (
             <div key={token} className="flex items-center gap-2">
               <span className="font-code text-ink-soft w-12 text-right text-xs">{token}</span>
-              <div className="h-5 flex-1 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700">
+              <div className="h-5 flex-1 overflow-hidden rounded-full bg-neutral-200">
                 <div
                   className="flex h-full items-center justify-end rounded-full bg-blue-400 pr-1 transition-[width] duration-500"
                   style={{ width: `${Math.max(current.values[index], 2)}%` }}
@@ -94,7 +94,7 @@ export function TemperatureFigure() {
           <button
             type="button"
             onClick={() => setTemperature(PRESETS.Balanced.temperature)}
-            className="font-ui text-ink-soft hover:text-ink flex items-center gap-1.5 rounded-full border border-neutral-300 px-2.5 py-1 text-xs transition-colors hover:border-neutral-400 dark:border-neutral-600"
+            className="font-ui text-ink-soft hover:text-ink flex items-center gap-1.5 rounded-full border border-neutral-300 px-2.5 py-1 text-xs transition-colors hover:border-neutral-400"
           >
             <Icon icon={ICON.dice} size="xs" />
             Sample
@@ -125,8 +125,8 @@ export function TemperatureFigure() {
                 aria-pressed={preset === name}
                 className={`font-ui rounded-full border px-2.5 py-1 text-xs transition-colors ${
                   preset === name
-                    ? 'border-blue-500 bg-blue-500/10 text-blue-700 dark:text-blue-300'
-                    : 'border-neutral-300 text-neutral-500 hover:border-neutral-400 hover:text-neutral-800 dark:border-neutral-700 dark:text-neutral-400'
+                    ? 'border-blue-500 bg-blue-500/10 text-blue-700 '
+                    : 'border-neutral-300 text-neutral-500 hover:border-neutral-400 hover:text-neutral-800'
                 }`}
               >
                 {name}

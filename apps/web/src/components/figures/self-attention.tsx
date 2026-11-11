@@ -49,10 +49,10 @@ export function SelfAttentionFigure() {
                 onClick={() => setManual(token)}
                 className={`font-ui rounded-md border px-2 py-1 text-sm transition-colors ${
                   isQuery
-                    ? 'border-neutral-900 bg-neutral-900 text-white dark:border-white dark:bg-white dark:text-neutral-900'
+                    ? 'border-neutral-900 bg-neutral-900 text-white'
                     : isTarget
-                      ? 'border-blue-500 text-blue-600 dark:border-blue-400 dark:text-blue-300'
-                      : 'border-transparent bg-neutral-200/70 text-neutral-600 hover:border-neutral-300 dark:bg-neutral-700/60 dark:text-neutral-300'
+                      ? 'border-blue-500 text-blue-600'
+                      : 'border-transparent bg-neutral-200/70 text-neutral-600 hover:border-neutral-300'
                 }`}
               >
                 {token}
@@ -61,14 +61,12 @@ export function SelfAttentionFigure() {
           })}
         </div>
         <div className="font-ui flex items-center gap-2 text-sm">
-          <span className="rounded-md bg-neutral-900 px-2 py-1 text-white dark:bg-white dark:text-neutral-900">
-            {query}
-          </span>
+          <span className="rounded-md bg-neutral-900 px-2 py-1 text-white">{query}</span>
           <span className="text-ink-soft">attends to</span>
-          <span className="rounded-md border border-blue-500 px-2 py-1 text-blue-600 dark:border-blue-400 dark:text-blue-300">
+          <span className="rounded-md border border-blue-500 px-2 py-1 text-blue-600">
             {relation.target}
           </span>
-          <span className="font-code text-blue-600 dark:text-blue-300">{relation.weight}</span>
+          <span className="font-code text-blue-600">{relation.weight}</span>
         </div>
       </div>
     </FigureFrame>

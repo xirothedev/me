@@ -37,8 +37,8 @@ export function LlmFigure() {
               key={token}
               className={`font-ui rounded-md border px-2.5 py-1 text-center text-xs transition-colors ${
                 player.step === index
-                  ? 'border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300'
-                  : 'border-blue-500/70 text-blue-600 dark:border-blue-400/60 dark:text-blue-300'
+                  ? 'border-blue-500 bg-blue-50 text-blue-700'
+                  : 'border-blue-500/70 text-blue-600'
               }`}
             >
               {token}
@@ -57,7 +57,7 @@ export function LlmFigure() {
                 y2={hiddenY}
                 stroke="currentColor"
                 strokeWidth="0.7"
-                className="text-neutral-300 dark:text-neutral-700"
+                className="text-neutral-300"
               />
             )),
           )}
@@ -71,7 +71,7 @@ export function LlmFigure() {
                 y2={nextY}
                 stroke="currentColor"
                 strokeWidth="0.7"
-                className="text-neutral-300 dark:text-neutral-700"
+                className="text-neutral-300"
               />
             )),
           )}
@@ -84,17 +84,11 @@ export function LlmFigure() {
               y2={95}
               stroke="currentColor"
               strokeWidth="0.7"
-              className="text-neutral-300 dark:text-neutral-700"
+              className="text-neutral-300"
             />
           ))}
           {[35, 75, 115, 155].map((y) => (
-            <circle
-              key={`in-${y}`}
-              cx="12"
-              cy={y}
-              r="6"
-              className="fill-neutral-300 dark:fill-neutral-600"
-            />
+            <circle key={`in-${y}`} cx="12" cy={y} r="6" className="fill-neutral-300" />
           ))}
           {[30, 65, 100, 135, 170].map((y) => (
             <circle
@@ -105,7 +99,7 @@ export function LlmFigure() {
               className={
                 player.step >= 1
                   ? 'fill-blue-400 transition-colors'
-                  : 'fill-neutral-300 transition-colors dark:fill-neutral-600'
+                  : 'fill-neutral-300 transition-colors'
               }
             />
           ))}
@@ -118,7 +112,7 @@ export function LlmFigure() {
               className={
                 player.step >= 2
                   ? 'fill-blue-400 transition-colors'
-                  : 'fill-neutral-300 transition-colors dark:fill-neutral-600'
+                  : 'fill-neutral-300 transition-colors'
               }
             />
           ))}
@@ -129,20 +123,20 @@ export function LlmFigure() {
             className={
               player.step >= 2
                 ? 'fill-blue-400 transition-colors'
-                : 'fill-neutral-300 transition-colors dark:fill-neutral-600'
+                : 'fill-neutral-300 transition-colors'
             }
           />
         </svg>
 
         <div className="w-[165px] shrink-0">
-          <div className="font-ui mb-3 text-[11px] tracking-[0.08em] text-neutral-500 uppercase dark:text-neutral-400">
+          <div className="font-ui mb-3 text-[11px] tracking-[0.08em] text-neutral-500 uppercase">
             Next token
           </div>
           <div className="space-y-2.5">
             {OUTPUTS.map((output) => (
               <div key={output.token}>
                 <div className="font-code text-ink-soft mb-1 text-xs">{output.token}</div>
-                <div className="h-2 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700">
+                <div className="h-2 overflow-hidden rounded-full bg-neutral-200">
                   <div
                     className="h-full rounded-full bg-blue-400 transition-[width] duration-500"
                     style={{ width: `${output.width[player.step]}%` }}

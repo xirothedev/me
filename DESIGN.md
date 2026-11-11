@@ -6,9 +6,10 @@ The site is a quiet, typographic personal site. The reading column is 600 px. Su
 
 ## 1. Aesthetic direction
 
-- Sunlit sand `#f7f2e6` or deep sea `#0d1a1f` canvas. No gradients except the Viewer backdrop.
+- Sea-mist `#f1f8fb` canvas with deep-sea `#0f3547` ink. One theme only; no dark mode or toggle. No gradients except the Viewer backdrop.
+- The hero water is the color reference. The palette stays inside that blue family; no warm accent.
 - Serif reading face. System sans for UI labels. Monospace for code and tool output.
-- One accent: lagoon teal `#0d6b78` for focus and form borders. Everything else is ink on canvas.
+- One accent: sea blue `#0b6f95` for focus and form borders. Everything else is ink on canvas.
 - Thin rules (`1px`, 10% ink) separate list rows. No boxes around content.
 - Motion is subtle: link colour and underline fade, gallery lifts, the Nha Trang hero drifts and sways on hover.
 
@@ -16,17 +17,17 @@ The site is a quiet, typographic personal site. The reading column is 600 px. Su
 
 Defined in `apps/web/src/app/globals.css` under `@theme inline`. Use utilities, never raw hex in app code. The hero image and the OG image are illustrations and may use raw values.
 
-| Token         | Light     | Dark      |
-| ------------- | --------- | --------- |
-| `canvas`      | `#f7f2e6` | `#0d1a1f` |
-| `ink`         | `#15343d` | `#e8e1d1` |
-| `ink-strong`  | `#0c2933` | `#f6f0e3` |
-| `ink-muted`   | `#3a5a62` | `#b4c7cc` |
-| `ink-soft`    | `#4c6670` | `#92aab0` |
-| `surface`     | `#efe4cf` | `#14262b` |
-| `line`        | `#d8cbb1` | `#2a4149` |
-| `code-inline` | `#96462e` | `#e6a07e` |
-| `focus`       | `#0d6b78` | `#6ec6d2` |
+| Token         | Value     |
+| ------------- | --------- |
+| `canvas`      | `#f1f8fb` |
+| `ink`         | `#0f3547` |
+| `ink-strong`  | `#082a3a` |
+| `ink-muted`   | `#24586b` |
+| `ink-soft`    | `#2f6b80` |
+| `surface`     | `#e3f0f6` |
+| `line`        | `#c9e0ea` |
+| `code-inline` | `#0b6f95` |
+| `focus`       | `#0b6f95` |
 
 Fonts:
 

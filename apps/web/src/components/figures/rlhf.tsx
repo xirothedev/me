@@ -35,12 +35,12 @@ export function RlhfFigure() {
         <div className="font-ui flex items-center gap-1.5 text-xs">
           {STEPS.map((label, index) => (
             <div key={label} className="flex items-center gap-1.5">
-              {index > 0 ? <span className="text-neutral-300 dark:text-neutral-600">→</span> : null}
+              {index > 0 ? <span className="text-neutral-300">→</span> : null}
               <span
                 className={`rounded-full px-2.5 py-1 transition-colors ${
                   index === player.step
-                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-200'
-                    : 'bg-neutral-200/60 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300'
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'bg-neutral-200/60 text-neutral-600'
                 }`}
               >
                 {label}
@@ -51,16 +51,14 @@ export function RlhfFigure() {
 
         <div
           className={`font-ui flex items-center gap-2 rounded-lg border px-4 py-2 text-sm transition-colors ${
-            player.step === 3
-              ? 'border-blue-500 text-blue-600 dark:border-blue-400 dark:text-blue-300'
-              : 'border-blue-400/70 text-blue-600 dark:border-blue-400/60 dark:text-blue-300'
+            player.step === 3 ? 'border-blue-500 text-blue-600' : 'border-blue-400/70 text-blue-600'
           }`}
         >
           <Icon icon={ICON.bot} size="md" />
           AI model
         </div>
 
-        <span className="text-neutral-300 dark:text-neutral-600">↓</span>
+        <span className="text-neutral-300">↓</span>
 
         <div className="grid w-full max-w-[420px] grid-cols-3 gap-2">
           {REPLIES.map((reply, index) => (
@@ -68,8 +66,8 @@ export function RlhfFigure() {
               key={reply.label}
               className={`font-ui rounded-lg border px-3 py-3 text-center transition-colors ${
                 player.step >= 1 && index === 1
-                  ? 'border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-200'
-                  : 'border-neutral-200 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300'
+                  ? 'border-blue-500 bg-blue-50 text-blue-700'
+                  : 'border-neutral-200 text-neutral-600'
               }`}
             >
               <div className="text-sm font-medium">{reply.label}</div>

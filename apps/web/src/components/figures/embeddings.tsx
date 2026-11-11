@@ -33,7 +33,7 @@ export function EmbeddingsFigure() {
       onSpeed={player.setSpeed}
       className="min-h-[391px]"
     >
-      <div className="relative h-[260px] w-full overflow-hidden rounded-md bg-[radial-gradient(circle,rgb(0_0_0_/_0.08)_1px,transparent_1px)] bg-[size:18px_18px] dark:bg-[radial-gradient(circle,rgb(255_255_255_/_0.12)_1px,transparent_1px)]">
+      <div className="relative h-[260px] w-full overflow-hidden rounded-md bg-[radial-gradient(circle,rgb(0_0_0_/_0.08)_1px,transparent_1px)] bg-[size:18px_18px]">
         {POINTS.map((point) => {
           return (
             <div
@@ -47,7 +47,7 @@ export function EmbeddingsFigure() {
                     className={`size-2.5 rounded-full ${point.tone === 'pink' ? 'bg-rose-500' : 'bg-blue-500'}`}
                   />
                   <span
-                    className={`font-ui text-xs ${point.tone === 'pink' ? 'text-rose-600 dark:text-rose-400' : 'text-blue-600 dark:text-blue-400'}`}
+                    className={`font-ui text-xs ${point.tone === 'pink' ? 'text-rose-600 ' : 'text-blue-600 '}`}
                   >
                     {point.label}
                   </span>
@@ -55,7 +55,7 @@ export function EmbeddingsFigure() {
               ) : (
                 <>
                   <span
-                    className={`font-ui text-xs ${point.tone === 'pink' ? 'text-rose-600 dark:text-rose-400' : 'text-blue-600 dark:text-blue-400'}`}
+                    className={`font-ui text-xs ${point.tone === 'pink' ? 'text-rose-600 ' : 'text-blue-600 '}`}
                   >
                     {point.label}
                   </span>

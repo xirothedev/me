@@ -39,10 +39,10 @@ export function FigureFrame({
   return (
     <figure
       data-viz={viz}
-      className={`my-6 flex flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-700 dark:bg-neutral-900 ${className}`}
+      className={`my-6 flex flex-col rounded-lg border border-neutral-200 bg-neutral-50 p-5 ${className}`}
     >
       <div className="flex items-center justify-between">
-        <span className="font-ui text-[11px] font-medium tracking-[0.08em] text-neutral-500 uppercase dark:text-neutral-400">
+        <span className="font-ui text-[11px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
           {label}
         </span>
         <div className="flex items-center gap-1.5" aria-hidden="true">
@@ -52,7 +52,7 @@ export function FigureFrame({
               className={
                 index === active
                   ? 'h-1 w-3 rounded-full bg-blue-500 transition-all'
-                  : 'size-1 rounded-full bg-neutral-300 transition-all dark:bg-neutral-600'
+                  : 'size-1 rounded-full bg-neutral-300 transition-all'
               }
             />
           ))}
@@ -70,11 +70,11 @@ export function FigureFrame({
             type="button"
             aria-label={playing ? 'Pause figure' : 'Play figure'}
             onClick={onToggle}
-            className="rounded-full p-1 text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+            className="rounded-full p-1 text-neutral-500 transition-colors hover:text-neutral-900"
           >
             <Icon icon={playing ? ICON.pause : ICON.play} size="sm" />
           </button>
-          <div className="flex rounded-full bg-neutral-200/60 p-0.5 dark:bg-neutral-800">
+          <div className="flex rounded-full bg-neutral-200/60 p-0.5">
             {SPEEDS.map((value) => (
               <button
                 key={value}
@@ -83,8 +83,8 @@ export function FigureFrame({
                 onClick={() => onSpeed(value)}
                 className={`font-code rounded-full px-1.5 py-0.5 text-[11px] tabular-nums transition-colors ${
                   speed === value
-                    ? 'bg-white text-neutral-900 shadow-sm dark:bg-neutral-600 dark:text-white'
-                    : 'text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-100'
+                    ? 'bg-white text-neutral-900 shadow-sm'
+                    : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
                 {value}×

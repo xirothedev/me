@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { ThemeProvider } from '@/components/theme-provider';
 import { siteConfig } from '@/lib/site-config';
 import './globals.css';
 
@@ -48,15 +47,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f7f2e6' },
-    { media: '(prefers-color-scheme: dark)', color: '#0d1a1f' },
-  ],
+  themeColor: '#f1f8fb',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className="font-reading text-body antialiased">
         <a
           href="#main"
@@ -64,28 +60,26 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         >
           Skip to content
         </a>
-        <ThemeProvider>
-          <div className="site-shell px-page sm:py-page [container-type:inline-size] relative min-h-screen w-full pt-10 pb-5">
-            <main id="main">{children}</main>
-            <footer className="site-footer max-w-content border-line mt-16 w-full border-t pt-4">
-              <div className="font-ui text-meta text-ink-soft flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <p>
-                  {siteConfig.credit.text}{' '}
-                  <a
-                    href={siteConfig.credit.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="decoration-ink-soft/30 hover:text-ink-muted underline decoration-1 underline-offset-[0.18em] transition-colors"
-                  >
-                    {siteConfig.credit.handle}
-                  </a>{' '}
-                  {siteConfig.credit.suffix}.
-                </p>
-                <p>© 2026 {siteConfig.name}.</p>
-              </div>
-            </footer>
-          </div>
-        </ThemeProvider>
+        <div className="site-shell px-page sm:py-page [container-type:inline-size] relative min-h-screen w-full pt-10 pb-5">
+          <main id="main">{children}</main>
+          <footer className="site-footer max-w-content border-line mt-16 w-full border-t pt-4">
+            <div className="font-ui text-meta text-ink-soft flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <p>
+                {siteConfig.credit.text}{' '}
+                <a
+                  href={siteConfig.credit.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="decoration-ink-soft/30 hover:text-ink-muted underline decoration-1 underline-offset-[0.18em] transition-colors"
+                >
+                  {siteConfig.credit.handle}
+                </a>{' '}
+                {siteConfig.credit.suffix}.
+              </p>
+              <p>© 2026 {siteConfig.name}.</p>
+            </div>
+          </footer>
+        </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}

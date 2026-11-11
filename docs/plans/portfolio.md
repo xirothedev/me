@@ -10,7 +10,7 @@ Status: content replacement implemented 2026-11-11. Copy gate passed 2026-11-11.
 - Home leads with Work, then Notes and Blogs. Two bio lengths. Nha Trang hero illustration.
 - Lab is hidden, `noindex`, and linked from Bookmarks. It holds the Tuner, a token estimator, and a contrast checker.
 - Old clone routes redirect: `/tabs` → `/lab`, `/tabs/:slug` → `/lab`, `/bronco` → `/hospital`.
-- Palette: sunlit sand and deep sea teal, with lagoon focus and terracotta inline code. SVG hero scene: ocean, park, and city planes, five palms, foam, and sparkle. Ambient motion, stronger on hover.
+- Palette: one blue-sea theme drawn from the hero water, with sea-mist paper and deep-sea ink. No dark mode. SVG hero scene: ocean, park, and city planes, five palms, foam, and sparkle. Ambient motion, stronger on hover.
 - The current avatar is a placeholder until the headshot arrives.
 - The hero master is `apps/web/assets/hero/nha-trang.png`; `bun run --cwd apps/web hero:build` rebuilds the served WebP.
 
@@ -46,7 +46,7 @@ Done 2026-11-11:
 
 - [x] Hero scene: three planes, five palms, tide, foam, and sparkle.
 - [x] `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and the production build.
-- [x] Axe WCAG 2.1 A/AA on `/`, `/hospital`, `/bookmarks`, and `/lab` in light and dark: 0 violations.
+- [x] Axe WCAG 2.1 A/AA on `/`, `/hospital`, `/bookmarks`, and `/lab`: 0 violations.
 - [x] Verify the 390 / 768 / 1440 layouts. The hero shows at 1100 px and wider.
 - [x] Reduced motion renders the untouched base. No seam at 1110 and 1440.
 - [x] Lighthouse on `/`: 100 performance, 100 accessibility, 100 best practices, 100 SEO.

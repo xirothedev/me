@@ -23,7 +23,7 @@ The old clone routes redirect: `/tabs` → `/lab`, `/tabs/:slug` → `/lab`, `/b
 - Next.js 16 App Router, React 19, Turbopack
 - Tailwind CSS v4 with `@theme` tokens
 - MDX for Notes and Blogs, JSON for Bookmarks
-- `next-themes`, `next/image`, `next/og`
+- `next/image`, `next/og`
 - Bun 1.4 tests
 - `@repo/ui` for the icon vocabulary
 

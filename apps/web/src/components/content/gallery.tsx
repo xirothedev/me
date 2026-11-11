@@ -136,7 +136,7 @@ export function PhotoStrip({ images }: GalleryProps) {
                 index % 2 === 0 ? '-rotate-2' : 'rotate-2'
               }`}
             >
-              <div className="aged-polaroid rounded-sm border border-neutral-200 p-3 pb-12 transition-shadow hover:shadow-lg dark:border-neutral-600">
+              <div className="aged-polaroid rounded-sm border border-neutral-200 p-3 pb-12 transition-shadow hover:shadow-lg">
                 <div className="vintage-tile relative h-[180px] w-[180px] overflow-hidden">
                   <Image
                     src={image.src}
