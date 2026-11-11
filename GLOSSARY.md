@@ -12,6 +12,10 @@ _Avoid_: Screen, view, document
 The index Page. It introduces the author, lists Work, Notes, and Blogs, and offers the biography.
 _Avoid_: Landing page, index
 
+**Hero**:
+The illustration beside the Home introduction. It shows a tropical beach, a palm park, and a city street.
+_Avoid_: Painting, banner, cover image
+
 **Work entry**:
 One row in the Home Work list. It names a platform or open-source project, its kind, a one-line summary, and a status.
 _Avoid_: Project card, portfolio item

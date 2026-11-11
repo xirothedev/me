@@ -10,8 +10,9 @@ Status: content replacement implemented 2026-11-11. Copy gate passed 2026-11-11.
 - Home leads with Work, then Notes and Blogs. Two bio lengths. Nha Trang hero illustration.
 - Lab is hidden, `noindex`, and linked from Bookmarks. It holds the Tuner, a token estimator, and a contrast checker.
 - Old clone routes redirect: `/tabs` → `/lab`, `/tabs/:slug` → `/lab`, `/bronco` → `/hospital`.
-- Palette: warm paper and deep green. Layered hero illustration with a hover wind.
+- Palette: warm paper and deep green. SVG hero scene: ocean, park, and city planes, five palms, foam, and sparkle. Ambient motion, stronger on hover.
 - The current avatar is a placeholder until the headshot arrives.
+- The hero master is `apps/web/assets/hero/nha-trang.png`; `bun run --cwd apps/web hero:build` rebuilds the served WebP.
 
 ## Decisions
 
@@ -45,7 +46,8 @@ Result: no blocker claims. Every piece scores 2 or lower on the slop scale.
 - Run the final copy gate after the last edits.
 - Run `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and `bun build`.
 - Run axe on `/`, `/hospital`, `/bookmarks`, `/lab` in light and dark.
-- Verify the 390 / 768 / 1440 layouts.
+- Verify the 390 / 768 / 1440 layouts. The hero only shows at 1100 px and wider.
+- Hero pass: reduced motion renders the untouched base; check for seams at 1110 and 1440 after any motion change.
 - Deploy to `xirothedev.resonance.io.vn` after the headshot and the gate.
 
 ## Notes

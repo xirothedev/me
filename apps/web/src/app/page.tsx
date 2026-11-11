@@ -2,7 +2,7 @@ import Link from 'next/link';
 import BioDefault from '@content/home/bio-default.mdx';
 import BioLong from '@content/home/bio-long.mdx';
 import { BioModes } from '@/components/home/bio-modes';
-import { Painting } from '@/components/home/painting';
+import { HeroScene } from '@/components/home/hero-scene';
 import { WorkList } from '@/components/home/work-list';
 import { blogs, notes } from '@/content/registry';
 import { formatMonth } from '@/lib/format';
@@ -86,8 +86,8 @@ export default function Home() {
           </div>
         </div>
 
-        <aside className="home-visual content:sticky content:top-page content:block content:h-[calc(100svh-2*var(--spacing-page))] content:min-h-[min(72svh,760px)] content:overflow-hidden content:rounded-painting content:border content:border-line content:bg-surface hidden">
-          <Painting />
+        <aside className="home-visual content:sticky content:top-page content:block content:h-[calc(100svh-2*var(--spacing-page))] content:min-h-[min(72svh,760px)] content:overflow-hidden content:rounded-hero content:border content:border-line content:bg-surface hidden">
+          <HeroScene />
         </aside>
       </div>
     </article>

@@ -16,6 +16,8 @@ The old clone remains in the git history of pull request #1. Do not deploy an ol
 
 The avatar at `apps/web/public/avatar.webp` is still a temporary placeholder and is the only remaining reference asset. Replace it with the final headshot before public deployment.
 
+The hero master is committed at `apps/web/assets/hero/nha-trang.png` (not served). `bun run --cwd apps/web hero:build` writes the served WebP. The scene masks and motion are original code.
+
 The site does not ship Lee Robinson’s other photographs, painting, or written content. Bookmark icons are favicons from the linked sites, used at 16 px.
 
 ## Hospital case study

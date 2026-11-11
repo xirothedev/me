@@ -74,6 +74,10 @@ Layout:
 
 Component names describe the domain role, never the order (`work-list`, not `rows-1`).
 
+### Hero scene
+
+The Home hero is one WebP drawn as an SVG scene. A **plane** is a full-canvas copy masked to a region: ocean, park, or city and road. A **palm** is a masked copy rotated about its canopy. A **mask** is a blurred vector shape, so the seam never shows. The base image is never redrawn or recoloured. Three planes, five palms, foam, and sparkle move.
+
 ## 4. Icon vocabulary
 
 All functional icons come from `@repo/ui`:
@@ -97,7 +101,7 @@ Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`,
 
 ## 6. Motion
 
-- CSS custom properties and keyframes for the hero (`--hero-wind`, `--hero-gust`, `hero-gust`). Respect `prefers-reduced-motion`.
+- The hero uses registered CSS properties `--hero-wind`, `--hero-tide`, `--hero-sway`, and `--hero-gust`. Ambient drift is 1–2 px; hover ramps the wind to 3×. Palms sway 0.1° at rest and 0.6° on hover. `prefers-reduced-motion` shows the untouched base image.
 - 160–300 ms colour, underline, and opacity transitions for links and rows.
 - No page-enter animations. No scroll-triggered reveals.
 - Figures pause under reduced motion and expose play/pause.
