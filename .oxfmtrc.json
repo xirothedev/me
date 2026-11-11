@@ -1,0 +1,6 @@
+{
+  "singleQuote": true,
+  "sortPackageJson": false,
+  "sortTailwindcss": true,
+  "ignorePatterns": ["*.md", "**/next-env.d.ts"]
+}
