@@ -25,11 +25,11 @@ trap 'rm -rf "$tmp"' EXIT
 # ratio before resizing so the beach, park, road, and city all stay in frame.
 magick "$source_asset" -crop 1536x806+0+109 +repage -resize 2400x1260! "$tmp/base.png"
 
-magick -size 2400x220 gradient:'#10201A00-#10201AE6' "$tmp/fade.png"
-magick -size 2400x380 xc:'#10201AE6' "$tmp/band.png"
+# One linear scrim from the vertical middle to the bottom edge. It starts
+# transparent and ends on the deep green, so the art stays visible above.
+magick -size 2400x630 gradient:'#0B171200-#0B1712FF' "$tmp/scrim.png"
 magick "$tmp/base.png" \
-  "$tmp/fade.png" -geometry +0+660 -compose over -composite \
-  "$tmp/band.png" -geometry +0+880 -compose over -composite \
+  "$tmp/scrim.png" -geometry +0+630 -compose over -composite \
   "$tmp/card.png"
 
 magick -background none -fill '#f4efe4' -font "$serif" -pointsize 128 \
