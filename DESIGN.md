@@ -101,7 +101,7 @@ Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`,
 
 ## 6. Motion
 
-- The hero uses registered CSS properties `--hero-wind`, `--hero-tide`, `--hero-sway`, and `--hero-gust`. Ambient drift is 1–2 px; hover ramps the wind to 3×. Palms sway 0.1° at rest and 0.6° on hover. `prefers-reduced-motion` shows the untouched base image.
+- The hero uses registered CSS properties `--hero-wind`, `--hero-tide`, `--hero-sway`, and `--hero-gust`. The ocean tide advances 6 px at rest and 18 px on hover. Palms sway 0.25° at rest and 1.2° on hover. `prefers-reduced-motion` shows the untouched base image.
 - 160–300 ms colour, underline, and opacity transitions for links and rows.
 - No page-enter animations. No scroll-triggered reveals.
 - Figures pause under reduced motion and expose play/pause.

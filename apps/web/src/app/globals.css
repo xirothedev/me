@@ -231,7 +231,7 @@
     --hero-wind: 0;
     transition: --hero-wind 1.2s ease-out;
     animation:
-      hero-tide 11s ease-in-out infinite,
+      hero-tide 9s ease-in-out infinite,
       hero-sway 13s ease-in-out infinite;
     position: absolute;
     inset: 0;
@@ -250,7 +250,7 @@
   }
 
   .hero-ocean {
-    transform: translateX(calc(var(--hero-tide) * (-2px - var(--hero-wind) * 4px)));
+    transform: translateX(calc(var(--hero-tide) * (6px + var(--hero-wind) * 12px)));
   }
 
   .hero-park {
@@ -263,8 +263,12 @@
 
   .hero-palm {
     transform-box: view-box;
-    transform: rotate(calc(var(--hero-gust) * (0.1deg + var(--hero-wind) * 0.5deg)));
+    transform: rotate(calc(var(--hero-gust) * (0.25deg + var(--hero-wind) * 0.95deg)));
     animation: hero-gust 5.6s ease-in-out infinite;
+  }
+
+  .hero-foam {
+    transform: translateX(calc(var(--hero-tide) * (8px + var(--hero-wind) * 14px)));
   }
 
   .hero-foam path {
@@ -275,22 +279,22 @@
   }
 
   .hero-foam path:nth-child(1) {
-    stroke-width: 2.4;
-    stroke-dasharray: 30 70;
-    opacity: 0.22;
+    stroke-width: 4;
+    stroke-dasharray: 34 62;
+    opacity: 0.34;
   }
 
   .hero-foam path:nth-child(2) {
-    stroke-width: 2;
-    stroke-dasharray: 36 84;
-    opacity: 0.16;
+    stroke-width: 3;
+    stroke-dasharray: 42 78;
+    opacity: 0.24;
     animation-delay: -8s;
   }
 
   .hero-foam path:nth-child(3) {
-    stroke-width: 1.6;
-    stroke-dasharray: 44 96;
-    opacity: 0.12;
+    stroke-width: 2.2;
+    stroke-dasharray: 50 92;
+    opacity: 0.16;
     animation-delay: -17s;
   }
 
