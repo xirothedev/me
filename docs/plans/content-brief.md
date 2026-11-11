@@ -164,7 +164,7 @@ Additional banned phrases: “in today’s fast-paced world”, “it’s import
 - Default bio: 60–90 words. Work, AI, writing.
 - Long bio: 600–900 words. Start at the tax platform, then Nha Trang, IU, Discord bots, The Resonance Team, the hospital, writing, open source, degree, CTA.
 - Notes and Blogs lists stay.
-- Hero: Nha Trang illustration supplied by the author. Warm paper and deep green.
+- Hero: Nha Trang illustration supplied by the author. Sunlit sand and deep sea teal.
 - Avatar: keep the current file until the user sends the headshot. Mark it as a deploy blocker.
 - CTA: open to remote roles. Email link.
 

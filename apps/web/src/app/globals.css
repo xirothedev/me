@@ -6,9 +6,9 @@
 
 @theme inline {
   --font-reading:
-    "Iowan Old Style Local", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-code: "SF Mono", Monaco, Inconsolata, "Fira Code", monospace;
+    'Iowan Old Style Local', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-code: 'SF Mono', Monaco, Inconsolata, 'Fira Code', monospace;
 
   --color-canvas: var(--canvas);
   --color-ink: var(--ink);
@@ -103,29 +103,29 @@
 }
 
 :root {
-  --canvas: #f7f3ea;
-  --ink: #1f2a24;
-  --ink-strong: #16201b;
-  --ink-muted: #4b5a51;
-  --ink-soft: #5c6860;
-  --ink-soft-hover: #4b5a51;
-  --surface: #efe9dc;
-  --code-inline: #9a3f2f;
-  --line: #ddd5c4;
-  --focus: #1f5c45;
+  --canvas: #f7f2e6;
+  --ink: #15343d;
+  --ink-strong: #0c2933;
+  --ink-muted: #3a5a62;
+  --ink-soft: #4c6670;
+  --ink-soft-hover: #3a5a62;
+  --surface: #efe4cf;
+  --code-inline: #96462e;
+  --line: #d8cbb1;
+  --focus: #0d6b78;
 }
 
 .dark {
-  --canvas: #121815;
-  --ink: #e6e1d6;
-  --ink-strong: #f4efe4;
-  --ink-muted: #c2bcb0;
-  --ink-soft: #9aa39b;
-  --ink-soft-hover: #f4efe4;
-  --surface: #1b2420;
-  --code-inline: #e08a72;
-  --line: #33403a;
-  --focus: #7fc2a3;
+  --canvas: #0d1a1f;
+  --ink: #e8e1d1;
+  --ink-strong: #f6f0e3;
+  --ink-muted: #b4c7cc;
+  --ink-soft: #92aab0;
+  --ink-soft-hover: #f6f0e3;
+  --surface: #14262b;
+  --code-inline: #e6a07e;
+  --line: #2a4149;
+  --focus: #6ec6d2;
 }
 
 @layer base {

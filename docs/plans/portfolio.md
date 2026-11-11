@@ -10,7 +10,7 @@ Status: content replacement implemented 2026-11-11. Copy gate passed 2026-11-11.
 - Home leads with Work, then Notes and Blogs. Two bio lengths. Nha Trang hero illustration.
 - Lab is hidden, `noindex`, and linked from Bookmarks. It holds the Tuner, a token estimator, and a contrast checker.
 - Old clone routes redirect: `/tabs` → `/lab`, `/tabs/:slug` → `/lab`, `/bronco` → `/hospital`.
-- Palette: warm paper and deep green. SVG hero scene: ocean, park, and city planes, five palms, foam, and sparkle. Ambient motion, stronger on hover.
+- Palette: sunlit sand and deep sea teal, with lagoon focus and terracotta inline code. SVG hero scene: ocean, park, and city planes, five palms, foam, and sparkle. Ambient motion, stronger on hover.
 - The current avatar is a placeholder until the headshot arrives.
 - The hero master is `apps/web/assets/hero/nha-trang.png`; `bun run --cwd apps/web hero:build` rebuilds the served WebP.
 
@@ -25,7 +25,7 @@ Status: content replacement implemented 2026-11-11. Copy gate passed 2026-11-11.
 | 5   | Article set       | 10 Notes and 8 Blogs, all mapped to real work.                           |
 | 6   | Hidden section    | `/lab` replaces `/tabs`. Keep the Tuner.                                 |
 | 7   | Photo essay       | Hospital case study replaces Bronco. Anonymized client.                  |
-| 8   | Design            | Keep the reading layout; change palette, hero image, avatar, and logos.    |
+| 8   | Design            | Keep the reading layout; change palette, hero image, avatar, and logos.  |
 | 9   | Social links      | GitHub, LinkedIn, X, email. Facebook is not linked.                      |
 | 10  | Repo              | Push the replacement to PR #1.                                           |
 | 11  | Copy gate         | Two independent agents: fact audit and hostile reader.                   |
