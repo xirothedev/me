@@ -68,7 +68,7 @@ export default function Home() {
                   <Link
                     key={blog.slug}
                     href={`/${blog.slug}`}
-                    className="border-line text-ink grid grid-cols-1 items-baseline gap-[0.15rem] border-b py-[0.72em] no-underline opacity-80 transition-opacity hover:opacity-100 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-5"
+                    className="border-line text-ink grid grid-cols-1 items-baseline gap-[0.15rem] border-b py-[0.72em] no-underline sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-5"
                   >
                     <span>{blog.meta.label ?? blog.meta.title}</span>
                     {blog.meta.date ? (

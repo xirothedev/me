@@ -30,7 +30,7 @@ export function TokenEstimator() {
         onChange={(event) => setText(event.target.value)}
         rows={7}
         placeholder="Paste a prompt, a document, or a diff."
-        className="border-line bg-canvas text-ink placeholder:text-ink-soft/70 focus:border-focus mt-2 w-full resize-y rounded-sm border p-3 font-mono text-[0.85rem] leading-[1.6] outline-none"
+        className="border-line bg-canvas text-ink placeholder:text-ink-soft focus:border-focus mt-2 w-full resize-y rounded-sm border p-3 font-mono text-[0.85rem] leading-[1.6] outline-none"
       />
 
       <div className="mt-4 flex flex-wrap items-end gap-4">

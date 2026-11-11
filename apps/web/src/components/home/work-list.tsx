@@ -34,7 +34,7 @@ export function WorkList() {
           );
 
           const className =
-            'border-line grid grid-cols-1 items-baseline gap-1 border-b py-[0.85em] no-underline transition-opacity sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6';
+            'border-line grid grid-cols-1 items-baseline gap-1 border-b py-[0.85em] no-underline sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6';
 
           if (entry.href && entry.external) {
             return (
@@ -43,7 +43,7 @@ export function WorkList() {
                 href={entry.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${className} text-ink opacity-85 hover:opacity-100`}
+                className={`${className} text-ink`}
               >
                 {body}
               </a>
@@ -52,11 +52,7 @@ export function WorkList() {
 
           if (entry.href) {
             return (
-              <Link
-                key={entry.name}
-                href={entry.href}
-                className={`${className} text-ink opacity-85 hover:opacity-100`}
-              >
+              <Link key={entry.name} href={entry.href} className={`${className} text-ink`}>
                 {body}
               </Link>
             );

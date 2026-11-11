@@ -42,13 +42,21 @@ Result: no blocker claims. Every piece scores 2 or lower on the slop scale.
 
 ## Remaining work
 
-- Replace `apps/web/public/avatar.webp` with the final headshot.
-- Run the final copy gate after the last edits.
-- Run `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and `bun build`.
-- Run axe on `/`, `/hospital`, `/bookmarks`, `/lab` in light and dark.
-- Verify the 390 / 768 / 1440 layouts. The hero only shows at 1100 px and wider.
-- Hero pass: reduced motion renders the untouched base; check for seams at 1110 and 1440 after any motion change.
-- Deploy to `xirothedev.resonance.io.vn` after the headshot and the gate.
+Done 2026-11-11:
+
+- [x] Hero scene: three planes, five palms, tide, foam, and sparkle.
+- [x] `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and the production build.
+- [x] Axe WCAG 2.1 A/AA on `/`, `/hospital`, `/bookmarks`, and `/lab` in light and dark: 0 violations.
+- [x] Verify the 390 / 768 / 1440 layouts. The hero shows at 1100 px and wider.
+- [x] Reduced motion renders the untouched base. No seam at 1110 and 1440.
+- [x] Lighthouse on `/`: 100 performance, 100 accessibility, 100 best practices, 100 SEO.
+- [x] Copy gate: content is unchanged since the pass. No blocker claims.
+
+Open:
+
+- [ ] Replace `apps/web/public/avatar.webp` with the final headshot.
+- [ ] Add the 3-5 origin facts to `apps/web/content/home/bio-long.mdx`.
+- [ ] Deploy to `xirothedev.resonance.io.vn` after the headshot and the copy gate.
 
 ## Notes
 

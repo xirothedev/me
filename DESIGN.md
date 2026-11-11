@@ -22,7 +22,7 @@ Defined in `apps/web/src/app/globals.css` under `@theme inline`. Use utilities, 
 | `ink`         | `#1f2a24` | `#e6e1d6` |
 | `ink-strong`  | `#16201b` | `#f4efe4` |
 | `ink-muted`   | `#4b5a51` | `#c2bcb0` |
-| `ink-soft`    | `#6b776e` | `#9aa39b` |
+| `ink-soft`    | `#5c6860` | `#9aa39b` |
 | `surface`     | `#efe9dc` | `#1b2420` |
 | `line`        | `#ddd5c4` | `#33403a` |
 | `code-inline` | `#9a3f2f` | `#e08a72` |
