@@ -78,6 +78,10 @@ Component names describe the domain role, never the order (`work-list`, not `row
 
 The Home hero is one WebP drawn as an SVG scene. A **plane** is a full-canvas copy masked to a region: ocean, park, or city and road. A **palm** is a masked copy rotated about its canopy. A **mask** is a blurred vector shape, so the seam never shows. The base image is never redrawn or recoloured. Three planes, five palms, foam, and sparkle move.
 
+### OG card
+
+The 1200×630 social card is a crop of the supplied landscape art with a dark caption band at the bottom. It shows `@xirothedev`, a hairline rule, and the tagline. The text is baked in, so rebuild with `bun run --cwd apps/web og:build` after a copy change. The card is a static JPEG at `src/app/opengraph-image.jpg`; `opengraph-image.alt.txt` carries the alt text.
+
 ## 4. Icon vocabulary
 
 All functional icons come from `@repo/ui`:

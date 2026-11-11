@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "hero:build": "bash scripts/build-hero.sh",
+    "og:build": "bash scripts/build-og.sh",
     "check": "bun run check-types",
     "check-types": "tsc --noEmit",
     "test": "bun test"

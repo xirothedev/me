@@ -35,6 +35,7 @@ bun dev                 # http://localhost:3000
 bun build
 bun start               # production server for apps/web
 bun run --cwd apps/web hero:build   # rebuild the hero WebP from the master art
+bun run --cwd apps/web og:build     # rebuild the 1200x630 OG card from the landscape art
 
 bun test                # unit tests
 bun check               # lint, typecheck, and boundaries
@@ -47,6 +48,7 @@ bun fmt --check         # format check
 ```txt
 apps/web/
   assets/hero/          hero master art, not served
+  assets/og/            landscape master art for the OG card
   content/              Notes, Blogs, Hospital, Home bios, Bookmarks
   scripts/              asset build scripts
   public/               avatar, favicon, bookmark icons
@@ -90,6 +92,8 @@ export const meta = {
 The avatar is still a temporary placeholder. Replace `apps/web/public/avatar.webp` with the final headshot before public deployment. The site does not ship Lee Robinson’s other photographs, painting, or written content.
 
 The hero master is `apps/web/assets/hero/nha-trang.png` (3 MB, not served). From `apps/web`, `bun run hero:build` writes the served WebP at `public/media/hero/nha-trang.webp`.
+
+The OG card is `apps/web/src/app/opengraph-image.jpg` (1200x630). Its landscape master is `apps/web/assets/og/nha-trang-landscape.png`. From `apps/web`, `bun run og:build` rebuilds the card with ImageMagick and writes the JPEG.
 
 Bookmark icons live in `apps/web/public/media/bookmarks/`. They are favicons from the linked sites, used at 16 px.
 

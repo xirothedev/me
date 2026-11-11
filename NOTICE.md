@@ -18,6 +18,8 @@ The avatar at `apps/web/public/avatar.webp` is still a temporary placeholder and
 
 The hero master is committed at `apps/web/assets/hero/nha-trang.png` (not served). `bun run --cwd apps/web hero:build` writes the served WebP. The scene masks and motion are original code.
 
+The OG card uses the supplied landscape version at `apps/web/assets/og/nha-trang-landscape.png`. `bun run --cwd apps/web og:build` writes `src/app/opengraph-image.jpg`. The text overlay is original.
+
 The site does not ship Lee Robinson’s other photographs, painting, or written content. Bookmark icons are favicons from the linked sites, used at 16 px.
 
 ## Hospital case study
