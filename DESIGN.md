@@ -80,7 +80,7 @@ The Home hero is one WebP drawn as an SVG scene. A **plane** is a full-canvas co
 
 ### OG card
 
-The 1200×630 social card is a crop of the supplied landscape art with one linear scrim from the vertical middle to the bottom edge. The scrim is a deep ocean teal drawn from the art's water and deepened toward the site canvas. It shows `@xirothedev`, a hairline rule, and the tagline. The text is baked in, so rebuild with `bun run --cwd apps/web og:build` after a copy change. The card is a static JPEG at `src/app/opengraph-image.jpg`; `opengraph-image.alt.txt` carries the alt text.
+The 1200×630 social card is a crop of the supplied landscape art with one linear scrim from the vertical middle to the bottom edge. It shows `@xirothedev`, a hairline rule, and the tagline. The text is baked in, so rebuild with `bun run --cwd apps/web og:build` after a copy change. The card is a static JPEG at `src/app/opengraph-image.jpg`; `opengraph-image.alt.txt` carries the alt text.
 
 ## 4. Icon vocabulary
 
