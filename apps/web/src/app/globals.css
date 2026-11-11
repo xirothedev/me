@@ -79,13 +79,13 @@
   src: local('Iowan Old Style Bold Italic'), local('IowanOldStyle-BoldItalic');
 }
 
-@property --painting-wind {
+@property --hero-wind {
   syntax: '<number>';
   inherits: true;
   initial-value: 0;
 }
 
-@property --painting-gust {
+@property --hero-gust {
   syntax: '<number>';
   inherits: false;
   initial-value: 0;
@@ -166,34 +166,54 @@
   }
 }
 
-@keyframes painting-drift {
-  to {
-    transform: translate(5%);
-  }
-}
-
-@keyframes painting-gust {
+@keyframes hero-gust {
   0%,
   to {
-    --painting-gust: 0.1;
+    --hero-gust: 0.15;
   }
   50% {
-    --painting-gust: 1;
+    --hero-gust: 1;
   }
 }
 
 @layer components {
   .home-painting {
-    transition: --painting-wind 1.6s ease-out;
+    --hero-wind: 0;
+    transition: --hero-wind 1.4s ease-out;
     position: absolute;
     inset: 0;
+    overflow: hidden;
   }
 
-  .home-painting svg {
-    width: 100%;
-    height: 100%;
+  .hero-art-base,
+  .hero-art-sway {
     position: absolute;
     inset: 0;
+    transform-origin: 46% 62%;
+    will-change: transform;
+  }
+
+  .hero-art-base {
+    transform: scale(calc(1.03 + var(--hero-wind) * 0.02));
+    transition: transform 1.4s ease-out;
+  }
+
+  .hero-art-sway {
+    transform: scale(calc(1.03 + var(--hero-wind) * 0.02))
+      rotate(calc(var(--hero-gust) * var(--hero-wind) * 0.8deg));
+    mask-image: radial-gradient(ellipse 42% 48% at 46% 62%, #000 0%, #000 52%, transparent 78%);
+    -webkit-mask-image: radial-gradient(
+      ellipse 42% 48% at 46% 62%,
+      #000 0%,
+      #000 52%,
+      transparent 78%
+    );
+    animation: hero-gust 4.5s ease-in-out infinite paused;
+  }
+
+  .hero-art-image {
+    object-fit: cover;
+    object-position: center;
   }
 
   .home-painting::before,
@@ -216,43 +236,11 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.99 0 0 0 0 0.95 3.4 0 0 0 -2.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
   }
 
-  .home-painting-clouds {
-    animation: painting-drift 9s linear infinite alternate paused;
-    overflow: visible;
-  }
-
-  .home-painting-sway {
-    transform-box: fill-box;
-    transform-origin: 50% 100%;
-    transform: rotate(calc(var(--painting-gust) * var(--painting-wind) * 1.2deg));
-    animation: painting-gust 3.2s ease-in-out infinite paused;
-  }
-
-  .home-painting-bush,
-  .home-painting-grass {
-    transform: skewX(calc(var(--painting-gust) * var(--painting-wind) * -2.5deg));
-  }
-
-  .home-painting-wheat {
-    transform: rotate(calc(var(--painting-gust) * var(--painting-wind) * 1.4deg));
-  }
-
-  .home-painting-leaf,
-  .home-painting-flower {
-    transform: rotate(calc(var(--painting-gust) * var(--painting-wind) * 1deg));
-  }
-
-  .home-painting text {
-    font-family: var(--font-caveat), cursive;
-  }
-
   .home-visual:hover .home-painting {
-    --painting-wind: 1;
-    transition: --painting-wind 0.6s ease-out;
+    --hero-wind: 1;
   }
 
-  .home-visual:hover .home-painting-clouds,
-  .home-visual:hover .home-painting-sway {
+  .home-visual:hover .hero-art-sway {
     animation-play-state: running;
   }
 }

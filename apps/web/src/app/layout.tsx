@@ -1,16 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import localFont from 'next/font/local';
 import { ThemeProvider } from '@/components/theme-provider';
 import { siteConfig } from '@/lib/site-config';
 import './globals.css';
-
-const caveat = localFont({
-  src: './fonts/caveat-latin.woff2',
-  weight: '500',
-  style: 'normal',
-  variable: '--font-caveat',
-  display: 'swap',
-});
 
 const person = {
   '@context': 'https://schema.org',
@@ -67,7 +58,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" suppressHydrationWarning className={caveat.variable}>
+    <html lang="en" suppressHydrationWarning>
       <body className="font-reading text-body antialiased">
         <a
           href="#main"

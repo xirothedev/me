@@ -4,11 +4,11 @@ Personal site of Lê Thành Trung. Built with Next.js 16, React 19, Tailwind CSS
 
 Live target: [xirothedev.resonance.io.vn](https://xirothedev.resonance.io.vn)
 
-The reading layout is inspired by [Lee Robinson](https://leerob.com). The footer keeps the credit: “Inspired by @leerob on X.” The code is a clean rebuild. The content, identity, and painting are original.
+The reading layout is inspired by [Lee Robinson](https://leerob.com). The footer keeps the credit: “Inspired by @leerob on X.” The code is a clean rebuild. The content and identity are original. The hero illustration is supplied by the author.
 
 ## Routes
 
-- **Home** — work, two bio lengths, Notes, Blogs, and the Nha Trang painting.
+- **Home** — work, two bio lengths, Notes, Blogs, and the Nha Trang hero illustration.
 - **10 Notes** — undated pieces on production, AI, repositories, docs, tools, and community.
 - **8 Blogs** — dated pieces on TaxEasy, Ecopick, OCR, Prisma 7, code review, and the team.
 - **`/hospital`** — the Hospital AI Assistant case study.
@@ -79,7 +79,7 @@ export const meta = {
 - `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and `bun build` pass.
 - The build renders 27 static routes.
 - Lighthouse scores 100 for accessibility, best practices, and SEO on `/`, `/hospital`, `/bookmarks`, and `/how-i-work`. `/lab` scores 100 for accessibility and best practices; its SEO score is lower because the page is `noindex` by design.
-- The home painting is an inline SVG; no external art is loaded.
+- The home hero is a local WebP with a layered hover wind; no external art is loaded.
 - The copy passed two independent review agents against `docs/plans/content-brief.md`; no blockers remain and every piece scores 2 or lower on the slop scale.
 
 ## Assets

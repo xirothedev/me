@@ -6,15 +6,15 @@ The site is a quiet, typographic personal site. The reading column is 600 px. Su
 
 ## 1. Aesthetic direction
 
-- Warm paper `#f7f3ea` or deep green-black `#121815` canvas. No gradients except the Viewer backdrop and the painting.
+- Warm paper `#f7f3ea` or deep green-black `#121815` canvas. No gradients except the Viewer backdrop.
 - Serif reading face. System sans for UI labels. Monospace for code and tool output.
 - One accent: deep green `#1f5c45` for focus and links. Everything else is ink on canvas.
 - Thin rules (`1px`, 10% ink) separate list rows. No boxes around content.
-- Motion is subtle: link colour and underline fade, gallery lifts, the Nha Trang painting drifts and sways on hover.
+- Motion is subtle: link colour and underline fade, gallery lifts, the Nha Trang hero drifts and sways on hover.
 
 ## 2. Tokens
 
-Defined in `apps/web/src/app/globals.css` under `@theme inline`. Use utilities, never raw hex in app code. The painting and the OG image are illustrations and may use raw values.
+Defined in `apps/web/src/app/globals.css` under `@theme inline`. Use utilities, never raw hex in app code. The hero image and the OG image are illustrations and may use raw values.
 
 | Token         | Light     | Dark      |
 | ------------- | --------- | --------- |
@@ -33,7 +33,6 @@ Fonts:
 - `font-reading` — Iowan Old Style, then Palatino, Georgia, serif. No webfont download.
 - `font-ui` — system UI stack.
 - `font-code` — SF Mono, Monaco, Inconsolata, Fira Code, monospace.
-- `font-caveat` — local Caveat woff2, only for the painting annotation.
 
 Type scale:
 
@@ -58,7 +57,7 @@ Layout:
 | Primitive         | Role                                                                     |
 | ----------------- | ------------------------------------------------------------------------ |
 | `SiteShell`       | Full-width page padding and container query root                         |
-| `PageTitle`       | Serif title, optional artist/subtitle line                               |
+| `PageTitle`       | Serif title, optional subtitle line                                      |
 | `ArticleMeta`     | 20 px grayscale avatar, date, author                                     |
 | `MarginNote`      | Inline note below `wide`; 240 px gutter note at `wide`                   |
 | `BlogRow`         | Title + date row with hairline divider                                   |
@@ -91,14 +90,14 @@ Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`,
 
 - `< 640px`: page padding 1.25rem, title 2rem, Notes list one column, blog date under the title, even gallery images offset 1.5rem.
 - `640–1099px`: Notes list two columns, blog title and date on one row.
-- `≥ 1100px`: home becomes two columns; the painting is sticky on the right.
+- `≥ 1100px`: home becomes two columns; the hero is sticky on the right.
 - `< 1400px`: margin notes flow inline after the paragraph.
 - `≥ 1400px`: margin notes sit in the 240 px right gutter.
 - 100% keyboard reachability at every width. No horizontal scroll except code blocks and media strips, which own their scroll container.
 
 ## 6. Motion
 
-- CSS keyframes for the painting (`painting-drift`, `painting-gust`). Respect `prefers-reduced-motion`.
+- CSS custom properties and keyframes for the hero (`--hero-wind`, `--hero-gust`, `hero-gust`). Respect `prefers-reduced-motion`.
 - 160–300 ms colour, underline, and opacity transitions for links and rows.
 - No page-enter animations. No scroll-triggered reveals.
 - Figures pause under reduced motion and expose play/pause.

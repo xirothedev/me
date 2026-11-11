@@ -4,7 +4,7 @@
 
 The reading layout is inspired by [Lee Robinson](https://leerob.com) ([@leerob on X](https://x.com/leerob)). The site footer keeps the credit: “Inspired by @leerob on X.”
 
-The code is a clean rebuild. The content, identity, writing, and painting are original.
+The code is a clean rebuild. The content, identity, and writing are original. The hero illustration is supplied by the author.
 
 ## Prior clone history
 
@@ -24,4 +24,4 @@ The Hospital page anonymizes the client as “a provincial general hospital in P
 
 ## Content ownership
 
-All original text and the Nha Trang painting are © Lê Thành Trung. The design credit above does not grant rights to the reference site’s content, and the reference site’s content does not grant rights to this site.
+All original text is © Lê Thành Trung. The hero illustration is supplied by the author. The design credit above does not grant rights to the reference site’s content, and the reference site’s content does not grant rights to this site.

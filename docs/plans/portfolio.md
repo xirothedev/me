@@ -7,10 +7,10 @@ Status: content replacement implemented 2026-11-11. Copy gate passed 2026-11-11.
 - Identity: Lê Thành Trung, `@xirothedev`, AI Driven Software Engineer, Technical Lead at The Resonance Team.
 - Target: `https://xirothedev.resonance.io.vn`.
 - Routes: Home, 10 Notes, 8 Blogs, Hospital case study, Bookmarks, Lab, 404. 27 static routes.
-- Home leads with Work, then Notes and Blogs. Two bio lengths. Nha Trang painting.
+- Home leads with Work, then Notes and Blogs. Two bio lengths. Nha Trang hero illustration.
 - Lab is hidden, `noindex`, and linked from Bookmarks. It holds the Tuner, a token estimator, and a contrast checker.
 - Old clone routes redirect: `/tabs` → `/lab`, `/tabs/:slug` → `/lab`, `/bronco` → `/hospital`.
-- Palette: warm paper and deep green. Original inline SVG painting.
+- Palette: warm paper and deep green. Layered hero illustration with a hover wind.
 - The current avatar is a placeholder until the headshot arrives.
 
 ## Decisions
@@ -24,7 +24,7 @@ Status: content replacement implemented 2026-11-11. Copy gate passed 2026-11-11.
 | 5   | Article set       | 10 Notes and 8 Blogs, all mapped to real work.                           |
 | 6   | Hidden section    | `/lab` replaces `/tabs`. Keep the Tuner.                                 |
 | 7   | Photo essay       | Hospital case study replaces Bronco. Anonymized client.                  |
-| 8   | Design            | Keep the reading layout; change palette, painting, avatar, and logos.    |
+| 8   | Design            | Keep the reading layout; change palette, hero image, avatar, and logos.    |
 | 9   | Social links      | GitHub, LinkedIn, X, email. Facebook is not linked.                      |
 | 10  | Repo              | Push the replacement to PR #1.                                           |
 | 11  | Copy gate         | Two independent agents: fact audit and hostile reader.                   |
