@@ -6,12 +6,12 @@ The site is a quiet, typographic personal site. The reading column is 600 px. Su
 
 ## 1. Aesthetic direction
 
-- Sea-mist `#f1f8fb` canvas with deep-sea `#0f3547` ink. One theme only; no dark mode or toggle. No gradients except the Viewer backdrop.
+- Sea-mist `#f1f8fb` canvas with deep-sea `#0f3547` ink. One theme only; no dark mode or toggle. No gradients.
 - The hero water is the color reference. The palette stays inside that blue family; no warm accent.
 - Serif reading face. System sans for UI labels. Monospace for code and tool output.
 - One accent: sea blue `#0b6f95` for focus and form borders. Everything else is ink on canvas.
 - Thin rules (`1px`, 10% ink) separate list rows. No boxes around content.
-- Motion is subtle: link colour and underline fade, gallery lifts, the Nha Trang hero drifts and sways on hover.
+- Motion is subtle: link colour and underline fade, figures play, the Nha Trang hero drifts and sways on hover.
 
 ## 2. Tokens
 
@@ -55,23 +55,21 @@ Layout:
 
 ## 3. Primitives
 
-| Primitive         | Role                                                                     |
-| ----------------- | ------------------------------------------------------------------------ |
-| `SiteShell`       | Full-width page padding and container query root                         |
-| `PageTitle`       | Serif title, optional subtitle line                                      |
-| `ArticleMeta`     | 20 px grayscale avatar, date, author                                     |
-| `MarginNote`      | Inline note below `wide`; 240 px gutter note at `wide`                   |
-| `BlogRow`         | Title + date row with hairline divider                                   |
-| `NoteList`        | Two-column square-bullet list                                            |
-| `WorkList`        | Five work rows: name, kind, summary, meta                                |
-| `Viewer`          | Native `<dialog>` image viewer with close, next, previous, Escape, swipe |
-| `Gallery`         | Image set that opens the Viewer                                          |
-| `FigureFrame`     | Label, caption, progress dots, play/pause, 0.5×/1×/2×                    |
-| `HospitalDiagram` | Four-step hospital network diagram                                       |
-| `Tuner`           | Microphone pitch display: note, octave, cents, Hz, needle                |
-| `TokenEstimator`  | Rough token count and input cost                                         |
-| `ContrastChecker` | WCAG ratio with AA and AAA results                                       |
-| `Icon`            | `@repo/ui` icon with a concept key                                       |
+| Primitive         | Role                                                      |
+| ----------------- | --------------------------------------------------------- |
+| `SiteShell`       | Full-width page padding and container query root          |
+| `PageTitle`       | Serif title, optional subtitle line                       |
+| `ArticleMeta`     | 20 px grayscale avatar, date, author                      |
+| `MarginNote`      | Inline note below `wide`; 240 px gutter note at `wide`    |
+| `BlogRow`         | Title + date row with hairline divider                    |
+| `NoteList`        | Two-column square-bullet list                             |
+| `WorkList`        | Five work rows: name, kind, summary, meta                 |
+| `FigureFrame`     | Label, caption, progress dots, play/pause, 0.5×/1×/2×     |
+| `HospitalDiagram` | Four-step hospital network diagram                        |
+| `Tuner`           | Microphone pitch display: note, octave, cents, Hz, needle |
+| `TokenEstimator`  | Rough token count and input cost                          |
+| `ContrastChecker` | WCAG ratio with AA and AAA results                        |
+| `Icon`            | `@repo/ui` icon with a concept key                        |
 
 Component names describe the domain role, never the order (`work-list`, not `rows-1`).
 
@@ -93,17 +91,17 @@ import { ICON, Icon } from "@repo/ui";
 <Icon icon={ICON.play} label="Play" />;
 ```
 
-Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`, `rss`, `bot`, `dice`. No inline SVG, no Unicode glyphs, no icon package imports in app code. Decorative brand marks use the favicon or an image, not an icon. The favicon is a crop of the supplied illustration.
+Keys: `play`, `pause`, `external`, `bot`, `dice`. No inline SVG, no Unicode glyphs, no icon package imports in app code. Decorative brand marks use the favicon or an image, not an icon. The favicon is a crop of the supplied illustration.
 
 ## 5. Responsive rules
 
-- `< 640px`: page padding 1.25rem, title 2rem, Notes list one column, blog date under the title, even gallery images offset 1.5rem.
+- `< 640px`: page padding 1.25rem, title 2rem, Notes list one column, blog date under the title.
 - `640–1099px`: Notes list two columns, blog title and date on one row.
 - `≥ 1100px`: home becomes two columns; the hero is sticky on the right.
 - `≥ 1400px`: the hero column grows so more of the ocean and city stay in frame.
 - `< 1400px`: margin notes flow inline after the paragraph.
 - `≥ 1400px`: margin notes sit in the 240 px right gutter.
-- 100% keyboard reachability at every width. No horizontal scroll except code blocks and media strips, which own their scroll container.
+- 100% keyboard reachability at every width. No horizontal scroll except code blocks, which own their scroll container.
 
 ## 6. Motion
 
@@ -128,8 +126,6 @@ Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`,
 | Bio mode Default | Default                   |
 | Bio mode Long    | Long                      |
 | Margin note      | (numbered note)           |
-| Gallery          | (no label)                |
-| Viewer           | Image gallery modal       |
 | Credit           | Inspired by @leerob on X. |
 
 Copy is sentence case. No machinery words (`MDX`, `API`, `component`) in user-facing text. Dates use `Month YYYY`.

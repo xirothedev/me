@@ -106,7 +106,6 @@
   --ink-strong: #082a3a;
   --ink-muted: #24586b;
   --ink-soft: #2f6b80;
-  --ink-soft-hover: #24586b;
   --surface: #e3f0f6;
   --code-inline: #0b6f95;
   --line: #c9e0ea;
@@ -323,52 +322,6 @@
   .hero-foam,
   .hero-sparkles {
     display: none;
-  }
-}
-
-@layer components {
-  .aged-polaroid {
-    background: linear-gradient(135deg, #f8f6f0 0%, #faf7f1 50%, #fff 100%);
-    box-shadow:
-      0 4px 8px rgb(0 0 0 / 0.15),
-      inset 0 1px rgb(255 255 255 / 0.8),
-      inset 0 -1px rgb(0 0 0 / 0.1);
-  }
-
-  .vintage-tile::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.3;
-    background-image:
-      radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0),
-      radial-gradient(circle at 2px 2px, rgb(0 0 0 / 0.1) 1px, transparent 0);
-    background-position:
-      0 0,
-      1px 1px;
-    background-size:
-      3px 3px,
-      4px 4px;
-  }
-
-  .vintage-tile::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background: radial-gradient(transparent 60%, rgb(0 0 0 / 0.1) 100%);
-  }
-
-  .vintage-image {
-    filter: sepia(25%) contrast(1.1) brightness(0.95) saturate(0.85) hue-rotate(-5deg);
-    transition: filter 0.3s;
-  }
-
-  .vintage-tile:hover .vintage-image {
-    filter: sepia(15%) contrast(1.15) brightness(1.02) saturate(0.9) hue-rotate(-3deg);
   }
 }
 

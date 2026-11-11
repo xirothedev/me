@@ -20,5 +20,3 @@ export const siteConfig = {
     suffix: 'on X',
   },
 } as const;
-
-export type SiteConfig = typeof siteConfig;

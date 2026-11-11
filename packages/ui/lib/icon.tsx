@@ -1,28 +1,9 @@
-import {
-  ArrowUpRight,
-  Bot,
-  ChevronLeft,
-  ChevronRight,
-  Dices,
-  Mail,
-  Music2,
-  Pause,
-  Play,
-  Rss,
-  X,
-  type LucideIcon,
-} from 'lucide-react';
+import { ArrowUpRight, Bot, Dices, Pause, Play, type LucideIcon } from 'lucide-react';
 
 export const ICON = {
   play: Play,
   pause: Pause,
-  close: X,
-  next: ChevronRight,
-  previous: ChevronLeft,
   external: ArrowUpRight,
-  mail: Mail,
-  music: Music2,
-  rss: Rss,
   bot: Bot,
   dice: Dices,
 } as const satisfies Record<string, LucideIcon>;

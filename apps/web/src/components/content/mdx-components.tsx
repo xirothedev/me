@@ -1,18 +1,10 @@
 import type { MDXComponents } from 'mdx/types';
-import dynamic from 'next/dynamic';
-import { ContentImage } from './content-image';
 import { Details } from './details';
 import { Figure } from '../figures/figure';
 import { Heading } from './heading';
 import { HospitalDiagram } from './hospital-diagram';
 import { MarginNote } from './margin-note';
 import { MdxLink } from './mdx-link';
-import { Toc } from './toc';
-
-const DemoVideo = dynamic(() => import('./demo-video').then((module) => module.DemoVideo));
-const Gallery = dynamic(() => import('./gallery').then((module) => module.Gallery));
-const PhotoGrid = dynamic(() => import('./gallery').then((module) => module.PhotoGrid));
-const PhotoStrip = dynamic(() => import('./gallery').then((module) => module.PhotoStrip));
 
 export const mdxComponents: MDXComponents = {
   h1: ({ id, children }) => (
@@ -55,11 +47,5 @@ export const mdxComponents: MDXComponents = {
   MarginNote,
   Details,
   Figure,
-  ContentImage,
-  DemoVideo,
-  PhotoStrip,
-  PhotoGrid,
-  Gallery,
-  Toc,
   HospitalDiagram,
 };

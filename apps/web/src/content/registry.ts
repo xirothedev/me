@@ -109,7 +109,3 @@ export const pageSlugs = ENTRIES.map((entry) => entry.slug);
 export function getPage(slug: string): PageEntry | undefined {
   return BY_SLUG.get(slug);
 }
-
-export function isKnownPage(slug: string): boolean {
-  return BY_SLUG.has(slug);
-}
