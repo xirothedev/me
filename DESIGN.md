@@ -6,34 +6,34 @@ The site is a quiet, typographic personal site. The reading column is 600 px. Su
 
 ## 1. Aesthetic direction
 
-- Near-black `#1b1a19` or white `#ffffff` canvas, no gradients except the Viewer backdrop.
-- Serif reading face. System sans for UI labels. Monospace for code and chord sheets.
-- One accent: inline code and the focus ring. Everything else is ink on canvas.
+- Warm paper `#f7f3ea` or deep green-black `#121815` canvas. No gradients except the Viewer backdrop and the painting.
+- Serif reading face. System sans for UI labels. Monospace for code and tool output.
+- One accent: deep green `#1f5c45` for focus and links. Everything else is ink on canvas.
 - Thin rules (`1px`, 10% ink) separate list rows. No boxes around content.
-- Motion is subtle: link colour and underline fade, gallery lifts, painting sways on hover.
+- Motion is subtle: link colour and underline fade, gallery lifts, the Nha Trang painting drifts and sways on hover.
 
 ## 2. Tokens
 
-Defined in `apps/web/src/app/globals.css` under `@theme inline`. Use utilities, never raw hex in app code.
+Defined in `apps/web/src/app/globals.css` under `@theme inline`. Use utilities, never raw hex in app code. The painting and the OG image are illustrations and may use raw values.
 
 | Token         | Light     | Dark      |
 | ------------- | --------- | --------- |
-| `canvas`      | `#ffffff` | `#1b1a19` |
-| `ink`         | `#282828` | `#e8e5df` |
-| `ink-strong`  | `#282828` | `#f4f1eb` |
-| `ink-muted`   | `#504945` | `#cbc6be` |
-| `ink-soft`    | `#676767` | `#aaa59e` |
-| `surface`     | `#f3f3f2` | `#242321` |
-| `line`        | `#e2e2df` | `#3b3936` |
-| `code-inline` | `#ad2111` | `#e06c5f` |
-| `focus`       | `#6657c8` | `#8f83e8` |
+| `canvas`      | `#f7f3ea` | `#121815` |
+| `ink`         | `#1f2a24` | `#e6e1d6` |
+| `ink-strong`  | `#16201b` | `#f4efe4` |
+| `ink-muted`   | `#4b5a51` | `#c2bcb0` |
+| `ink-soft`    | `#6b776e` | `#9aa39b` |
+| `surface`     | `#efe9dc` | `#1b2420` |
+| `line`        | `#ddd5c4` | `#33403a` |
+| `code-inline` | `#9a3f2f` | `#e08a72` |
+| `focus`       | `#1f5c45` | `#7fc2a3` |
 
 Fonts:
 
 - `font-reading` — Iowan Old Style, then Palatino, Georgia, serif. No webfont download.
 - `font-ui` — system UI stack.
 - `font-code` — SF Mono, Monaco, Inconsolata, Fira Code, monospace.
-- `font-caveat` — local Caveat woff2, only for painting annotations.
+- `font-caveat` — local Caveat woff2, only for the painting annotation.
 
 Type scale:
 
@@ -55,22 +55,25 @@ Layout:
 
 ## 3. Primitives
 
-| Primitive     | Role                                                                     |
-| ------------- | ------------------------------------------------------------------------ |
-| `SiteShell`   | Full-width page padding and container query root                         |
-| `PageTitle`   | Serif title, optional artist/subtitle line                               |
-| `ArticleMeta` | 20 px grayscale avatar, date, author                                     |
-| `MarginNote`  | Inline note below `wide`; 240 px gutter note at `wide`                   |
-| `BlogRow`     | Title + date row with hairline divider                                   |
-| `NoteList`    | Two-column square-bullet list                                            |
-| `Viewer`      | Native `<dialog>` image viewer with close, next, previous, Escape, swipe |
-| `Gallery`     | Image set that opens the Viewer                                          |
-| `FigureFrame` | Label, caption, progress dots, play/pause, 0.5×/1×/2×                    |
-| `TabSheet`    | Monospace chord chart with chord chips                                   |
-| `Tuner`       | Microphone pitch display: note, octave, cents, Hz, needle                |
-| `Icon`        | `@repo/ui` icon with a concept key                                       |
+| Primitive         | Role                                                                     |
+| ----------------- | ------------------------------------------------------------------------ |
+| `SiteShell`       | Full-width page padding and container query root                         |
+| `PageTitle`       | Serif title, optional artist/subtitle line                               |
+| `ArticleMeta`     | 20 px grayscale avatar, date, author                                     |
+| `MarginNote`      | Inline note below `wide`; 240 px gutter note at `wide`                   |
+| `BlogRow`         | Title + date row with hairline divider                                   |
+| `NoteList`        | Two-column square-bullet list                                            |
+| `WorkList`        | Five work rows: name, kind, summary, meta                                |
+| `Viewer`          | Native `<dialog>` image viewer with close, next, previous, Escape, swipe |
+| `Gallery`         | Image set that opens the Viewer                                          |
+| `FigureFrame`     | Label, caption, progress dots, play/pause, 0.5×/1×/2×                    |
+| `HospitalDiagram` | Four-step hospital network diagram                                       |
+| `Tuner`           | Microphone pitch display: note, octave, cents, Hz, needle                |
+| `TokenEstimator`  | Rough token count and input cost                                         |
+| `ContrastChecker` | WCAG ratio with AA and AAA results                                       |
+| `Icon`            | `@repo/ui` icon with a concept key                                       |
 
-Component names describe the domain role, never the order (`bio-modes`, not `tabs-1`).
+Component names describe the domain role, never the order (`work-list`, not `rows-1`).
 
 ## 4. Icon vocabulary
 
@@ -82,7 +85,7 @@ import { ICON, Icon } from "@repo/ui";
 <Icon icon={ICON.play} label="Play" />;
 ```
 
-Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`, `rss`. No inline SVG, no Unicode glyphs, no icon package imports in app code. Decorative brand marks use the favicon or an image, not an icon.
+Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`, `rss`, `bot`, `dice`. No inline SVG, no Unicode glyphs, no icon package imports in app code. Decorative brand marks use the favicon or an image, not an icon.
 
 ## 5. Responsive rules
 
@@ -105,10 +108,14 @@ Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`,
 | Internal term    | Displayed copy            |
 | ---------------- | ------------------------- |
 | Home             | (no label)                |
+| Work entry       | Work                      |
 | Note             | Notes                     |
 | Blog             | Blogs                     |
-| Tab sheet        | Tabs                      |
+| Case study       | Case study                |
+| Lab              | Lab                       |
 | Tuner            | Tuner / Stop Tuner        |
+| Token estimator  | Tokens                    |
+| Contrast checker | Contrast                  |
 | Bio mode Default | Default                   |
 | Bio mode Long    | Long                      |
 | Margin note      | (numbered note)           |
@@ -118,13 +125,15 @@ Keys: `play`, `pause`, `close`, `next`, `previous`, `external`, `mail`, `music`,
 
 Copy is sentence case. No machinery words (`MDX`, `API`, `component`) in user-facing text. Dates use `Month YYYY`.
 
-## 8. Content swap
+## 8. Content changes
 
-To replace the reference content:
+The site is not a clone. To change the content:
 
-1. Replace `apps/web/src/lib/site-config.ts`.
-2. Replace `apps/web/content/` (Notes, Blogs, Tabs, bios).
-3. Replace `apps/web/public/media/` and `apps/web/public/avatar.webp`.
-4. Run `bun run discover -- --base-url <new site>` only if you want a new reference. Otherwise run `bun run parity` against the existing reference until the design is stable, then delete the reference.
-5. Update the Term table above if your vocabulary differs.
-6. Keep the `credit` entry in `site-config.ts` pointing at the original design, or remove the footer when the design no longer derives from it.
+1. Edit `apps/web/src/lib/site-config.ts` for identity, links, and the credit.
+2. Edit `apps/web/content/` for Notes, Blogs, the Hospital case study, the Home bios, and Bookmarks.
+3. Edit `apps/web/src/lib/work.ts` for the Home work rows.
+4. Replace `apps/web/public/avatar.webp` with the final headshot.
+5. Keep the `credit` entry pointing at the original design while the reading layout derives from it.
+6. Run `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and `bun build`.
+
+The copy gate is in `docs/plans/content-brief.md`. Every claim must trace to a verified source, and an independent reviewer must score the piece at 2 or lower before it ships.

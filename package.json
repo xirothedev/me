@@ -9,14 +9,11 @@
     "format:check": "bun fmt --check",
     "check-types": "turbo run check-types",
     "typecheck": "turbo run check-types",
-    "discover": "bun --cwd apps/web run discover",
-    "parity": "bun --cwd apps/web run parity",
     "lint:boundaries": "depcruise \"packages/**/*.ts\" \"packages/**/*.tsx\" \"packages/**/*.js\" \"packages/**/*.jsx\" \"packages/**/*.mjs\" \"packages/**/*.cjs\"",
     "check": "bun run lint && bun run typecheck && bun run lint:boundaries",
     "prepare": "husky",
-    "fetch-media": "bun --cwd apps/web run fetch-media",
-    "start": "bun --cwd apps/web run start",
-    "test": "bun --cwd apps/web test"
+    "start": "bun run --cwd apps/web start",
+    "test": "bun run --cwd apps/web test"
   },
   "devDependencies": {
     "dependency-cruiser": "^18.7.2",

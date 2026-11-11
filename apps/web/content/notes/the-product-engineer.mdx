@@ -1,0 +1,48 @@
+export const meta = {
+  title: 'The Product Engineer in an AI Team',
+  description:
+    'AI lowers the cost of a prototype. It does not lower the cost of ownership. Product engineers own the second cost.',
+  kind: 'note',
+  label: 'The product engineer',
+  order: 10,
+};
+
+An agent can produce a working prototype faster than a team can review it. That changes the job, not the ownership.
+
+The prototype is the part where the idea works. The product is the part where it keeps working: the migration, the error path, the runbook, the person who gets paged. AI makes the first part cheaper. It makes the second part more expensive, because there is more code to own.
+
+<Heading id="the-prototype-is-cheap" level={2}>
+  {'The prototype is cheap'}
+</Heading>
+
+I can ask an agent for a form, a schema, a test, and a deploy script in one session. That is useful. It is also dangerous, because the speed hides the decisions.
+
+A prototype does not need a rollback plan. It does not need an index on the foreign key. It does not need a way to replay a failed job. The product does.
+
+The product engineer is the person who notices the difference before the launch.
+
+<Heading id="the-ownership-is-not-free" level={2}>
+  {'The ownership is not free'}
+</Heading>
+
+On TaxEasy, the ingest pipeline has an email router, a worker, an XML parser, an OCR step, a schema check, and a database write. Each step can fail. Each failure needs a state, a retry, and an owner.
+
+AI did not remove that work. It made the pipeline easier to write and harder to review. The code arrived faster than the tests, the runbook, and the understanding.
+
+<Heading id="the-full-stack-advantage" level={2}>
+  {'The full-stack advantage'}
+</Heading>
+
+A product engineer can follow the request from the button to the database and back. That matters more in an AI team, not less.
+
+The model is one part of the path. The input is another. The schema, the queue, the retry, the UI, and the error message are all part of the same experience. If no one owns the whole path, the model gets blamed for a broken input and the UI gets blamed for a slow query.
+
+I have worked across the API, the web app, the portal, the mobile app, and the MiniApp. The stack changes. The path stays the same.
+
+<Heading id="the-handoff" level={2}>
+  {'The handoff'}
+</Heading>
+
+The most expensive handoff is the one where each team thinks the other owns the failure. The API, the model, the retrieval, and the frontend each have a plausible reason to point at the next layer.
+
+A product engineer can walk the path and find the first broken step. That is not a replacement for specialists. It is the person who keeps the path connected.

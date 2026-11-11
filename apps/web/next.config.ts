@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    return [
+      { source: '/tabs', destination: '/lab', permanent: true },
+      { source: '/tabs/:slug', destination: '/lab', permanent: true },
+      { source: '/bronco', destination: '/hospital', permanent: true },
+    ];
+  },
   turbopack: {
     rules: {
       '*.css': {

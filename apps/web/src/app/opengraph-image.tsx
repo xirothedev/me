@@ -15,18 +15,20 @@ export default function OpengraphImage() {
         flexDirection: 'column',
         justifyContent: 'center',
         padding: '80px',
-        background: '#1b1a19',
-        color: '#e8e5df',
+        background: '#14251d',
+        color: '#f4efe4',
       }}
     >
-      <div style={{ display: 'flex', fontSize: 72, letterSpacing: '-0.02em' }}>@leerob</div>
+      <div style={{ display: 'flex', fontSize: 72, letterSpacing: '-0.02em' }}>
+        {siteConfig.handle}
+      </div>
       <div
         style={{
           display: 'flex',
           marginTop: 24,
           width: 160,
           height: 1,
-          background: '#3b3936',
+          background: '#3f5a4c',
         }}
       />
       <div
@@ -34,7 +36,7 @@ export default function OpengraphImage() {
           display: 'flex',
           marginTop: 32,
           fontSize: 32,
-          color: '#aaa59e',
+          color: '#b9c7bd',
         }}
       >
         {siteConfig.description}

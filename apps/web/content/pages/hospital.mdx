@@ -1,0 +1,86 @@
+export const meta = {
+  title: 'The Hospital',
+  description:
+    'A local model and a retrieval system inside a provincial hospital network, and the constraints that shaped both.',
+  kind: 'page',
+};
+
+A provincial general hospital in Phú Thọ cannot send a clinical document to an external API. That is a custody requirement, not a preference.
+
+The hospital does not have a cloud-first problem. It has a boundary. Clinical documents, internal procedures, and administrative records stay inside the building. A useful assistant has to run on hardware the hospital controls, over documents the hospital owns, with a failure mode the hospital can inspect.
+
+<Heading id="the-constraint" level={2}>
+  {'The constraint'}
+</Heading>
+
+The first requirement is custody. If the model calls an external API, the hospital loses the argument before the first demo. The stack has to be local: local inference, local storage, local retrieval, and a network boundary that does not depend on a vendor’s uptime.
+
+That rules out a large class of tools. It also makes the remaining choices easier. The work runs on an NVIDIA DGX Spark on the hospital network, with the document index beside it.
+
+<Heading id="the-machine" level={2}>
+  {'The machine'}
+</Heading>
+
+The DGX Spark is a small, quiet box with a lot of memory. It is not a data center. The work is not a benchmark. The work is a queue of questions from staff who need an answer for the document in front of them.
+
+The model runs locally, in Docker, on the hospital network. The deployment is deliberately boring: a pinned stack and a runbook for the people who have to restart it when I am not there.<MarginNote number={1}>{"RAGFlow is the retrieval engine. The version is pinned to v0.27.x. Parsing and chunking are chosen per document type."}</MarginNote>
+
+<Heading id="the-retrieval" level={2}>
+  {'The retrieval'}
+</Heading>
+
+The hospital’s documents are not a clean corpus. There are scanned PDFs, forms with tables, internal procedures with numbered sections, and files that exist in multiple versions with no obvious owner. A single chunk size and a single parser will not work for all of them.
+
+The team built the knowledge base in [RAGFlow](https://ragflow.io/) and chose parsing and chunking per document type. A procedure with numbered steps gets a different treatment from a table-heavy form. A scanned page with a stamp gets a different treatment from a text-native PDF. The point is to keep the evidence attached to the answer.
+
+<HospitalDiagram />
+
+<Heading id="the-bridge" level={2}>
+  {'The bridge'}
+</Heading>
+
+RAGFlow has its own interface. Staff do not need another chat app. They need the knowledge base to show up inside the workflow they already use.
+
+The team built a small proxy that exposes retrieval as a tool to an agent harness. The harness decides when to search and how to present the result. RAGFlow stays the retrieval engine. The proxy keeps the integration thin enough to debug.
+
+<Details summary={'How we trace a bad answer'}>
+
+When an answer is wrong, we do not start with the prompt. We start with the evidence.
+
+1. Did retrieval return the right document?
+2. Did it return the right passage from that document?
+3. Did the model see the passage in the context window?
+4. Did the prompt ask for the right output shape?
+5. Did the model ignore the evidence?
+
+Each step has a different fix. Chunking, parsing, ranking, context assembly, prompting, and model choice are separate levers. Treating a bad answer as a prompt problem wastes time.
+
+</Details>
+
+<Heading id="what-i-watch-for" level={2}>
+  {'What I watch for'}
+</Heading>
+
+The failure modes are predictable.
+
+**Ingestion.** A scanned page with a table is parsed as a wall of text. A procedure with two columns loses the order of its steps. A document that looks text-native has an embedded image where the important number lives.
+
+**Retrieval.** A question about a process matches a document that mentions the process but does not contain the rule. The answer is fluent and wrong. The fix is a better chunk boundary and a stricter evidence check.
+
+**Operations.** A service restarts without its data. A model loads but does not answer. A queue fills behind one document that is much larger than the others. These are not interesting in a demo. They are the job.
+
+<Heading id="what-i-own" level={2}>
+  {'What I own'}
+</Heading>
+
+I own the deployment, the development, and the operations. That means I write the proxy, tune the retrieval, upgrade RAGFlow, watch the logs, and sit with the people who use it.
+
+The project is in pilot. It is not a case study about a finished product. It is a case study about a constraint and the system that respects it.
+
+<Heading id="what-is-next" level={2}>
+  {'What is next'}
+</Heading>
+
+The next step is an evaluation set that the hospital can own: real questions, expected evidence, and a pass or fail that a staff reviewer can check. Without that, every improvement is an opinion.
+
+The work is not to make the model sound confident. It is to make the evidence easy to inspect, the failure easy to see, and the system easy to operate on a Tuesday morning when the person who built it is not in the room.

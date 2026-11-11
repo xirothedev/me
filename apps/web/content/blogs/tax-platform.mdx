@@ -1,0 +1,78 @@
+export const meta = {
+  title: 'A Tax Platform Where Failure Has a Name',
+  description:
+    'In tax software, a failed request is a person who cannot file. That changes how you build the pipeline.',
+  kind: 'blog',
+  label: 'A tax platform where failure has a name',
+  date: '2026-06',
+};
+
+The support messages on a tax platform are rarely about bugs. They are about deadlines.
+
+A tax agent has a client’s return due that day. The invoice is in the inbox. The platform has not picked it up. The agent does not care about the queue depth or the worker retry. They care that the document is there and the system is not.
+
+That is the constraint. In tax software, a failed request is a person who cannot file.
+
+<Heading id="the-agent-at-the-other-end" level={2}>
+  {'The agent at the other end'}
+</Heading>
+
+TaxEasy is a tax management SaaS. The users are tax agents and businesses. The work is documents: invoices, receipts, bank notifications, declarations, and the evidence behind a filing.
+
+The platform has five apps in a Turborepo: api, web, portal, mobile-rn, mobile-flutter. The API is NestJS, the data is PostgreSQL, and the queues are BullMQ. The AI features use the Vercel AI SDK.
+
+The architecture matters less than the hour when one document does not arrive and the tax agent calls support.
+
+<Heading id="the-pipeline" level={2}>
+  {'The pipeline'}
+</Heading>
+
+The ingest flow starts with email. Cloudflare Email Routing receives a message, a Worker forwards it to a webhook, and NestJS takes over. The message can contain an XML invoice, an SMS bank notification, or a receipt image. Each type has a different parser.
+
+The XML invoice is structured. The SMS is short and inconsistent. The receipt is an image, which means OCR, which means a model call, which means a schema check.
+
+The work is queued through BullMQ. Each job has a state. The job can succeed, fail, retry, or wait for a human. The state is visible. That visibility is the feature.<MarginNote number={1}>{"The observability stack is Grafana, Loki, Tempo, Prometheus, and OpenTelemetry. The trace matters more than the dashboard."}</MarginNote>
+
+<Heading id="the-eight-detectors" level={2}>
+  {'The eight detectors'}
+</Heading>
+
+The platform watches for anomalies: late filing, missing declaration, partner KPI breach, high refund rate, revenue mismatch, and three more. Each detector has a rule, an owner, and a lifecycle.
+
+A detector that flags everything is worse than one that flags nothing. A tax agent with a screen full of flags learns to ignore all of them.
+
+We added an auto-close lifecycle and ZNS notifications. A flag that is resolved closes. A flag with no owner stays open. The detector is only useful if someone acts on it.
+
+An alert without a resolution path is noise.
+
+<Heading id="the-runbook" level={2}>
+  {'The runbook'}
+</Heading>
+
+When a document fails, the person on call needs a short path:
+
+1. Find the job by the document ID.
+2. Read the last state and the error.
+3. Check the parser, the OCR result, and the schema.
+4. Replay the job or send it to the human queue.
+5. Tell the agent what happened.
+
+The runbook is the interface between the system and the person who has to fix it at 8 a.m. before the deadline.
+
+The error message should be specific. “Invalid invoice” is not an error. “The invoice total does not match the line items” is an error. The second one tells the agent what to fix.
+
+<Heading id="the-quiet-success" level={2}>
+  {'The quiet success'}
+</Heading>
+
+The best day on the platform is the day nobody mentions it. The documents arrive, the queue drains, the detectors close, and the agents file their returns.
+
+That day is the result of the retry, the index, the schema, the notification, and the runbook. None of them are impressive in a demo. All of them are the product.
+
+<Heading id="what-i-would-do-differently" level={2}>
+  {'What I would do differently'}
+</Heading>
+
+I would build the failure queue before the happy path. I would instrument the document lifecycle before the first detector. And I would write the support message I want to receive when the system fails.
+
+The tax agent needs the document to arrive, the error to be specific, and the runbook to be short.

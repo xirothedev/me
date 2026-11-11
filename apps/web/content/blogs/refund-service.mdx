@@ -1,0 +1,80 @@
+export const meta = {
+  title: 'How We Taught a Refund Service to Say No',
+  description:
+    'A refund gate is a policy engine with a language model at the edge, not a classifier that owns the decision.',
+  kind: 'blog',
+  label: 'How we taught a refund service to say no',
+  date: '2026-05',
+};
+
+A refund request arrives with an order, a reason, and a policy. The model can read all three. It should not decide.
+
+A helpful answer can be fluent, sympathetic, and wrong. It resolves the request instead of applying the rule. That is why the model should not own the decision.
+
+<Heading id="the-refund-problem" level={2}>
+  {'The refund problem'}
+</Heading>
+
+Ecopick is a marketplace and tournament platform. A refund can touch a rental, a listing, an inspection, and a tournament entry. The policy is more than one sentence. It depends on the state, the evidence, the timing, and the role of the person asking.
+
+A classifier can learn a pattern from historical decisions. It cannot explain the rule. A language model can read the evidence and draft a reason. It cannot be trusted to own the money.
+
+The design splits the job.
+
+<Heading id="policy-first" level={2}>
+  {'Policy first'}
+</Heading>
+
+The policy should own the decision. It is code, not a prompt. It takes the order state, the evidence, and the reason, and it returns a small set of outcomes: approve, deny, ask for evidence, or hand the case to a person.
+
+The model sits at the edge. It extracts the reason from the customer’s message, summarizes the evidence, and drafts a recommendation. The policy decides what to do with it.
+
+The separation is what makes the system auditable. When a refund is denied, the decision can point to the rule. When a refund is approved, it can point to the evidence.
+
+<Heading id="the-models-job" level={2}>
+  {'The model’s job'}
+</Heading>
+
+The model does three things well.
+
+1. It reads an unstructured message and extracts the reason, the product, the date, and any evidence the customer mentions.
+2. It compares the message to the order and flags a mismatch.
+3. It drafts a short explanation that a human can review.
+
+The output should be structured. A schema validates the fields. If the model returns a reason that is not in the allowed set, the job should go to a human. If the evidence is missing, the job should ask for it.
+
+The model cannot invent a policy, promise a refund, or override the state machine.
+
+<Heading id="evidence-and-structured-output" level={2}>
+  {'Evidence and structured output'}
+</Heading>
+
+A refund decision is only as good as the evidence. The customer says the item arrived damaged. The photo shows a box with a dent. The inspection record says the item was delivered in good condition. The policy has to reconcile those facts.
+
+Evidence should be stored as references, not as a paragraph in a prompt. The model sees the references and the relevant policy section. The decision should cite the references. That makes the review possible.
+
+The structured output also makes the failure visible. If the model cannot fill a required field, the input was incomplete. If it fills the field with a guess, the schema will not catch it, but the evidence check will.
+
+<Heading id="the-human-path" level={2}>
+  {'The human path'}
+</Heading>
+
+Some refunds should go to a person. A high-value order, a repeat claim, a policy exception, a customer who is upset. The human path is part of the design.
+
+The model can prepare the case: the order, the evidence, the policy, the recommendation, and the draft response. The human makes the call. The system should record the outcome and use it to improve the policy, not to fine-tune the model on every case.
+
+<Heading id="the-metric" level={2}>
+  {'The metric'}
+</Heading>
+
+The useful metric is how many decisions were correct, how many were reversible, and how long the customer waited.
+
+A denial with a clear reason is better than a silent rejection. A slow answer with the evidence attached is better than a fast answer with none.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would write the policy before the prompt. I would build the evidence references before the model integration. And I would measure the quality of the explanation, not just the outcome.
+
+The useful refund service is the one that can explain why it said no.

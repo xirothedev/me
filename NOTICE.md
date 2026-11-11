@@ -1,16 +1,27 @@
 # Notice
 
-This repository contains a technical clone of [leerob.com](https://leerob.com) for local study.
+## Design credit
 
-All text, photographs, the painting, and the personal identity on the cloned pages are © Lee Robinson. They are not licensed for redistribution. The code structure is a clean rebuild.
+The reading layout is inspired by [Lee Robinson](https://leerob.com) ([@leerob on X](https://x.com/leerob)). The site footer keeps the credit: “Inspired by @leerob on X.”
 
-The design and structure are inspired by Lee Robinson ([leerob.com](https://leerob.com), [@leerob on X](https://x.com/leerob)). The site footer shows this credit.
+The code is a clean rebuild. The content, identity, writing, and painting are original.
 
-Do not deploy this repository while it contains that content. Before any public deployment, replace:
+## Prior clone history
 
-- `apps/web/content/`
-- `apps/web/public/media/`
-- `apps/web/public/avatar.webp`
-- `apps/web/src/lib/site-config.ts`
+This repository previously contained a technical clone of leerob.com on the `feat/leerob-clone` branch. That branch was used to study the layout, routes, and interactions. The current site replaces the cloned text, photographs, painting, and identity.
 
-Then run the discovery and parity gates again against the new content. The deployment decision in `docs/plans/leerob-clone.md` is local-only until that swap is complete.
+The old clone remains in the git history of pull request #1. Do not deploy an older commit from that branch. Deploy only a commit that contains the current `apps/web/content/`, `apps/web/src/lib/site-config.ts`, and `apps/web/public/` files.
+
+## Assets
+
+The avatar at `apps/web/public/avatar.webp` is still a temporary placeholder and is the only remaining reference asset. Replace it with the final headshot before public deployment.
+
+The site does not ship Lee Robinson’s other photographs, painting, or written content. Bookmark icons are favicons from the linked sites, used at 16 px.
+
+## Hospital case study
+
+The Hospital page anonymizes the client as “a provincial general hospital in Phú Thọ.” It contains no hospital name, patient data, internal screenshots, or private repository code. Keep it that way.
+
+## Content ownership
+
+All original text and the Nha Trang painting are © Lê Thành Trung. The design credit above does not grant rights to the reference site’s content, and the reference site’s content does not grant rights to this site.

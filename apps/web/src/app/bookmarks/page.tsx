@@ -18,7 +18,7 @@ const GROUPS = (bookmarks as { groups: BookmarkGroup[] }).groups;
 
 export const metadata: Metadata = {
   title: 'Bookmarks',
-  description: 'A collection of interesting links, articles, and resources I saved.',
+  description: 'Links I use, read, and steal from.',
   alternates: { canonical: '/bookmarks' },
 };
 
@@ -28,16 +28,14 @@ export default function BookmarksPage() {
       <h1 className="content-title font-reading text-title-sm text-ink-strong sm:text-title mb-[0.6em] leading-[1.4] font-semibold tracking-[-0.02em] text-balance">
         Bookmarks
       </h1>
+      <p className="mb-[1.45rem]">A collection of links I use, read, and steal from.</p>
       <p className="mb-[1.45rem]">
-        A collection of interesting links, articles, and resources I&apos;ve saved.
-      </p>
-      <p className="mb-[1.45rem]">
-        I also have{' '}
+        I also keep a small{' '}
         <Link
-          href="/tabs"
+          href="/lab"
           className="text-ink-soft decoration-ink-soft/30 hover:text-ink-muted underline decoration-1 underline-offset-[0.18em] transition-colors"
         >
-          guitar tabs
+          lab
         </Link>
         .
       </p>

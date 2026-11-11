@@ -1,10 +1,40 @@
-import { EmbeddingsFigure } from './embeddings';
-import { LlmFigure } from './llm';
-import { RlhfFigure } from './rlhf';
-import { SelfAttentionFigure } from './self-attention';
-import { TemperatureFigure } from './temperature';
-import { TokenizationFigure } from './tokenization';
-import { TrainingLoopFigure } from './training-loop';
+import dynamic from 'next/dynamic';
+
+function FigureLoading() {
+  return (
+    <figure
+      aria-hidden="true"
+      className="border-line bg-surface my-6 h-48 animate-pulse rounded-lg border"
+    />
+  );
+}
+
+const LlmFigure = dynamic(() => import('./llm').then((module) => module.LlmFigure), {
+  loading: FigureLoading,
+});
+const TokenizationFigure = dynamic(
+  () => import('./tokenization').then((module) => module.TokenizationFigure),
+  { loading: FigureLoading },
+);
+const TrainingLoopFigure = dynamic(
+  () => import('./training-loop').then((module) => module.TrainingLoopFigure),
+  { loading: FigureLoading },
+);
+const EmbeddingsFigure = dynamic(
+  () => import('./embeddings').then((module) => module.EmbeddingsFigure),
+  { loading: FigureLoading },
+);
+const SelfAttentionFigure = dynamic(
+  () => import('./self-attention').then((module) => module.SelfAttentionFigure),
+  { loading: FigureLoading },
+);
+const RlhfFigure = dynamic(() => import('./rlhf').then((module) => module.RlhfFigure), {
+  loading: FigureLoading,
+});
+const TemperatureFigure = dynamic(
+  () => import('./temperature').then((module) => module.TemperatureFigure),
+  { loading: FigureLoading },
+);
 
 const FIGURES = {
   llm: LlmFigure,

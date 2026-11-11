@@ -1,0 +1,55 @@
+# Portfolio — build plan
+
+Status: content replacement implemented 2026-11-11. Copy gate passed 2026-11-11.
+
+## Current state
+
+- Identity: Lê Thành Trung, `@xirothedev`, AI Driven Software Engineer, Technical Lead at The Resonance Team.
+- Target: `https://xirothedev.resonance.io.vn`.
+- Routes: Home, 10 Notes, 8 Blogs, Hospital case study, Bookmarks, Lab, 404. 27 static routes.
+- Home leads with Work, then Notes and Blogs. Two bio lengths. Nha Trang painting.
+- Lab is hidden, `noindex`, and linked from Bookmarks. It holds the Tuner, a token estimator, and a contrast checker.
+- Old clone routes redirect: `/tabs` → `/lab`, `/tabs/:slug` → `/lab`, `/bronco` → `/hospital`.
+- Palette: warm paper and deep green. Original inline SVG painting.
+- The current avatar is a placeholder until the headshot arrives.
+
+## Decisions
+
+| #   | Decision          | Choice                                                                   |
+| --- | ----------------- | ------------------------------------------------------------------------ |
+| 1   | Purpose           | Work first; Writing and Lab next.                                        |
+| 2   | Language          | English only.                                                            |
+| 3   | Title             | AI Driven Software Engineer. Technical Lead at The Resonance Team.       |
+| 4   | Personal boundary | Professional plus origin story. No age, date of birth, or relationships. |
+| 5   | Article set       | 10 Notes and 8 Blogs, all mapped to real work.                           |
+| 6   | Hidden section    | `/lab` replaces `/tabs`. Keep the Tuner.                                 |
+| 7   | Photo essay       | Hospital case study replaces Bronco. Anonymized client.                  |
+| 8   | Design            | Keep the reading layout; change palette, painting, avatar, and logos.    |
+| 9   | Social links      | GitHub, LinkedIn, X, email. Facebook is not linked.                      |
+| 10  | Repo              | Push the replacement to PR #1.                                           |
+| 11  | Copy gate         | Two independent agents: fact audit and hostile reader.                   |
+
+## Copy gate
+
+1. `docs/plans/content-brief.md` is the source of truth.
+2. First pass: independent fact audit and hostile reader. Findings applied.
+3. Second pass: re-audit and re-score.
+4. Target: every piece at 2 or lower on the slop scale, no blocker claims.
+5. Final human review before deploy.
+
+Result: no blocker claims. Every piece scores 2 or lower on the slop scale.
+
+## Remaining work
+
+- Replace `apps/web/public/avatar.webp` with the final headshot.
+- Run the final copy gate after the last edits.
+- Run `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and `bun build`.
+- Run axe on `/`, `/hospital`, `/bookmarks`, `/lab` in light and dark.
+- Verify the 390 / 768 / 1440 layouts.
+- Deploy to `xirothedev.resonance.io.vn` after the headshot and the gate.
+
+## Notes
+
+- The prior clone remains in the git history of PR #1. Deploy only the current tree.
+- `docs/reference/` is local and git-ignored. The clone scripts were removed.
+- The site does not ship Lee Robinson’s photographs, painting, or written content.

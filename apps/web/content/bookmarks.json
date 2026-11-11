@@ -1,337 +1,122 @@
 {
   "groups": [
     {
-      "title": "Tools",
+      "title": "Daily",
       "links": [
         {
-          "title": "WebTUI",
-          "href": "https://webtui.ironclad.sh/",
-          "favicon": "/media/leerob-com-840838b6-37113e40.webp"
+          "title": "GitHub",
+          "href": "https://github.com",
+          "favicon": "/media/bookmarks/github.png"
         },
         {
-          "title": "Anime.js",
-          "href": "https://animejs.com/documentation/animation/tween-parameters/duration/",
-          "favicon": "/media/leerob-com-c587aa6b-a2a42864.webp"
+          "title": "Next.js docs",
+          "href": "https://nextjs.org/docs",
+          "favicon": "/media/bookmarks/nextjs.png"
         },
         {
-          "title": "SVG Logos",
-          "href": "https://svgl.app/",
-          "favicon": "/media/leerob-com-ffbb5292-9331db6f.webp"
+          "title": "NestJS docs",
+          "href": "https://docs.nestjs.com",
+          "favicon": "/media/bookmarks/nestjs.png"
         },
         {
-          "title": "Mono UI Components",
-          "href": "https://www.sacred.computer/",
-          "favicon": "/media/leerob-com-ba5cf389-7c0857f4.webp"
+          "title": "Prisma docs",
+          "href": "https://www.prisma.io/docs",
+          "favicon": "/media/bookmarks/prisma.png"
         },
         {
-          "title": "Handy Arrows",
-          "href": "https://handyarrows.com/",
-          "favicon": "/media/leerob-com-7ce89d14-9395ef3c.webp"
+          "title": "Bun docs",
+          "href": "https://bun.com/docs",
+          "favicon": "/media/bookmarks/bun.png"
         },
         {
-          "title": "Fancy Components",
-          "href": "https://www.fancycomponents.dev/docs/introduction",
-          "favicon": "/media/leerob-com-e4cf40e8-df2be158.webp"
+          "title": "Turborepo docs",
+          "href": "https://turborepo.com/docs",
+          "favicon": "/media/bookmarks/turborepo.png"
         },
         {
-          "title": "Methods for random gradients",
-          "href": "https://justinjay.wang/methods-for-random-gradients/",
-          "favicon": "/media/leerob-com-9e5e4598-f369f8ed.webp"
+          "title": "Playwright docs",
+          "href": "https://playwright.dev/docs/intro",
+          "favicon": "/media/bookmarks/playwright.png"
         },
         {
-          "title": "Transform Tools",
-          "href": "https://transform.tools/",
-          "favicon": "/media/leerob-com-a0104934-42b120d7.webp"
-        },
-        {
-          "title": "Silk",
-          "href": "https://silkhq.com/",
-          "favicon": "/media/leerob-com-0407c07c-8bd26750.webp"
-        },
-        {
-          "title": "NativewindUI",
-          "href": "https://nativewindui.com/",
-          "favicon": "/media/leerob-com-8e9ed0bb-cfc109c2.webp"
-        },
-        {
-          "title": "Caligra",
-          "href": "https://caligra.com/",
-          "favicon": "/media/leerob-com-6a9177b1-4a0324c1.webp"
-        },
-        {
-          "title": "openDAW",
-          "href": "https://github.com/andremichelle/openDAW",
-          "favicon": "/media/leerob-com-3cf15a41-9b4d7b6e.webp"
-        },
-        {
-          "title": "Auphonic",
-          "href": "https://auphonic.com/features",
-          "favicon": "/media/leerob-com-627a78cc-be7c4097.webp"
+          "title": "OpenCode docs",
+          "href": "https://opencode.ai/docs",
+          "favicon": "/media/bookmarks/opencode.png"
         }
       ]
     },
     {
-      "title": "Articles",
+      "title": "AI",
       "links": [
         {
-          "title": "How to Teach Things Well",
-          "href": "https://www.neelnanda.io/blog/mini-blog-post-18-how-to-teach-things-well",
-          "favicon": "/media/leerob-com-778bbff0-59f8bd21.webp"
+          "title": "Vercel AI SDK",
+          "href": "https://ai-sdk.dev/docs",
+          "favicon": "/media/bookmarks/ai-sdk.png"
         },
         {
-          "title": "Kubernetes and retiring at the top with Kelsey Hightower",
-          "href": "https://www.youtube.com/watch?v=UlXpOGIpITM",
-          "favicon": "/media/leerob-com-3b8ffa5f-a2edbb81.webp"
+          "title": "RAGFlow docs",
+          "href": "https://ragflow.io/docs",
+          "favicon": "/media/bookmarks/ragflow.png"
         },
         {
-          "title": "Productivity",
-          "href": "https://blog.samaltman.com/productivity",
-          "favicon": "/media/leerob-com-d6c40f76-1b991394.webp"
+          "title": "Agent Skills spec",
+          "href": "https://agentskills.io",
+          "favicon": "/media/bookmarks/agent-skills.png"
         },
         {
-          "title": "Write Like You Talk",
-          "href": "https://paulgraham.com/talk.html",
-          "favicon": "/media/leerob-com-05cbbaa7-36353a6f.webp"
+          "title": "Anthropic skills",
+          "href": "https://github.com/anthropics/skills",
+          "favicon": "/media/bookmarks/anthropic.png"
         },
         {
-          "title": "All Success Is A Lagging Indicator",
-          "href": "https://ryanholiday.net/all-success-is-a-lagging-indicator/",
-          "favicon": "/media/leerob-com-9ec64c9b-fa6b8221.webp"
+          "title": "Context7",
+          "href": "https://github.com/upstash/context7",
+          "favicon": "/media/bookmarks/context7.png"
         },
         {
-          "title": "Backing up Spotify",
-          "href": "https://annas-archive.gl/blog/backing-up-spotify.html",
-          "favicon": "/media/leerob-com-975aa75a-62d28ed7.webp"
+          "title": "Cursor plugins",
+          "href": "https://github.com/cursor/plugins",
+          "favicon": "/media/bookmarks/cursor.png"
         },
         {
-          "title": "Shields Down",
-          "href": "https://randsinrepose.com/archives/shields-down/",
-          "favicon": "/media/leerob-com-970525d9-cb42b519.webp"
-        },
-        {
-          "title": "The Day You Became A Better Writer",
-          "href": "https://web.archive.org/web/20191223175804/https://dilbertblog.typepad.com/the_dilbert_blog/2007/06/the_day_you_bec.html",
-          "favicon": "/media/leerob-com-3032dc95-98d99c94.webp"
-        },
-        {
-          "title": "Single Threaded Leadership",
-          "href": "https://allocatormindset.com/single-threaded-leadership/",
-          "favicon": "/media/leerob-com-02c101ce-42782bd1.webp"
-        },
-        {
-          "title": "Design words with data",
-          "href": "https://medium.com/dropbox-design/design-words-with-data-fe3c525994e7",
-          "favicon": "/media/leerob-com-c361885b-7e143ab3.webp"
-        },
-        {
-          "title": "There's no speed limit",
-          "href": "https://sive.rs/kimo",
-          "favicon": "/media/leerob-com-67a26865-bfd71f68.webp"
-        },
-        {
-          "title": "Things you're allowed to do",
-          "href": "https://milan.cvitkovic.net/writing/things_youre_allowed_to_do/",
-          "favicon": "/media/leerob-com-87058568-ef10f9e5.webp"
-        },
-        {
-          "title": "Things we learned about LLMs in 2024",
-          "href": "https://simonwillison.net/2024/Dec/31/llms-in-2024/",
-          "favicon": "/media/leerob-com-2356ec68-41096e53.webp"
-        },
-        {
-          "title": "A Letter To A New Product Manager",
-          "href": "https://www.coinbase.com/blog/a-letter-to-a-new-product-manager",
-          "favicon": "/media/leerob-com-3376834d-b86b5230.webp"
-        },
-        {
-          "title": "Tiny Wins",
-          "href": "https://joelcalifa.com/blog/tiny-wins/",
-          "favicon": "/media/leerob-com-e11f0fd8-e87cae9b.webp"
-        },
-        {
-          "title": "How To Be Successful",
-          "href": "https://blog.samaltman.com/how-to-be-successful",
-          "favicon": "/media/leerob-com-a4d60965-6adf2185.webp"
-        },
-        {
-          "title": "Craft",
-          "href": "https://paulstamatiou.com/craft",
-          "favicon": "/media/leerob-com-dcc7d855-ce54d12b.webp"
-        },
-        {
-          "title": "Advice For Engineers, From A Manager",
-          "href": "https://web.archive.org/web/20230613213306/https://marcorogers.com/blog/advice-for-engineers-from-a-manager",
-          "favicon": "/media/leerob-com-39d75bcb-5a4b917b.webp"
-        },
-        {
-          "title": "You're a Leader Now. Not Everyone is Going to Like You.",
-          "href": "https://hbr.org/2021/09/youre-a-leader-now-not-everyone-is-going-to-like-you",
-          "favicon": "/media/leerob-com-8bc54586-214bad0f.webp"
-        },
-        {
-          "title": "Super Specific Feedback: How to give actionable feedback on work output",
-          "href": "https://newsletter.weskao.com/p/super-specific-feedback",
-          "favicon": "/media/leerob-com-e0fb29f2-28df6e7e.webp"
-        },
-        {
-          "title": "Communication is The Job",
-          "href": "https://boz.com/articles/communication-is-the-job",
-          "favicon": null
-        },
-        {
-          "title": "Every Company Has The Same Hiring Criteria",
-          "href": "https://ethanding.substack.com/p/every-company-has-the-same-hiring",
-          "favicon": "/media/leerob-com-935c6776-9eaf51ff.webp"
-        },
-        {
-          "title": "How to Tell an Unforgettable Story (The Shaan Puri Interview)",
-          "href": "https://www.youtube.com/watch?v=Z2BnqYArwaw",
-          "favicon": "/media/leerob-com-8fe095c7-20efad35.webp"
-        },
-        {
-          "title": "Your Life in Weeks",
-          "href": "https://waitbutwhy.com/2014/05/life-weeks.html",
-          "favicon": "/media/leerob-com-f04a49d9-6b871272.webp"
-        },
-        {
-          "title": "The days are long but the decades are short",
-          "href": "https://blog.samaltman.com/the-days-are-long-but-the-decades-are-short",
-          "favicon": "/media/leerob-com-2baad839-8603f7b0.webp"
-        },
-        {
-          "title": "Give Away Your Legos",
-          "href": "https://review.firstround.com/give-away-your-legos-and-other-commandments-for-scaling-startups/",
-          "favicon": "/media/leerob-com-17ff6669-47e8e4d9.webp"
-        },
-        {
-          "title": "Notes on Taste",
-          "href": "https://www.are.na/editorial/notes-on-taste",
-          "favicon": "/media/leerob-com-af153f40-98d604e7.webp"
-        },
-        {
-          "title": "Reflections on Palantir",
-          "href": "https://nabeelqu.co/reflections-on-palantir",
-          "favicon": "/media/leerob-com-73568206-ea8ea855.webp"
-        },
-        {
-          "title": "Prompt Caching In Agents",
-          "href": "https://earendil.com/posts/prompt-caching/",
-          "favicon": "/media/leerob-com-29f2e569-fd8ab738.webp"
-        },
-        {
-          "title": "What's going on here, with this human?",
-          "href": "https://grahamduncan.blog/whats-going-on-here/",
-          "favicon": null
+          "title": "Chrome DevTools MCP",
+          "href": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+          "favicon": "/media/bookmarks/chrome.png"
         }
       ]
     },
     {
-      "title": "Engineering",
+      "title": "Infra",
       "links": [
         {
-          "title": "AI Agents PR Arena",
-          "href": "https://prarena.ai",
-          "favicon": null
+          "title": "Docker docs",
+          "href": "https://docs.docker.com",
+          "favicon": "/media/bookmarks/docker.png"
         },
         {
-          "title": "On Being A Senior Engineer",
-          "href": "https://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/",
-          "favicon": "/media/leerob-com-55c79eb5-3435360a.webp"
+          "title": "Grafana docs",
+          "href": "https://grafana.com/docs",
+          "favicon": "/media/bookmarks/grafana.png"
         },
         {
-          "title": "How I ship projects at big tech companies",
-          "href": "https://www.seangoedecke.com/how-to-ship/",
-          "favicon": "/media/leerob-com-46707cad-c80c394b.webp"
+          "title": "OpenTelemetry",
+          "href": "https://opentelemetry.io/docs",
+          "favicon": "/media/bookmarks/opentelemetry.png"
         },
         {
-          "title": "The Cloud Hasn't Been Won",
-          "href": "https://olivergilan.com/cloud-hasnt-been-won/",
-          "favicon": "/media/leerob-com-232c050b-0e6c64db.webp"
+          "title": "Cloudflare docs",
+          "href": "https://developers.cloudflare.com",
+          "favicon": "/media/bookmarks/cloudflare.png"
         },
         {
-          "title": "Cognitive load is what matters",
-          "href": "https://minds.md/zakirullin/cognitive",
-          "favicon": "/media/leerob-com-979db9ef-079cb18d.webp"
+          "title": "Nginx docs",
+          "href": "https://nginx.org/en/docs",
+          "favicon": "/media/bookmarks/nginx.png"
         },
         {
-          "title": "Go by Example",
-          "href": "https://gobyexample.com/",
-          "favicon": "/media/leerob-com-717cbc0f-b099362b.webp"
-        },
-        {
-          "title": "Bundling Past, Present, and Future",
-          "href": "https://www.youtube.com/watch?v=JUS6EPMbk0U",
-          "favicon": "/media/leerob-com-d60f6595-a4c40cfa.webp"
-        },
-        {
-          "title": "The complexity that lives in the GUI",
-          "href": "https://blog.royalsloth.eu/posts/the-complexity-that-lives-in-the-gui/",
-          "favicon": "/media/leerob-com-8f4e6ef3-5704f73b.webp"
-        },
-        {
-          "title": "Behind the Scenes Lambda",
-          "href": "https://www.bschaatsbergen.com/behind-the-scenes-lambda",
-          "favicon": "/media/leerob-com-75cfe289-90c1f01c.webp"
-        },
-        {
-          "title": "Software infrastructure 2.0: a wishlist",
-          "href": "https://erikbern.com/2021/04/19/software-infrastructure-2.0-a-wishlist.html",
-          "favicon": "/media/leerob-com-e03dd303-e31d818f.webp"
-        },
-        {
-          "title": "How SPA architectures affect Core Web Vitals",
-          "href": "https://web.dev/articles/vitals-spa-faq",
-          "favicon": "/media/leerob-com-62c35b4f-1cab3de1.webp"
-        },
-        {
-          "title": "Building for the 99% Developers",
-          "href": "https://future.com/software-development-building-for-99-developers/",
-          "favicon": "/media/leerob-com-ec65a2e1-c3f97509.webp"
-        },
-        {
-          "title": "Write code that is easy to delete, not easy to extend",
-          "href": "https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to",
-          "favicon": "/media/leerob-com-b9b58b18-2fb2209b.webp"
-        },
-        {
-          "title": "Inconsistent thoughts on database consistency",
-          "href": "https://www.alexdebrie.com/posts/database-consistency/",
-          "favicon": "/media/leerob-com-aae58ff1-5e8ab5b4.webp"
-        },
-        {
-          "title": "Making the world's fastest website, and other mistakes",
-          "href": "https://dev.to/tigt/making-the-worlds-fastest-website-and-other-mistakes-56na",
-          "favicon": "/media/leerob-com-4ae94666-dd26a5a5.webp"
-        },
-        {
-          "title": "Global progress in Next.js",
-          "href": "https://buildui.com/posts/global-progress-in-nextjs",
-          "favicon": "/media/leerob-com-899309bc-feae8989.webp"
-        },
-        {
-          "title": "ConnectKit Introduction",
-          "href": "https://family.co/docs/connectkit",
-          "favicon": "/media/leerob-com-a5fc3a97-cd2fa304.webp"
-        },
-        {
-          "title": "Build your own React",
-          "href": "https://pomb.us/build-your-own-react/",
-          "favicon": "/media/leerob-com-5086903d-02875dd4.webp"
-        },
-        {
-          "title": "How does a screen work?",
-          "href": "https://www.makingsoftware.com/chapters/how-a-screen-works",
-          "favicon": "/media/leerob-com-8767e86a-9a9351b7.webp"
-        },
-        {
-          "title": "Everything About Transformers",
-          "href": "https://www.krupadave.com/articles/everything-about-transformers",
-          "favicon": null
-        },
-        {
-          "title": "Seeing Like a Software Company",
-          "href": "https://www.seangoedecke.com/seeing-like-a-software-company/",
-          "favicon": "/media/leerob-com-76a3690d-c3a69a41.webp"
+          "title": "MinIO docs",
+          "href": "https://min.io/docs",
+          "favicon": "/media/bookmarks/minio.png"
         }
       ]
     },
@@ -339,69 +124,59 @@
       "title": "Design",
       "links": [
         {
-          "title": "Knob Design",
-          "href": "https://knob.design/",
-          "favicon": "/media/leerob-com-ae7fdaaf-8b06925d.webp"
+          "title": "Tailwind CSS",
+          "href": "https://tailwindcss.com/docs",
+          "favicon": "/media/bookmarks/tailwind.png"
         },
         {
-          "title": "Making Software",
-          "href": "https://www.makingsoftware.com/",
-          "favicon": "/media/leerob-com-085e0c2f-3372ff18.webp"
+          "title": "shadcn/ui",
+          "href": "https://ui.shadcn.com/docs",
+          "favicon": "/media/bookmarks/shadcn.png"
         },
         {
-          "title": "OKLCH Colors",
-          "href": "https://jakub.kr/components/oklch-colors",
-          "favicon": "/media/leerob-com-1aa77ef4-9545b34c.webp"
+          "title": "Motion",
+          "href": "https://motion.dev/docs",
+          "favicon": "/media/bookmarks/motion.png"
         },
         {
-          "title": "Departure Mono",
-          "href": "https://departuremono.com/",
-          "favicon": "/media/leerob-com-219eaf6b-1cd4a897.webp"
+          "title": "Type Scale",
+          "href": "https://typescale.com",
+          "favicon": "/media/bookmarks/typescale.png"
+        },
+        {
+          "title": "Modern Web Guidance",
+          "href": "https://github.com/GoogleChrome/modern-web-guidance",
+          "favicon": "/media/bookmarks/chrome.png"
         }
       ]
     },
     {
-      "title": "Products",
+      "title": "Reading",
       "links": [
         {
-          "title": "Matic",
-          "href": "https://maticrobots.com/",
-          "favicon": "/media/leerob-com-5a661c87-eb4d93f6.webp"
+          "title": "Google Engineering Practices",
+          "href": "https://google.github.io/eng-practices",
+          "favicon": "/media/bookmarks/google.png"
         },
         {
-          "title": "Black Magic Paint Color",
-          "href": "https://www.sherwin-williams.com/en-us/color/color-family/neutral-paint-colors/sw6991-black-magic",
-          "favicon": "/media/leerob-com-65b3639f-9ab97eb3.webp"
+          "title": "System Design Primer",
+          "href": "https://github.com/donnemartin/system-design-primer",
+          "favicon": "/media/bookmarks/github.png"
         },
         {
-          "title": "Wooden baby spoons",
-          "href": "https://www.earlywooddesigns.com/collections/engraved-baby-spoons-wooden",
-          "favicon": "/media/leerob-com-c1780b33-a654eba9.webp"
+          "title": "Build Your Own X",
+          "href": "https://github.com/codecrafters-io/build-your-own-x",
+          "favicon": "/media/bookmarks/github.png"
         },
         {
-          "title": "PlasticList",
-          "href": "https://www.plasticlist.org/",
-          "favicon": "/media/leerob-com-0d0c4124-a6deacb1.webp"
+          "title": "Simon Willison",
+          "href": "https://simonwillison.net",
+          "favicon": "/media/bookmarks/simonwillison.png"
         },
         {
-          "title": "Ambessa Play",
-          "href": "https://ambessaplay.com/",
-          "favicon": "/media/leerob-com-886c8c18-b3bf396a.webp"
-        },
-        {
-          "title": "SmartyKit: Build your own Apple 1",
-          "href": "https://smartykit.io/products/smartykit-computer-construction-kit-late-2022",
-          "favicon": "/media/leerob-com-c5b80893-8314f8f6.webp"
-        },
-        {
-          "title": "Curated Supply",
-          "href": "https://www.curated.supply/",
-          "favicon": "/media/leerob-com-b6f70693-35fe894c.webp"
-        },
-        {
-          "title": "Mecha Comet",
-          "href": "https://mecha.so/comet",
-          "favicon": "/media/leerob-com-5386a5b1-d8fcc9e7.webp"
+          "title": "Dan Luu",
+          "href": "https://danluu.com",
+          "favicon": null
         }
       ]
     }

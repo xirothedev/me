@@ -1,0 +1,88 @@
+export const meta = {
+  title: 'What 700 PRs Taught Me About Coding Agents',
+  description:
+    'Agents are good at volume and bad at judgment. The review system makes the volume safe.',
+  kind: 'blog',
+  label: 'What 700 PRs taught me about coding agents',
+  date: '2026-10',
+};
+
+The platform shows 700+ merged PRs. I looked it up for this post; I was not counting. The number is a record of volume, not quality.
+
+Some of those PRs started with an agent. The rules below are what made that work. The volume went up. The judgment did not.
+
+<Heading id="the-first-hundred-prs" level={2}>
+  {'The first hundred PRs'}
+</Heading>
+
+The first hundred were about speed. I could ask for a feature and get a draft before I had finished describing it. The agent knew NestJS, Prisma, and React well enough to produce code that looked like the code around it.
+
+That was the trap. The code looked right. It compiled. It passed the happy path. It was also often missing the thing that makes production code different: the failure path.
+
+An agent will write a controller, a service, and a DTO. It will not always ask what happens when the record is missing, the user is not allowed, or the downstream service times out. Those are the parts I learned to review first.
+
+<Heading id="what-agents-did-well" level={2}>
+  {'What agents did well'}
+</Heading>
+
+Agents are good at bounded work with a clear pattern.
+
+- A new endpoint that follows an existing module.
+- A migration that follows the repository’s convention.
+- A test file for a function with a known contract.
+- A refactor that renames a symbol across the repository.
+- A document that turns a code path into a runbook.
+
+They are also good at the work nobody wants to do: updating imports, adding missing types, writing the fifth variation of a test, checking a schema against a DTO. That work is real, and it adds up.
+
+<Heading id="what-broke" level={2}>
+  {'What broke'}
+</Heading>
+
+The failure patterns I review for fall into four groups.
+
+**The confident guess.** The agent did not know the schema, so it invented a field. The code compiled because the type was loose. The review caught it, but only because someone read the migration.
+
+**The local fix.** The agent fixed the symptom in the controller instead of the cause in the service. It worked for one route and broke the next.
+
+**The missing edge.** The agent handled the happy path and ignored the empty array, the duplicate key, the expired token, and the retry.
+
+**The review tax.** The agent produced a large diff with a clear description. The diff was easy to approve and hard to understand. The reviewer saved time on the first read and paid for it in the second.
+
+None of these are model failures. They are system failures. The agent did not have the context, the rules, or the review.
+
+<Heading id="the-rules-that-survived" level={2}>
+  {'The rules that survived'}
+</Heading>
+
+I wrote [Agent Skills](https://github.com/xirothedev/agent-skills) to give the agent the context it was missing. The repository has a set of NestJS rules across security, validation, database access, error handling, authentication, testing, and deployment.
+
+The rules that survived are the ones with a clear trigger and a clear consequence.
+
+- Validate every input at the boundary.
+- Never build a query with string concatenation.
+- Return a typed error, not a string.
+- Put the index on the foreign key.
+- Add the test before the refactor.
+
+The rules that did not survive were the vague ones. “Write clean code” is not a rule. “Use a repository method instead of a Prisma call in the service” is a rule.
+
+<Heading id="the-review-system" level={2}>
+  {'The review system'}
+</Heading>
+
+The most important change was not in the agent. It was in the review.
+
+We made the diff smaller. We asked for evidence: a test, a screenshot, a log, a query plan. We made the automated gates do the boring checks. We kept a human on the parts that need judgment: the data model, the permission, the failure path, the user experience.
+
+On a team of five, the review queue is the real constraint. An agent can produce more code than the team can read. If the queue grows, the speed is fake.
+
+<Heading id="what-i-would-do-differently" level={2}>
+  {'What I would do differently'}
+</Heading>
+
+I would write the rules before the first agent, not after the first bad PR. I would ask for the failure path in the prompt. I would measure follow-up fixes, not PR count.
+
+The number is a record of volume. The platform still works because the review system caught what the agents missed, the team still reads the diffs, and the next change is easier than the last.
+
+The review system is what makes the volume safe.

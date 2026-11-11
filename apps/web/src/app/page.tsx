@@ -3,6 +3,7 @@ import BioDefault from '@content/home/bio-default.mdx';
 import BioLong from '@content/home/bio-long.mdx';
 import { BioModes } from '@/components/home/bio-modes';
 import { Painting } from '@/components/home/painting';
+import { WorkList } from '@/components/home/work-list';
 import { blogs, notes } from '@/content/registry';
 import { formatMonth } from '@/lib/format';
 import { siteConfig } from '@/lib/site-config';
@@ -22,11 +23,13 @@ export default function Home() {
               <span className="relative top-[0.015em] mr-[0.015em] inline-block text-[1.1em] leading-0">
                 @
               </span>
-              leerob
+              {siteConfig.handle.replace('@', '')}
             </Link>
           </h1>
 
           <BioModes defaultBio={<BioDefault />} longBio={<BioLong />} />
+
+          <WorkList />
 
           <div className="writing-index mt-14">
             <section aria-labelledby="notes-heading">

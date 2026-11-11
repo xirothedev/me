@@ -1,94 +1,41 @@
-<Heading id="my-life-in-five-minutes" level={1}>
-  {'My life in five minutes'}
+In April 2025 I joined [The Resonance Team](https://github.com/The-Resonance-Team). My first project was TaxEasy, a tax platform. The first bug I saw did not produce a stack trace. It produced a tax agent who could not file.
+
+That is still the bar.
+
+<Heading id="before-production" level={2}>
+  {'Before production'}
 </Heading>
 
-My parents, and later the internet, taught me I could build anything.
+I grew up in Nha Trang. I moved to Ho Chi Minh City to study computer science at International University, and I started building in public there. One of my first public projects was a Discord bot. I kept building small tools and public projects after that.
 
-I was five years old when I saw [October Sky](https://en.wikipedia.org/wiki/October_Sky) (1999) in theaters. It’s about a kid inspired by the launch of Sputnik, who takes up rocketry against his father’s wishes. He pursues his dream of becoming a NASA engineer.
+The stack changed. The question stayed the same: the person on the other side of the request, and what happens when it fails.
 
-<Details summary={"Spoilers: Watch the ending of October Sky"}>
+<Heading id="the-work" level={2}>
+  {'The work'}
+</Heading>
 
-<DemoVideo
-  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/october-sky.mp4"
-  width={1920}
-  height={1080}
-/>
+The team runs four platforms. Each one has a different constraint.
 
-</Details>
+**TaxEasy** is a tax management SaaS. The constraint is the deadline. The platform ingests invoices and receipts, extracts the fields, and watches for anomalies. A failed document is a tax agent who cannot file.
 
-I was enamored with rockets, and unlike Homer’s dad in the film, my dad bought me my first model rocket set. My parents started and ran a construction business for over 40 years. I think my dad enjoyed the rockets, too.
+**Ecopick** is a marketplace and tournament platform. The constraint is the state. Rentals, listings, inspections, and refunds each have a lifecycle, and the code has to respect it.
 
-I wanted to understand every piece of that rocket. Why were there different body shapes? How were the model engines made? Could we make even _bigger_ rockets? My dad, probably sometimes annoyed by me asking hundreds of questions, sparked my curiosity and encouraged me to tinker.
+**XaDaoXa** is a government e-services platform. The constraint is trust. Citizens use a Zalo MiniApp; commune officials use a staff CMS. The work is authentication, permissions, forms, and keeping the service up when a deploy goes wrong.
 
-I didn’t know it at the time, but I was going to be an engineer. This obsession with building things continued throughout my childhood. By third grade, I was spending most of my time on math and art. I loved drawing and painting.
+The **Hospital AI Assistant** is the newest. A provincial hospital in Phú Thọ keeps its documents inside its own network. The constraint is custody. We run local models on an NVIDIA DGX Spark, self-host RAGFlow, and expose retrieval to an agent harness through a proxy.
 
-You’d find video games at the top of my Christmas list every year. I’d escape down to our basement to boot up Windows on my Dell and play Myst, Lego Island, Age of Empires, and more. And don’t forget Pokémon on the Game Boy!
+<Heading id="how-i-work" level={2}>
+  {'How I work'}
+</Heading>
 
-<Details summary={"Curious what Lego Island and Myst looked like?"}>
+I care about the index that is missing, the retry that loops, the error message that says nothing, and the dashboard nobody reads until the page is down.
 
-<DemoVideo
-  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/lego.mp4"
-  width={1530}
-  height={1142}
-/>
+I also care about the repository as a product. A service should expose domain verbs, not the shape of its database. A module should have one obvious place to change. An agent should be able to read the rules and follow them. That is why I wrote [Agent Skills](https://github.com/xirothedev/agent-skills), a set of NestJS rules for coding agents, and [opencode-office-plugin](https://github.com/xirothedev/opencode-office-plugin), which lets an agent work with Word, Excel, and PowerPoint files instead of pretending they are plain text.
 
-<DemoVideo
-  src="https://uwja77bygk2kgfqe.public.blob.vercel-storage.com/myst.mp4"
-  width={1530}
-  height={1142}
-/>
+<Heading id="what-im-doing-now" level={2}>
+  {'What I’m doing now'}
+</Heading>
 
-</Details>
+I am finishing my B.S. in Computer Science in 2029. I am leading the team, shipping code, and writing about the parts of the job that do not fit in a launch post: migrations, review queues, retrieval that misses, and the quiet work of keeping a platform alive.
 
-I had a love for technology and a desire to understand how it worked.
-
-My early teenage years were spent on the internet. I was born and raised in rural Iowa; my town was tiny. My public school class had 32 students. There were no stoplights in the town, but many cornfields.
-
-While I enjoyed some parts of my town, I didn’t mesh with many of the kids at my school. I quickly discovered the depths of internet forums and MSN conversations with kids from nearby schools. I played video games with a friend in Dallas and another in Boston almost every week.
-
-Video game culture led me to online forums, which led me to photo editing for signature banners, which led me to video editing for highlight montages. I learned through shoddy online tutorials and by stumbling through software.
-
-Most 10-year-olds aren’t buying thousand-dollar professional audio/video software, so I found ways to (_ahem_) completely legally download it to tinker.
-
-Sony Vegas. Photoshop. After Effects. Illustrator. Cinema 4D. I had unlimited free time and plenty of creative ideas. I edited videos, designed T-shirts, and made graphics for online forums.
-
-When I was 14, I convinced my mom to buy a bunch of computer parts so I could build my own computer. I had no idea what I was doing. I learned from strangers on the internet.
-
-I’ve always loved learning. Because my high school didn’t have programming classes, I learned computer networking at a nearby college. I worked for a graphic design company to learn more about Illustrator and Photoshop. Then I decided to try to fulfill my childhood dream of becoming an engineer.
-
-I went to Iowa State University to study computer engineering.
-
-I learned to code with C and Java, then Python, and finally JavaScript. The web made me love software. Being able to quickly iterate and share websites with anyone was incredible.
-
-During college, I had three internships: one doing automated regression testing, another working on aviation software (to fulfill my childhood dream), and finally web development.
-
-I went deep on web development after graduating, working as a software engineer for five years. During the day, I learned how to build great software, and at night, I’d take what I learned and teach it online. I loved it.
-
-In 2020, I got married to my beautiful wife.
-
-By 2020, I had created two courses on React and Next.js in my free time. That work led the team at Vercel to reach out about joining. My love for technology and desire to teach it became my career.
-
-I worked at Vercel for five years (more on that [here](https://leerob.com/vercel)), helping teach millions of developers to build on the web. I worked remotely from Iowa, but was in San Francisco almost every month.
-
-Then, in 2024, I became a father! What a blessing. Among _many_ things, becoming a dad made me step back and think about my life priorities.
-
-I loved coding and teaching people how to build software, but software itself was being disrupted by AI. So, after much deliberation, I joined [Cursor](https://colossus.com/article/inside-cursor/) to help developers learn to build software with AI.
-
-<Gallery
-  images={[
-    {
-      src: '/media/leerob-com-devday-9fc5d1bd-207879f3.webp',
-      alt: 'Me speaking at OpenAI DevDay 2025',
-      width: 3000,
-      height: 2000,
-    },
-  ]}
-/>
-
-There’s still much work to do. I’m excited for the next decade of my career and to do my best to be a great husband and [father](https://www.youtube.com/watch?v=hJYQmp2Vs2g).
-
-Maybe I didn’t end up building rockets, but I’m damn proud to be an engineer. I’m incredibly grateful to my parents, and to those strangers on the internet who showed me I could build anything.
-
-If you want my AI-generated bio, you can read more on [Grokipedia](https://grokipedia.com/page/Lee_Robinson).
-
-I was also profiled in [Arena Magazine in March 2026](https://arenamag.com/articles/the-school-of-lee).
+I am open to remote software engineering roles where the product has real users and the team ships. The best way to reach me is [email](mailto:lethanhtrung.trungle@gmail.com).

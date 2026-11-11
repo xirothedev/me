@@ -1,0 +1,59 @@
+export const meta = {
+  title: 'Software for One User',
+  description: 'The best personal software starts with one annoying task and no plan to scale.',
+  kind: 'note',
+  label: 'Software for one user',
+  order: 9,
+};
+
+The tools I use most are scripts I wrote for one task and never generalized.
+
+A script that renames a folder of screenshots. A CLI that converts a document. A small tool that checks whether a deployment is healthy. None of these need a landing page. They need to work once, for one person, on a Tuesday.
+
+<Heading id="the-annoying-task" level={2}>
+  {'The annoying task'}
+</Heading>
+
+The best personal tools start with a task that is too small to justify a product and too frequent to keep doing by hand.
+
+For me, that has been document work. I write in Markdown, but the people I work with use Word, Excel, and PowerPoint. Converting between them by hand is slow and error-prone. So I built [opencode-office-plugin](https://github.com/xirothedev/opencode-office-plugin) to let an agent read, create, and edit those files with real document tooling. I built it because I needed it, not because I planned a product.
+
+The same pattern shows up in small scripts. The first version is ugly. It has one input and one output. That is fine.
+
+<Heading id="the-one-file-tool" level={2}>
+  {'The one-file tool'}
+</Heading>
+
+A personal tool should start as one file. No framework, no database, no build step unless the problem needs it.
+
+One file is easy to change, easy to delete, and easy to understand six months later. If the tool grows, it will tell you. If it does not, you saved the setup.
+
+The hard part is resisting the urge to make it general. A script that converts one kind of document does not need a plugin system. A CLI that checks one service does not need a config schema. Generality is a cost you pay before you know whether the tool will survive.
+
+<Heading id="the-interface-is-the-cli" level={2}>
+  {'The interface is the CLI'}
+</Heading>
+
+A CLI is a good interface for one user. It composes with the shell. It is easy to script. It does not need a design system.
+
+The output should be plain and predictable. Errors should go to stderr. Exit codes should mean something. A `--help` flag should show the commands I actually use, not every option.
+
+When the tool needs a UI, I use the smallest one that works. A local HTML page. A terminal table. A file. The UI is whatever gets the task done.
+
+<Heading id="the-maintenance-cost" level={2}>
+  {'The maintenance cost'}
+</Heading>
+
+Personal software has a maintenance cost too. Dependencies break. APIs change. The tool that saves time can become a project that takes a weekend.
+
+I try to keep the dependency surface small. I prefer the standard library. I write down the one command that runs it. I do not add a feature unless I have needed it more than once.
+
+If the tool stops being worth the maintenance, I delete it. That is a feature, not a failure.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would write the README first, for myself, six months later. I would include the one example that runs. And I would stop calling every script a “platform.”
+
+Personal software still needs a README, a working example, and a way to delete it.

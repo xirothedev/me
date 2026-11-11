@@ -12,16 +12,15 @@ const LINK_CLASS =
 export function MdxLink({ href, children, ...props }: MdxLinkProps) {
   if (!href) return <>{children}</>;
 
-  if (href === '/cursor' || href === '/vercel') {
-    const cursorClass = href === '/cursor' ? 'home-cursor-link' : 'home-vercel-link';
+  if (href.startsWith('mailto:')) {
     return (
-      <Link href={href} className={`${LINK_CLASS} ${cursorClass}`} {...props}>
+      <a href={href} className={LINK_CLASS} {...props}>
         {children}
-      </Link>
+      </a>
     );
   }
 
-  if (href.startsWith('http') || href.startsWith('mailto:')) {
+  if (href.startsWith('http')) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={LINK_CLASS} {...props}>
         {children}

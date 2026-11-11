@@ -1,0 +1,56 @@
+export const meta = {
+  title: 'Docs That Answer the Question',
+  description:
+    'Good docs answer the question the user typed, not the question the team wanted to answer.',
+  kind: 'note',
+  label: 'Docs that answer',
+  order: 7,
+};
+
+The [Agent Skills](https://github.com/xirothedev/agent-skills) README puts the “Use when” list before the install command. The reader can decide whether the skill is for them before the install.
+
+Most docs I abandon start somewhere else: the concept, the design, the roadmap. They answer a question the team wanted to ask. They do not answer the one the user typed.
+
+<Heading id="start-from-the-task" level={2}>
+  {'Start from the task'}
+</Heading>
+
+A user arrives with a task: install the thing, connect a database, deploy to a server, fix an error, upgrade a version. The first page should be the task.
+
+The Agent Skills README does this with a “Use when” list: writing a new NestJS module, adding authentication, setting up Prisma, creating DTOs. Each line is a task. The reader can find themselves in the list.
+
+RAGFlow is a deeper tool. The useful pages are the ones that walk through a deployment, a knowledge base, a parser choice, and a query. The concepts matter, but they land better after the first working system.
+
+<Heading id="the-error-page" level={2}>
+  {'The error page'}
+</Heading>
+
+The most valuable page in many docs is the error page. Not a list of codes. A page that says: this is what the error means, this is the likely cause, this is the fix, and this is how to get more context.
+
+The hospital project has a runbook for a bad answer. It starts with the evidence: did retrieval return the right document, did it return the right passage, did the model see it, did the prompt ask for the right shape? That is an error page for an operator. It turns a vague “the AI is wrong” into five checks with different fixes.
+
+<Heading id="version-the-answer" level={2}>
+  {'Version the answer'}
+</Heading>
+
+A docs site without a version is a time bomb. The API changed, the config key moved, the default flipped. The page still ranks in search.
+
+Version the answer, and keep the old version reachable. Add a banner when the reader is on an old page. Do not silently redirect them to the new one if the new one removed the feature they need.
+
+The hospital stack pins RAGFlow to v0.27.x for the same reason. The runbook, the parser settings, and the proxy are written against that version. An upgrade is a project, not a refresh.
+
+<Heading id="agent-readable-docs" level={2}>
+  {'Agent-readable docs'}
+</Heading>
+
+Coding agents read docs too. They need stable headings, code blocks with language tags, explicit file paths, and commands that can run in a terminal. A page that is only readable by a human is now a page that many users cannot use.
+
+That does not mean writing for a robot. It means writing clearly enough that a robot can find the right section. The same structure helps the human.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would test every quick start on a clean machine. I would write the error page before the feature page. And I would add a “last verified” date that someone is responsible for.
+
+The reader came with a question. The docs should start there.

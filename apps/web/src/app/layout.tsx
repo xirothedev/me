@@ -17,13 +17,13 @@ const person = {
   '@type': 'Person',
   name: siteConfig.name,
   url: siteConfig.url,
-  image: `${siteConfig.url}/avatar.png`,
-  description: 'Software engineer, writer, and AI educator.',
-  jobTitle: 'VP of Developer Experience',
+  image: `${siteConfig.url}${siteConfig.avatar}`,
+  description: siteConfig.description,
+  email: siteConfig.email,
+  jobTitle: siteConfig.jobTitle,
   worksFor: {
     '@type': 'Organization',
-    name: 'Cursor',
-    url: 'https://cursor.com',
+    name: siteConfig.worksFor,
   },
   alumniOf: {
     '@type': 'CollegeOrUniversity',
@@ -53,14 +53,15 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: ['/opengraph-image'],
+    creator: siteConfig.handle,
   },
-  icons: { icon: '/favicon.ico' },
+  icons: { icon: '/favicon.svg' },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#1b1a19' },
+    { media: '(prefers-color-scheme: light)', color: '#f7f3ea' },
+    { media: '(prefers-color-scheme: dark)', color: '#121815' },
   ],
 };
 
@@ -78,18 +79,21 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <div className="site-shell px-page sm:py-page [container-type:inline-size] relative min-h-screen w-full pt-10 pb-5">
             <main id="main">{children}</main>
             <footer className="site-footer max-w-content border-line mt-16 w-full border-t pt-4">
-              <p className="font-ui text-meta text-ink-soft">
-                {siteConfig.credit.text}{' '}
-                <a
-                  href={siteConfig.credit.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="decoration-ink-soft/30 hover:text-ink-muted underline decoration-1 underline-offset-[0.18em] transition-colors"
-                >
-                  {siteConfig.credit.handle}
-                </a>{' '}
-                {siteConfig.credit.suffix}.
-              </p>
+              <div className="font-ui text-meta text-ink-soft flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <p>
+                  {siteConfig.credit.text}{' '}
+                  <a
+                    href={siteConfig.credit.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="decoration-ink-soft/30 hover:text-ink-muted underline decoration-1 underline-offset-[0.18em] transition-colors"
+                  >
+                    {siteConfig.credit.handle}
+                  </a>{' '}
+                  {siteConfig.credit.suffix}.
+                </p>
+                <p>© 2026 {siteConfig.name}.</p>
+              </div>
             </footer>
           </div>
         </ThemeProvider>

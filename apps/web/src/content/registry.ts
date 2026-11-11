@@ -1,29 +1,33 @@
 import type { ComponentType } from 'react';
-import Ai, { meta as aiMeta } from '@content/notes/ai.mdx';
-import Beliefs, { meta as beliefsMeta } from '@content/notes/beliefs.mdx';
-import DeveloperMarketing, {
-  meta as developerMarketingMeta,
-} from '@content/notes/developer-marketing.mdx';
-import Devrel, { meta as devrelMeta } from '@content/notes/devrel.mdx';
-import Devtools, { meta as devtoolsMeta } from '@content/notes/devtools.mdx';
-import Docs, { meta as docsMeta } from '@content/notes/docs.mdx';
-import Dx, { meta as dxMeta } from '@content/notes/dx.mdx';
-import Moderation, { meta as moderationMeta } from '@content/notes/moderation.mdx';
-import PersonalSoftware, {
-  meta as personalSoftwareMeta,
-} from '@content/notes/personal-software.mdx';
-import ProductEngineers, {
-  meta as productEngineersMeta,
-} from '@content/notes/product-engineers.mdx';
-import Agents, { meta as agentsMeta } from '@content/blogs/agents.mdx';
-import Css, { meta as cssMeta } from '@content/blogs/css.mdx';
-import Heroku, { meta as herokuMeta } from '@content/blogs/heroku.mdx';
-import ModelBehavior, { meta as modelBehaviorMeta } from '@content/blogs/model-behavior.mdx';
-import Pixo, { meta as pixoMeta } from '@content/blogs/pixo.mdx';
-import Reflections, { meta as reflectionsMeta } from '@content/blogs/reflections.mdx';
-import Rust, { meta as rustMeta } from '@content/blogs/rust.mdx';
-import Vercel, { meta as vercelMeta } from '@content/blogs/vercel.mdx';
-import Bronco, { meta as broncoMeta } from '@content/pages/bronco.mdx';
+import HowIWork, { meta as howIWorkMeta } from '@content/notes/how-i-work.mdx';
+import LlmFailures, {
+  meta as llmFailuresMeta,
+} from '@content/notes/how-llms-fail-in-production.mdx';
+import Repository, {
+  meta as repositoryMeta,
+} from '@content/notes/the-repository-is-the-product.mdx';
+import Shipping, {
+  meta as shippingMeta,
+} from '@content/notes/shipping-is-not-the-announcement.mdx';
+import BuildingInPublic, {
+  meta as buildingInPublicMeta,
+} from '@content/notes/building-in-public.mdx';
+import DeveloperTools, { meta as developerToolsMeta } from '@content/notes/developer-tools.mdx';
+import Docs, { meta as docsMeta } from '@content/notes/docs-that-answer.mdx';
+import Moderation, { meta as moderationMeta } from '@content/notes/moderating-a-community.mdx';
+import OneUser, { meta as oneUserMeta } from '@content/notes/software-for-one-user.mdx';
+import ProductEngineer, {
+  meta as productEngineerMeta,
+} from '@content/notes/the-product-engineer.mdx';
+import CodingAgents, { meta as codingAgentsMeta } from '@content/blogs/coding-agents.mdx';
+import Css, { meta as cssMeta } from '@content/blogs/the-css-i-keep.mdx';
+import TaxPlatform, { meta as taxPlatformMeta } from '@content/blogs/tax-platform.mdx';
+import RefundService, { meta as refundServiceMeta } from '@content/blogs/refund-service.mdx';
+import Ocr, { meta as ocrMeta } from '@content/blogs/ocr-in-production.mdx';
+import CodeReview, { meta as codeReviewMeta } from '@content/blogs/code-review.mdx';
+import Prisma, { meta as prismaMeta } from '@content/blogs/prisma-7.mdx';
+import ResonanceTeam, { meta as resonanceTeamMeta } from '@content/blogs/the-resonance-team.mdx';
+import Hospital, { meta as hospitalMeta } from '@content/pages/hospital.mdx';
 import { contentMetaSchema, type ContentMeta } from './schema';
 
 export interface PageEntry {
@@ -33,37 +37,53 @@ export interface PageEntry {
 }
 
 const SOURCES = [
-  { slug: 'beliefs', meta: beliefsMeta, Content: Beliefs },
-  { slug: 'ai', meta: aiMeta, Content: Ai },
-  { slug: 'dx', meta: dxMeta, Content: Dx },
+  { slug: 'how-i-work', meta: howIWorkMeta, Content: HowIWork },
   {
-    slug: 'developer-marketing',
-    meta: developerMarketingMeta,
-    Content: DeveloperMarketing,
-  },
-  { slug: 'devrel', meta: devrelMeta, Content: Devrel },
-  { slug: 'devtools', meta: devtoolsMeta, Content: Devtools },
-  { slug: 'docs', meta: docsMeta, Content: Docs },
-  { slug: 'moderation', meta: moderationMeta, Content: Moderation },
-  {
-    slug: 'personal-software',
-    meta: personalSoftwareMeta,
-    Content: PersonalSoftware,
+    slug: 'how-llms-fail-in-production',
+    meta: llmFailuresMeta,
+    Content: LlmFailures,
   },
   {
-    slug: 'product-engineers',
-    meta: productEngineersMeta,
-    Content: ProductEngineers,
+    slug: 'the-repository-is-the-product',
+    meta: repositoryMeta,
+    Content: Repository,
   },
-  { slug: 'model-behavior', meta: modelBehaviorMeta, Content: ModelBehavior },
-  { slug: 'pixo', meta: pixoMeta, Content: Pixo },
-  { slug: 'agents', meta: agentsMeta, Content: Agents },
-  { slug: 'reflections', meta: reflectionsMeta, Content: Reflections },
-  { slug: 'vercel', meta: vercelMeta, Content: Vercel },
-  { slug: 'css', meta: cssMeta, Content: Css },
-  { slug: 'heroku', meta: herokuMeta, Content: Heroku },
-  { slug: 'rust', meta: rustMeta, Content: Rust },
-  { slug: 'bronco', meta: broncoMeta, Content: Bronco },
+  {
+    slug: 'shipping-is-not-the-announcement',
+    meta: shippingMeta,
+    Content: Shipping,
+  },
+  {
+    slug: 'building-in-public',
+    meta: buildingInPublicMeta,
+    Content: BuildingInPublic,
+  },
+  {
+    slug: 'developer-tools',
+    meta: developerToolsMeta,
+    Content: DeveloperTools,
+  },
+  { slug: 'docs-that-answer', meta: docsMeta, Content: Docs },
+  { slug: 'moderating-a-community', meta: moderationMeta, Content: Moderation },
+  { slug: 'software-for-one-user', meta: oneUserMeta, Content: OneUser },
+  {
+    slug: 'the-product-engineer',
+    meta: productEngineerMeta,
+    Content: ProductEngineer,
+  },
+  { slug: 'coding-agents', meta: codingAgentsMeta, Content: CodingAgents },
+  { slug: 'the-css-i-keep', meta: cssMeta, Content: Css },
+  { slug: 'tax-platform', meta: taxPlatformMeta, Content: TaxPlatform },
+  { slug: 'refund-service', meta: refundServiceMeta, Content: RefundService },
+  { slug: 'ocr-in-production', meta: ocrMeta, Content: Ocr },
+  { slug: 'code-review', meta: codeReviewMeta, Content: CodeReview },
+  { slug: 'prisma-7', meta: prismaMeta, Content: Prisma },
+  {
+    slug: 'the-resonance-team',
+    meta: resonanceTeamMeta,
+    Content: ResonanceTeam,
+  },
+  { slug: 'hospital', meta: hospitalMeta, Content: Hospital },
 ] as const;
 
 const ENTRIES: PageEntry[] = SOURCES.map((source) => ({

@@ -1,0 +1,100 @@
+export const meta = {
+  title: 'The CSS I Keep',
+  description:
+    'A design system is the CSS you can delete and still ship. Notes from five apps and one reading site.',
+  kind: 'blog',
+  label: 'The CSS I keep',
+  date: '2026-08',
+};
+
+The best CSS change I made this year was a deletion.
+
+On this site, the best CSS change was a deletion: the old painting HTML, the cursor images, and the unused card styles. The pages did not change. The build got smaller.
+
+The test: if I delete the CSS, does the product still work? Decoration goes. Structure stays.
+
+<Heading id="tokens-before-components" level={2}>
+  {'Tokens before components'}
+</Heading>
+
+The token names a decision. `canvas`, `ink`, `line`, `surface`. The name survives a redesign. The hex value does not.
+
+In Tailwind v4, the tokens live in `@theme`:
+
+```css
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+}
+```
+
+The content shell uses `bg-canvas`, `text-ink`, `border-line`. The painting and the OG image use raw values because they are illustrations, not UI. When the palette changed on this site, the content shell changed with it.
+
+TaxEasy's five apps taught me the same lesson. The shared token file is small. The components that consume it can be replaced. The reverse is not true.
+
+<Heading id="the-reading-column" level={2}>
+  {'The reading column'}
+</Heading>
+
+A reading site needs one measurement more than any other: the width of the text.
+
+This site uses a 600 px column. The title, the body, the lists, and the notes all sit inside it. The home page is wider because it has a second column for the painting, but the text still starts at the same left edge.
+
+That constraint does most of the design work. I do not need a card, a shadow, or a gradient. I need the line length to stay comfortable and the hierarchy to come from type and space.
+
+<Heading id="container-queries" level={2}>
+  {'Container queries'}
+</Heading>
+
+Breakpoints are about the viewport. Container queries are about the component.
+
+The home page changes at 1100 px because the two-column layout needs the room. That is a viewport decision. A card inside a narrow sidebar should change when the sidebar is narrow, not when the phone is small.
+
+```css
+@container (min-width: 42rem) {
+  .card {
+    grid-template-columns: 1fr auto;
+  }
+}
+```
+
+Container queries are the right tool when a component, not the page, is the thing that changes. I reach for them when a component appears in more than one context. I use viewport breakpoints for the page shell. Mixing the two without a reason is how a design system becomes a pile of exceptions.
+
+<Heading id="dark-mode-is-a-second-palette" level={2}>
+  {'Dark mode is a second palette'}
+</Heading>
+
+Dark mode needs a second set of decisions.
+
+The canvas gets darker, but the ink does not become pure white. The line gets lighter, but it does not become a border. The code color needs more saturation to stay readable. The focus ring needs more contrast against the dark surface.
+
+I keep the same token names and change the values:
+
+```css
+.dark {
+  --canvas: #121815;
+  --ink: #e6e1d6;
+  --line: #33403a;
+  --surface: #1b2420;
+}
+```
+
+The content shell does not know which theme is active. A few illustrations keep their own dark variants. That is the only way the second palette stays maintainable.
+
+<Heading id="the-css-i-deleted" level={2}>
+  {'The CSS I deleted'}
+</Heading>
+
+I deleted the cursor images, the unused card styles, and the keyframes for a motion that no longer existed. I deleted a gradient that was doing the work of a layout. I deleted a set of responsive overrides that were compensating for a bad default.
+
+Each deletion made the next change smaller. That is the metric I care about now: not the number of utilities, but the number of places a change has to touch.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would write the token file before the first component. I would test the dark palette before the light one, because it exposes contrast problems faster. And I would delete the first version of the design system sooner.
+
+The CSS I keep is the CSS a new page can inherit without an override.

@@ -18,6 +18,7 @@
   --color-surface: var(--surface);
   --color-code-inline: var(--code-inline);
   --color-line: var(--line);
+  --color-focus: var(--focus);
 
   --breakpoint-content: 68.75rem;
   --breakpoint-wide: 87.5rem;
@@ -91,29 +92,29 @@
 }
 
 :root {
-  --canvas: #ffffff;
-  --ink: #282828;
-  --ink-strong: #282828;
-  --ink-muted: #504945;
-  --ink-soft: #676767;
-  --ink-soft-hover: #504945;
-  --surface: #f3f3f2;
-  --code-inline: #ad2111;
-  --line: #e2e2df;
-  --focus: #6657c8;
+  --canvas: #f7f3ea;
+  --ink: #1f2a24;
+  --ink-strong: #16201b;
+  --ink-muted: #4b5a51;
+  --ink-soft: #6b776e;
+  --ink-soft-hover: #4b5a51;
+  --surface: #efe9dc;
+  --code-inline: #9a3f2f;
+  --line: #ddd5c4;
+  --focus: #1f5c45;
 }
 
 .dark {
-  --canvas: #1b1a19;
-  --ink: #e8e5df;
-  --ink-strong: #f4f1eb;
-  --ink-muted: #cbc6be;
-  --ink-soft: #aaa59e;
-  --ink-soft-hover: #f4f1eb;
-  --surface: #242321;
-  --code-inline: #e06c5f;
-  --line: #3b3936;
-  --focus: #8f83e8;
+  --canvas: #121815;
+  --ink: #e6e1d6;
+  --ink-strong: #f4efe4;
+  --ink-muted: #c2bcb0;
+  --ink-soft: #9aa39b;
+  --ink-soft-hover: #f4efe4;
+  --surface: #1b2420;
+  --code-inline: #e08a72;
+  --line: #33403a;
+  --focus: #7fc2a3;
 }
 
 @layer base {
@@ -223,6 +224,7 @@
   .home-painting-sway {
     transform-box: fill-box;
     transform-origin: 50% 100%;
+    transform: rotate(calc(var(--painting-gust) * var(--painting-wind) * 1.2deg));
     animation: painting-gust 3.2s ease-in-out infinite paused;
   }
 
@@ -256,30 +258,6 @@
 }
 
 @layer components {
-  .home-cursor-link {
-    cursor:
-      url('/logos/cursor-mark.svg') 10 11,
-      pointer;
-  }
-
-  .home-vercel-link {
-    cursor:
-      url('/logos/vercel-mark.svg') 9 1,
-      pointer;
-  }
-
-  .dark .home-cursor-link {
-    cursor:
-      url('/logos/cursor-mark-on-dark.svg') 10 11,
-      pointer;
-  }
-
-  .dark .home-vercel-link {
-    cursor:
-      url('/logos/vercel-mark-on-dark.svg') 9 1,
-      pointer;
-  }
-
   .aged-polaroid {
     background: linear-gradient(135deg, #f8f6f0 0%, #faf7f1 50%, #fff 100%);
     box-shadow:
