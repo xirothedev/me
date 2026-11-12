@@ -6,7 +6,11 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "check-types": "tsc --noEmit"
+    "check": "bun run lint && bun run format:check && bun --no-script check",
+    "lint": "bun --no-script lint --max-warnings=0 --allow-unsupported",
+    "format": "bun fmt",
+    "format:check": "bun fmt --check",
+    "check-types": "bun --no-script check"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",

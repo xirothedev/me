@@ -1,4 +1,4 @@
 bunx lint-staged
 bun fmt --staged
 bun run lint
-bun run typecheck
+bun run check

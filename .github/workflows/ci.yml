@@ -76,7 +76,7 @@ jobs:
       - run: bun install --frozen-lockfile
       - name: Generate Next.js types
         run: cd apps/web && bunx next typegen
-      - run: bun run typecheck
+      - run: bun run check
         env:
           TURBO_UI: '0'
 

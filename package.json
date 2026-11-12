@@ -10,7 +10,7 @@
     "check-types": "turbo run check-types",
     "typecheck": "turbo run check-types",
     "lint:boundaries": "depcruise \"packages/**/*.ts\" \"packages/**/*.tsx\" \"packages/**/*.js\" \"packages/**/*.jsx\" \"packages/**/*.mjs\" \"packages/**/*.cjs\"",
-    "check": "bun run lint && bun run typecheck && bun run lint:boundaries",
+    "check": "turbo run check",
     "prepare": "husky",
     "start": "bun run --cwd apps/web start",
     "test": "bun run --cwd apps/web test"
