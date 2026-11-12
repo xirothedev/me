@@ -3,8 +3,11 @@ import { Details } from './details';
 import { Figure } from '../figures/figure';
 import { Heading } from './heading';
 import { HospitalDiagram } from './hospital-diagram';
+import { EcopickWorkflowDiagram } from './ecopick-workflow-diagram';
 import { MarginNote } from './margin-note';
 import { MdxLink } from './mdx-link';
+import { TaxEasyAnomalyDiagram } from './taxeasy-anomaly-diagram';
+import { XaDaoXaPlatformDiagram } from './xadaoxa-platform-diagram';
 
 export const mdxComponents: MDXComponents = {
   h1: ({ id, children }) => (
@@ -48,4 +51,7 @@ export const mdxComponents: MDXComponents = {
   Details,
   Figure,
   HospitalDiagram,
+  TaxEasyAnomalyDiagram,
+  EcopickWorkflowDiagram,
+  XaDaoXaPlatformDiagram,
 };

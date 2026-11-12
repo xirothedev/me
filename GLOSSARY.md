@@ -53,7 +53,7 @@ One of the two biography lengths on Home: Default or Long.
 _Avoid_: Bio tab, short bio, about text
 
 **Figure**:
-An interactive explainer inside a Note or Blog that shows a process over time.
+An interactive explainer inside a Note, Blog, or Work page that shows a process over time.
 _Avoid_: Visualization, animation, diagram, widget
 
 **Gallery**:
