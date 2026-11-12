@@ -15,8 +15,10 @@ fi
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
-# Scale the supplied image directly with no crop or circular cut.
-magick "$source_asset" -resize 512x512^ -gravity center -extent 512x512 -strip "$tmp/mark.png"
+# Scale the supplied image and cut to a circle.
+magick "$source_asset" -resize 512x512^ -gravity center -extent 512x512 \
+  \( +clone -threshold -1 -negate -fill white -draw "circle 256,256 256,0" \) \
+  -alpha off -compose copy_opacity -composite -strip "$tmp/mark.png"
 
 magick "$tmp/mark.png" -resize 192x192 -strip "$output_png"
 magick "$tmp/mark.png" -resize 180x180 -strip "$output_apple"
