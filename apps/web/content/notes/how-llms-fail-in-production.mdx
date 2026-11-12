@@ -1,0 +1,104 @@
+export const meta = {
+  title: 'How LLMs Fail in Production',
+  description:
+    'Most LLM failures are input, schema, retrieval, and evaluation failures. The model is often the last place to look.',
+  kind: 'note',
+  label: 'How LLMs fail in production',
+  order: 2,
+};
+
+A demo shows a model reading a clean receipt. Production shows a photo of a receipt taped to a tax form, taken at an angle, with a shadow across the total.
+
+The model is the same in both cases. The input is the difference. Most of the work is making the input, the output, and the evaluation survive that difference.
+
+<Heading id="the-model-is-a-next-token-predictor" level={2}>
+  {'The model is a next-token predictor'}
+</Heading>
+
+The model predicts the next token. The apparent reasoning is a pattern in the weights, not a database lookup.
+
+<Figure name="llm" />
+
+That matters because the model does not know your schema, your policy, or your document set unless you put them in the context. It can produce a plausible answer without the evidence. A production system has to check the evidence, not the confidence.
+
+<Heading id="input-failures" level={2}>
+  {'Input failures'}
+</Heading>
+
+On TaxEasy, the OCR pipeline reads receipts and invoices. The input is not a benchmark. It is a phone photo with a folded corner, a scan with a stamp over the total, or a PDF with two invoices on one page.
+
+The first failure is tokenization. A receipt number, a Vietnamese address, and a currency amount do not tokenize the way a paragraph of English does. A model can split a number into pieces that look meaningless, or merge a unit into the next word.
+
+<Figure name="tokenization" />
+
+A better prompt does not fix a bad input. The input contract does: crop the image, deskew it, check the resolution, and reject the page before you spend a model call. If the input is unreadable, the correct output is “unreadable,” not a guess.
+
+<Heading id="schema-failures" level={2}>
+  {'Schema failures'}
+</Heading>
+
+A structured output is a contract. If the model returns a total, a date, a vendor, and a tax code, each field needs a type, a range, and a failure path.
+
+The pipeline uses zod to validate the output. That sounds simple until the model returns a string where a number belongs, a date in the wrong format, or a total that does not match the line items. The schema catches the shape. It does not catch the lie.
+
+So the pipeline needs checks: the arithmetic, the date window, and the vendor against the document. If a check fails, the job should go to a human queue. The model can be wrong. The system has to catch it.
+
+<Heading id="retrieval-failures" level={2}>
+  {'Retrieval failures'}
+</Heading>
+
+The Hospital AI Assistant is a retrieval problem before it is a generation problem. The hospital has scanned PDFs, forms with tables, procedures with numbered steps, and multiple versions of the same document.
+
+A single chunk size does not work. A procedure with steps needs boundaries that keep the steps together. A table needs a parser that keeps the rows. A scanned page needs OCR that keeps the layout enough to read.
+
+<Figure name="embeddings" />
+
+Embeddings help you find a passage that is close in meaning. They do not know that the policy changed last month. They do not know that the document with the right words is the wrong version. That is why retrieval needs metadata, recency, and an evidence check, not just a similarity score.
+
+Long context does not solve it either. A model can lose the middle of a long prompt, and attention is not a guarantee that the right sentence wins.
+
+<Figure name="self-attention" />
+
+The practical fix is to retrieve less and rank better. Five good passages with citations beat fifty pages of context with no evidence.
+
+<Heading id="policy-failures" level={2}>
+  {'Policy failures'}
+</Heading>
+
+Ecopick has a refund gate. The model looks at the order, the evidence, and the policy. The policy decides. The model does not.
+
+That separation matters. A model trained to be helpful will try to resolve the request. A refund policy has to say no sometimes. If you ask the model to be both the policy and the assistant, you get a system that is generous with someone else’s money.
+
+<Figure name="rlhf" />
+
+The model should stay at the edge: extract the evidence, classify the reason, draft a recommendation. The policy engine should make the decision. A human can review the edge cases. The model’s job is to make the evidence legible, not to own the outcome.
+
+<Heading id="evaluation-failures" level={2}>
+  {'Evaluation failures'}
+</Heading>
+
+The model is trained on a distribution. Your documents, users, and failures are not that distribution.
+
+<Figure name="training-loop" />
+
+You need a set of real cases with expected evidence and a pass or fail that a person can check. Not a vibe check. Not a demo. A small, boring evaluation set that grows every time a user finds a new failure.
+
+For the hospital project, the next step is exactly that: real questions, expected documents, expected passages, and a staff reviewer who can say whether the answer is supported. Without it, every change is an opinion.
+
+<Heading id="model-choice" level={2}>
+  {'Model choice'}
+</Heading>
+
+Temperature is a product decision. For extraction, use a low temperature and a schema. For a draft that a human will edit, a little variation is fine. For a decision, you want determinism and a policy engine, not creativity.
+
+<Figure name="temperature" />
+
+The same goes for model size. A larger model can be better at ambiguity and worse at cost, latency, and privacy. The hospital cannot send documents to an external API. That constraint decides more than a benchmark.
+
+<Heading id="what-i-would-do-differently" level={2}>
+  {'What I would do differently'}
+</Heading>
+
+I would build the evaluation set before the second feature. I would treat the input pipeline as part of the model, not as plumbing. I would put the policy in code and the model at the edge. And I would stop calling a fluent answer a success until someone has checked the evidence.
+
+The system around the model is what you operate. Build the evaluation set before the second feature.

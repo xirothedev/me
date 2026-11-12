@@ -1,0 +1,73 @@
+export const meta = {
+  title: 'The Repository Is the Product',
+  description:
+    'The repository is the interface your team and your coding agents use. Treat it like a product.',
+  kind: 'note',
+  label: 'The repository is the product',
+  order: 3,
+};
+
+The repository is where your team and your agent decide what a change is allowed to touch. If that interface is confusing, every change is slower and every review is longer.
+
+<Heading id="the-seam" level={2}>
+  {'The seam'}
+</Heading>
+
+On Ecopick, we used a repository seam: each module owns one repository file. The service asks for a domain action. The repository file decides how that action maps to the database.
+
+The service does not import Prisma. It does not know the table names. It does not build query shapes. That is the seam.
+
+```ts
+// The service asks for a domain action.
+const candidates = await rentals.findCloseCandidates(orderId);
+
+// The repository owns the persistence details.
+async findCloseCandidates(orderId: string) {
+  return this.prisma.rental.findMany({
+    where: { orderId, status: 'active' },
+    orderBy: { endsAt: 'asc' },
+  });
+}
+```
+
+The benefit is one place to change when the query changes. It also makes the service testable without a database.
+
+<Heading id="domain-verbs-not-query-shapes" level={2}>
+  {'Domain verbs, not query shapes'}
+</Heading>
+
+A repository method should name an action the product understands: `findCloseCandidates` or `markCommissionPaid`. It should not name a table or a join.
+
+The difference shows up in review. A service that calls `prisma.rental.findMany` is telling you how it gets data. A service that calls `findCloseCandidates` is telling you what it means. The second version is easier to change and easier to test.
+
+It also helps an agent. An agent can read the method name and the type signature. It does not have to reconstruct the intent from a chain of query builders.
+
+<Heading id="rules-agents-can-read" level={2}>
+  {'Rules agents can read'}
+</Heading>
+
+Coding agents are literal readers. If the repository has no rules, they will invent them from the surrounding code. If the surrounding code is inconsistent, the agent will be inconsistent too.
+
+That is why I wrote [Agent Skills](https://github.com/xirothedev/agent-skills): a set of NestJS rules across security, validation, database access, error handling, testing, and deployment. The rules are short, and each one says what to do and why.
+
+The rules live in the repository, next to the code. An agent can load them before it edits. A new developer can read them before the first review. The same document serves both.
+
+<Heading id="the-migration-is-the-test" level={2}>
+  {'The migration is the test'}
+</Heading>
+
+A repository is only a product if it can survive a change.
+
+We moved 75 files to the Prisma 7 `prisma-client` generator. A find-and-replace would have compiled and shipped. It would also have left the missing foreign-key indexes in place.
+
+The migration forced us to look at the queries. We added the missing indexes and kept the change reviewable in slices. The repository was the test: could we change the persistence layer without changing every service?
+
+If the answer is no, the seam is only a folder.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would add the rules before the first agent, not after the first bad pull request. I would write the repository methods before the service that calls them, so the domain language leads. And I would keep the migration guide in the repository, not in a chat thread.
+
+A good repository makes the next change obvious.

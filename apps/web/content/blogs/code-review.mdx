@@ -1,0 +1,72 @@
+export const meta = {
+  title: 'Reflections on Code Review in an AI Team',
+  description:
+    'AI reduced the cost of writing code and raised the cost of reviewing it. The team that reviews well ships well.',
+  kind: 'blog',
+  label: 'Reflections on code review in an AI team',
+  date: '2026-01',
+};
+
+A team of five can generate more diffs than it can read.
+
+Writing code got cheaper. Reviewing it did not. The bottleneck moves from the keyboard to the pull request.
+
+I review agent-assisted code on a small team. The good reviews did not start with the code. They started with the evidence.
+
+<Heading id="the-review-queue" level={2}>
+  {'The review queue'}
+</Heading>
+
+The queue has a limit, a wait time, and a failure mode.
+
+When the queue is short, reviewers read carefully. When the queue is long, reviewers skim. The agent does not know the difference. It keeps producing.
+
+The first fix is a limit. Stop opening a new PR when the queue is above a threshold. The second fix is a template: what changed, why, how it was tested, what happens if it fails. The third fix is a rule that the author owns the failure, even if an agent wrote the code.
+
+<Heading id="small-prs" level={2}>
+  {'Small PRs'}
+</Heading>
+
+A small PR is easier to review, easier to revert, and easier to understand six months later. An agent can produce a small PR. It needs to be asked.
+
+The prompt matters: “Add the endpoint and the test. Do not refactor the module. Do not change the schema.” A narrow scope produces a narrow diff. A broad scope produces a diff that looks like a rewrite.
+
+I would rather review five small PRs than one large one. The five can be tested and reverted independently. The large one is a decision disguised as a change.
+
+<Heading id="the-evidence-rule" level={2}>
+  {'The evidence rule'}
+</Heading>
+
+A pull request should say what changed and how it was tested. AI made that rule more important.
+
+An agent can describe a change in confident language. The description is not evidence. A test, a screenshot, a log line, a query plan, or a reproduction is evidence.
+
+A simple rule helps: every behavior change needs a test or a manual verification note. The note has to include the command or the steps. “Works locally” is not a note.
+
+<Heading id="ownership" level={2}>
+  {'Ownership'}
+</Heading>
+
+The author owns the change, even when an agent wrote it.
+
+That sounds obvious. It is easy to forget when the code arrived from a tool. The reviewer asks a question, the author forwards it to the agent, the agent answers, and the author pastes the answer. The loop is fast, but the understanding is thin.
+
+I ask the author to explain the failure path in their own words. If they cannot, the change is not ready. The agent can help them understand it, but it cannot own it.
+
+<Heading id="the-review-i-got-wrong" level={2}>
+  {'The review I got wrong'}
+</Heading>
+
+The Prisma 7 migration taught me why the diff is not enough. The foreign key was there, but the index was not. The tests passed because the database was small.
+
+The agent followed the pattern in the repository. The repository did not have the index rule yet. The review missed it because the diff looked complete.
+
+That is the lesson. An agent follows the rules it can see. If the rules are incomplete, the review is the last line of defense. The index rule now belongs in the repository's checklist.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would write the review template before the first agent. I would measure the follow-up fix rate, not the PR count. And I would make the queue visible to the whole team, so the person generating the code can see the cost.
+
+The template, the small diff, and the index rule are the changes I would keep.

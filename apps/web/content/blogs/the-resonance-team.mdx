@@ -1,0 +1,79 @@
+export const meta = {
+  title: 'A Year and a Half at The Resonance Team',
+  description: 'Four platforms, one team, and the shift from shipping features to owning outcomes.',
+  kind: 'blog',
+  label: 'A year and a half at The Resonance Team',
+  date: '2026-11',
+};
+
+I joined The Resonance Team in April 2025. My first project was TaxEasy.
+
+A year and a half later, I lead a team of five and still write code. I trust the runbook more than the architecture diagram now.
+
+<Heading id="the-first-week" level={2}>
+  {'The first week'}
+</Heading>
+
+The first week was a tax platform. The codebase was large, the domain was unfamiliar, and the users had deadlines. I spent the first few days reading the ingest pipeline and asking why each step existed.
+
+Each step existed because a document can fail in a different way: an XML invoice, an SMS notification, a receipt image. The pipeline had a parser, an OCR step, a retry, and a human queue.
+
+The first week taught me to read the pipeline as a history of failures.
+
+<Heading id="the-first-platform" level={2}>
+  {'The first platform'}
+</Heading>
+
+TaxEasy is a tax management SaaS. Five apps, a shared data layer, an email ingest pipeline, OCR, anomaly detection, and an observability stack. The constraint is the deadline. A bug is not a stack trace. It is a tax agent who cannot file.
+
+The ingest pipeline is the part I know best. An email arrives, a worker picks it up, an XML invoice or a receipt image is parsed, the OCR result is checked against a schema, and the document is written to PostgreSQL. Each step can fail in a different way. The job state is the interface between the system and the person who has to fix it.
+
+We cut the Docker build from about ten minutes to about thirty seconds with pnpm cache mounts and multi-stage builds. The platform passed 400+ PRs. The number is a record of volume. The useful measure is that the pipeline still runs on a Monday morning.
+
+The other platforms came later: Ecopick, a marketplace and tournament system with state machines for rentals, listings, inspections, and refunds; XaDaoXa, a government e-services platform with a Zalo MiniApp and a staff CMS. Each had its own constraint. The hospital is the one that changed how I think about AI.
+
+<Heading id="the-team" level={2}>
+  {'The team'}
+</Heading>
+
+A team of five is small enough that everyone has to own something and large enough that the review queue is real.
+
+The artifact I made legible was the pull request. A clear scope, the failure path, the test, and the runbook. The team does not need a speech. It needs to know what is owned, what is blocked, and what happens next.
+
+I also learned to say no. A platform can absorb an infinite number of features. A team cannot. The useful question is not “can we build this?” It is “what will we stop doing if we build this?”
+
+<Heading id="the-hospital" level={2}>
+  {'The hospital'}
+</Heading>
+
+The hospital project changed how I think about AI.
+
+In a hospital, the model is one part of a system that has to run on the hospital’s hardware, over the hospital’s documents, with the hospital’s people. The constraint is custody.
+
+The stack follows that constraint: local inference, self-hosted retrieval, a thin proxy, a runbook. The model can be uncertain. The system has to show the evidence.
+
+<Heading id="what-i-got-wrong" level={2}>
+  {'What I got wrong'}
+</Heading>
+
+The runbook should ship with the feature. The operator needs it before the first restart, not after the pilot.
+
+The work got smaller when the evidence got clearer.
+
+<Heading id="what-i-would-do-again" level={2}>
+  {'What I would do again'}
+</Heading>
+
+I would choose a team that owns the whole path: the API, the web app, the mobile app, the deploy, the runbook. The range is the point. It is hard to design a good failure path if you only see one layer.
+
+I would keep writing. The writing forces me to explain the decision, and the explanation exposes the gaps.
+
+I would keep the team small. Five people who own their work can do a lot. Five people who wait for instructions cannot.
+
+<Heading id="what-is-next" level={2}>
+  {'What is next'}
+</Heading>
+
+I am finishing my B.S. in Computer Science in 2029. I am leading the team, shipping code, and writing about the parts of production that do not fit in a launch post.
+
+The next year is the hospital evaluation set, the next platform, and the next set of failures.

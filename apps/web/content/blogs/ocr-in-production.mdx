@@ -1,0 +1,72 @@
+export const meta = {
+  title: 'What Broke When We Put OCR in Production',
+  description:
+    'Demos read clean receipts. Production reads a photo of a receipt taped to a tax form.',
+  kind: 'blog',
+  label: 'What broke when we put OCR in production',
+  date: '2026-03',
+};
+
+The OCR demo was excellent. It read a clean receipt, found the vendor, the date, the total, and the tax, and returned a tidy JSON object.
+
+The real inbox is different.
+
+<Heading id="the-clean-demo" level={2}>
+  {'The clean demo'}
+</Heading>
+
+A demo picks the input. Production does not.
+
+The real input is a phone photo of a receipt taped to a tax form, taken at an angle, with a shadow across the total. Sometimes it is a scan with a stamp over the vendor. Sometimes it is two receipts on one page. Sometimes it is a PDF with a receipt image embedded in a page of text.
+
+The model was not the problem. The pipeline assumed the input was a document. The input was a photograph of a document in the wrong place.
+
+<Heading id="the-input-is-the-problem" level={2}>
+  {'The input is the problem'}
+</Heading>
+
+The first fix is preprocessing. Crop the image, deskew it, check the resolution, and reject the page if the text is too small. That sounds obvious. It is not in the demo.
+
+The second fix is a type check before the model call. An XML invoice does not need OCR. An SMS bank notification does not need OCR. A receipt image does. Routing the document to the right parser saves cost and reduces the failure surface.
+
+The third fix is a confidence check. If the OCR result is mostly empty, or the total is missing, do not send it to the model. Send it to a human.
+
+<Heading id="the-schema-is-the-contract" level={2}>
+  {'The schema is the contract'}
+</Heading>
+
+The model returns structured output. The pipeline validates it with zod. The schema says: vendor is a string, date is a date, total is a number, tax is a number or null, line items are an array.
+
+The schema catches the shape. It does not catch the arithmetic.
+
+The pipeline needs checks: the line items sum to the total, the tax rate is in a plausible range, the date is not in the future, the vendor matches the document. If a check fails, the job should go to a human queue with the evidence attached.
+
+The model is allowed to be wrong. The system is not allowed to file a wrong number.
+
+<Heading id="retries-and-cost" level={2}>
+  {'Retries and cost'}
+</Heading>
+
+A retry policy can be too aggressive. A failed job retries several times, and each retry calls the model again. A bad scan can cost several times as much as a good one and still fail.
+
+The retry logic should distinguish the failures. A validation failure does not retry. A provider timeout retries with a backoff. A malformed response retries once, then goes to a human. The queue records the reason.
+
+Cost is part of the design. A model call is not free, and a retry is a product decision. The cheapest failure is the one you catch before the model.
+
+<Heading id="the-human-fallback" level={2}>
+  {'The human fallback'}
+</Heading>
+
+The human queue handles the long tail.
+
+A tax agent can correct the vendor, the total, or the date. The correction should be stored with the document. The next document from the same vendor is easier. The model gets better input, not a new prompt.
+
+The fallback also gives the team a feedback loop. The corrections show which fields fail, which vendors are hard, and which scans should be rejected earlier. That is more useful than a benchmark.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would build the input pipeline before the model integration. I would add the arithmetic checks before the first launch. And I would measure the human correction rate, not just the model accuracy.
+
+The model reads the receipt. The tax agent needs the number to be right.

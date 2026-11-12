@@ -1,0 +1,72 @@
+export const meta = {
+  title: 'How I Work',
+  description:
+    'I optimize for the shortest path to a working system, then for the person who has to operate it.',
+  kind: 'note',
+  label: 'How I work',
+  order: 1,
+};
+
+The work on a tax platform is shaped by a deadline. When an ingest step fails, a tax agent cannot file. That fact decides what matters.
+
+I still care about clean structure. I care more about the person on the other side of the request.
+
+<Heading id="start-with-the-failure" level={2}>
+  {'Start with the failure'}
+</Heading>
+
+Every system has a failure path. Most teams write it last. I try to write it first, at least in my head.
+
+The questions are concrete:
+
+- What happens when the OCR worker returns a receipt with the wrong total?
+- What happens when the model gateway times out halfway through a refund decision?
+- What happens when the queue backs up at 2 a.m. and the person on call has never seen this service before?
+
+The answer should not be “the request fails.” The answer should be: this is the error, this is the evidence, this is the retry, this is the person who gets notified, and this is the runbook.
+
+On TaxEasy, the ingest pipeline has several named steps: email routing, the worker, the XML parser, the OCR step, the schema check, and the database write. Each one can fail. When one breaks, the system should say which one. That is the difference between a short fix and a long hunt.
+
+<Heading id="keep-the-path-short" level={2}>
+  {'Keep the path short'}
+</Heading>
+
+The shortest path to a working system is usually the one with the fewest handoffs. One repository. One command to run the stack. One place to see the logs. One way to deploy.
+
+TaxEasy is five apps in a Turborepo. That could be a maze. We kept it manageable by making the path boring: shared types, shared config, one build graph, one CI pipeline. The Docker build went from about ten minutes to about thirty seconds with pnpm cache mounts and multi-stage builds. The speed mattered, but the bigger win was that people stopped avoiding the build.
+
+A short path is not only for developers. It is for the operator. If restarting a service requires a wiki page, three secrets, and a person who remembers the order, the path is too long.
+
+<Heading id="write-the-runbook" level={2}>
+  {'Write the runbook'}
+</Heading>
+
+I like runbooks that a tired person can follow. Not a novel. A short list: how to check the queue, how to replay a job, how to roll back a deploy, how to tell whether the model or the retrieval is wrong.
+
+The Hospital AI Assistant made this concrete. A useful runbook starts with the evidence: did retrieval return the right document, did it return the right passage, did the model see it, did the prompt ask for the right shape? Each step has a different fix. Without the runbook, every bad answer becomes a prompt tweak, and the real cause stays in the index.
+
+<Heading id="review-the-diff" level={2}>
+  {'Review the diff'}
+</Heading>
+
+I review code the way I read a change to a production system: what can this break, what does it make easier, and who owns it after the merge?
+
+Small diffs help. So does evidence. A pull request should say what changed, how it was tested, and what happens if it fails. “It works locally” is not evidence. A screenshot, a test, a log line, or a query plan is evidence.
+
+On a team of five with 700+ merged PRs, review load is real. The only way it stays healthy is to keep changes small and to make the automated gates do the boring checks. Lint, types, tests, and a build should catch the things a reviewer should not have to mention.
+
+<Heading id="what-i-still-get-wrong" level={2}>
+  {'What I still get wrong'}
+</Heading>
+
+I over-build the first version. I add the second abstraction before the second use case exists. I delay documentation until the system is “stable,” which is another way of saying until I have forgotten what I meant.
+
+I am better at catching it now. The question I ask is: what is the smallest version that a real person can use, and what would make it fail? If I cannot answer the second part, I am not ready to ship the first.
+
+<Heading id="the-bar" level={2}>
+  {'The bar'}
+</Heading>
+
+The bar is not “does this impress another engineer?” The bar is “can the person using this finish their task, and can the person operating it fix it when it breaks?”
+
+That is the test I apply to a feature, a pull request, and a runbook. If the answer is no, the work is not done.

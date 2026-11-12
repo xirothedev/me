@@ -1,0 +1,80 @@
+export const meta = {
+  title: 'Why We Moved 75 Files to Prisma 7',
+  description:
+    'A migration is a chance to fix the indexes and seams you ignored. Notes from a 75-file Prisma 7 move.',
+  kind: 'blog',
+  label: 'Why we moved 75 files to Prisma 7',
+  date: '2025-12',
+};
+
+The generator change touched 75 files. The files exposed the queries we had been ignoring.
+
+Once we opened them, we found the missing foreign-key indexes. The tests passed because the database was small. The missing index was the part the diff did not show.
+
+<Heading id="why-migrate" level={2}>
+  {'Why migrate'}
+</Heading>
+
+Prisma 7 moved to the `prisma-client` generator. The old setup worked. The new setup promised a cleaner client, a smaller runtime, and a better path for the next year.
+
+The platform is five apps and the data layer is shared. A change that improves the data layer improves every app.
+
+<Heading id="the-codemod" level={2}>
+  {'The codemod'}
+</Heading>
+
+A 75-file migration needs a codemod, not hand edits. Run it in dry-run mode and review the diff in slices.
+
+The codemod handles the mechanical part: the import path, the client constructor, the generated types. It does not handle the semantic part: the queries that assumed a relationship existed, the services that used the client directly, the tests that mocked the old shape.
+
+The dry run is the important part. It produces a list of files and a count of replacements per file. Check the count before you let it write.
+
+<Heading id="the-checks" level={2}>
+  {'The checks'}
+</Heading>
+
+The gates I would use:
+
+1. Typecheck. The generated types must compile across all five apps.
+2. Unit tests. The repository and service tests must pass without a database.
+3. Integration tests. The queries must run against a real PostgreSQL instance.
+4. Query plans. The queries that changed must keep the same plan or better.
+
+The fourth gate is where the missing indexes show up. A query can look fine in the test suite and do a sequential scan on a table that is small in development and large in production.
+
+<Heading id="the-indexes" level={2}>
+  {'The indexes'}
+</Heading>
+
+A foreign key is not an index in PostgreSQL. The constraint checks the relationship. The index makes the lookup fast.
+
+The migration added the missing indexes on the foreign keys used by the list and detail queries. The change was small. The effect was large.
+
+```sql
+CREATE INDEX CONCURRENTLY invoices_document_id_idx
+  ON invoices (document_id);
+```
+
+The `CONCURRENTLY` matters on a live table. It avoids the write lock. It also cannot run inside a transaction, so the migration needs a separate step.
+
+A find-and-replace misses that detail. The migration is a chance to look at the query.
+
+<Heading id="the-rollback" level={2}>
+  {'The rollback'}
+</Heading>
+
+Every migration needs a rollback that a tired person can run.
+
+For the schema, keep the old migration path until the new client is stable. For the application, deploy the new client behind a feature flag and keep the old path for one release. For the data, take a snapshot before the index build.
+
+The rollback is part of the migration. The team should know it exists.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would run the query-plan gate before the typecheck gate. The typecheck tells you the code compiles. The query plan tells you the product will still work.
+
+I would also write the migration guide in the repository, not in a chat thread. The next person who touches the data layer should not have to reconstruct the decisions from a scrollback.
+
+The codemod moves the imports. The review is the migration.
