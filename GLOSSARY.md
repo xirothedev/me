@@ -20,6 +20,10 @@ _Avoid_: Painting, banner, cover image
 One row in the Home Work list. It names a platform or open-source project, its kind, a one-line summary, and a status.
 _Avoid_: Project card, portfolio item
 
+**Work page**:
+A dedicated Page that introduces a Work entry in detail. A Work page is reached from Home by clicking the Work entry.
+_Avoid_: Project page, case study page, portfolio detail
+
 **Note**:
 An undated Page about an idea or practice. Notes are listed under "Notes" on Home.
 _Avoid_: Essay, post, article
@@ -49,7 +53,7 @@ One of the two biography lengths on Home: Default or Long.
 _Avoid_: Bio tab, short bio, about text
 
 **Figure**:
-An interactive explainer inside a Note or Blog that shows a process over time.
+An interactive explainer inside a Note, Blog, or Work page that shows a process over time.
 _Avoid_: Visualization, animation, diagram, widget
 
 **Gallery**:

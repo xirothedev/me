@@ -15,10 +15,10 @@ fi
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
-# The full illustration turns into a blue blur at 16 px. Crop to the eye so
-# the mark stays readable in a browser tab, then render each target size.
-magick "$source_asset" -crop 220x220+190+90 +repage \
-  -resize 512x512 -strip "$tmp/mark.png"
+# Scale the supplied image and cut to a circle.
+magick "$source_asset" -resize 512x512^ -gravity center -extent 512x512 \
+  \( +clone -threshold -1 -negate -fill white -draw "circle 256,256 256,0" \) \
+  -alpha off -compose copy_opacity -composite -strip "$tmp/mark.png"
 
 magick "$tmp/mark.png" -resize 192x192 -strip "$output_png"
 magick "$tmp/mark.png" -resize 180x180 -strip "$output_apple"

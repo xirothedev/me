@@ -42,7 +42,7 @@ Use these claims. Do not invent a number.
 ### TaxEasy — tax management SaaS (private)
 
 - 5 apps in a Turborepo monorepo: api, web, portal, mobile-rn, mobile-flutter.
-- 400+ PRs.
+- 309 merged PRs in the main platform repository (verified via GitHub CLI).
 - Vercel AI SDK v7+ LLM gateway with multi-provider abstraction.
 - OCR vision pipeline for receipt and invoice extraction, zod-validated structured output.
 - Email ingest: Cloudflare Email Routing → Worker → webhook → NestJS → PostgreSQL + S3.
@@ -62,7 +62,7 @@ Use these claims. Do not invent a number.
 ### Ecopick — marketplace and tournaments (private)
 
 - 4 apps: api, web, portal, miniapp.
-- 300+ PRs.
+- 352 merged PRs in the main platform repository (verified via GitHub CLI).
 - Three AI features: support assistant, product matcher, refund gate.
 - Rule-based pricing on a Price Bank.
 - State machines for rental, listing, inspection, and refund workflows.
@@ -76,6 +76,7 @@ Use these claims. Do not invent a number.
 ### XaDaoXa — government e-services (private)
 
 - 3 apps: api, cms, miniapp.
+- 203 merged PRs in the main platform repository (verified via GitHub CLI).
 - Commune-level e-services for Xã Đào Xá, Thanh Thủy district, Phú Thọ province.
 - Zalo MiniApp built with ZaUI and the ZMP SDK.
 - Next.js 16 CMS for commune officials.

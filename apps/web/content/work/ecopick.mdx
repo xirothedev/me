@@ -1,0 +1,72 @@
+export const meta = {
+  title: 'Ecopick',
+  description:
+    'A private marketplace and tournament platform with state-machine workflows, scoped roles, and AI-assisted support, product matching, and refund gating.',
+  kind: 'page',
+};
+
+<Heading id="overview" level={2}>
+  {'Overview'}
+</Heading>
+
+Ecopick is a private marketplace and tournament platform. The product combines commerce flows (rentals, listings, inspections, refunds) with tournament participation and operations.
+
+The core constraint is state. Each workflow has a lifecycle, and the system has to respect it across roles, actions, and timing.
+
+<Heading id="context-and-constraint" level={2}>
+  {'Context and constraint'}
+</Heading>
+
+Marketplace actions are rarely isolated. A refund can touch a rental, a listing, an inspection, and a tournament entry. Decisions depend on current state, evidence, timing, and who is making the request.
+
+That makes correctness a product requirement. If the system allows an invalid transition or hides the reason for a decision, users lose trust and operators lose time.
+
+<Heading id="role-and-ownership" level={2}>
+  {'My role and ownership'}
+</Heading>
+
+I worked on Ecopick as part of The Resonance Team in a team of five, contributing to platform implementation and delivery across multiple apps. The work included workflow logic, AI-assisted features at the edge of policy, and engineering structure that kept domain behavior understandable.
+
+<Heading id="system-and-capabilities" level={2}>
+  {'System and capabilities'}
+</Heading>
+
+- **Apps:** 4 apps (`api`, `web`, `portal`, `miniapp`).
+- **Workflow engines:** State machines for rental, listing, inspection, and refund workflows, with CAS concurrency guards.
+- **AI features:** Three AI features — support assistant, product matcher, and refund gate — integrated into existing user flows.
+- **Pricing and domain access:** Rule-based pricing on a Price Bank and a repository seam (one repo file per module) exposing domain verbs such as `findCloseCandidates` and `markCommissionPaid`.
+- **Roles and incentives:** Scoped tournament roles (host, admin, referee, player, spectator), where one player can hold different roles across tournaments, plus a loyalty ledger with points and persona experience packs.
+
+<EcopickWorkflowDiagram />
+
+<Figure name="ecopick-refund-gate" />
+
+<Heading id="technical-highlights" level={2}>
+  {'Technical highlights'}
+</Heading>
+
+- **Policy-first refund design:** The refund gate treats policy as the decision owner. The model helps at the edge (extract reason/evidence context, flag mismatches, draft explanations), while outcomes remain auditable and tied to rules and evidence.
+- **Repository seam:** Services ask for domain actions instead of database-shaped operations. This keeps workflow intent visible and makes changes safer in a state-heavy system.
+- **Delivery operations:** CI/CD work included Docker configuration, image pruning for VPS disk pressure, and consolidated CD with portal deploy and MiniApp publish.
+
+<Heading id="challenges-and-trade-offs" level={2}>
+  {'Challenges and trade-offs'}
+</Heading>
+
+A key trade-off was where to place model responsibility. A language model can read messages and summarize evidence, but it should not own money or policy decisions. The system needed structured outputs, clear fallbacks to humans, and decisions that can be explained by rule and evidence.
+
+State complexity was another challenge. Rentals, listings, inspections, and refunds interact, so concurrency guards and explicit transitions were necessary to prevent invalid or conflicting updates.
+
+<Heading id="outcome-and-status" level={2}>
+  {'Outcome and status'}
+</Heading>
+
+- **Status:** Private platform.
+- **Scale signal:** 352 merged PRs in the main platform repository (verified via GitHub CLI).
+- **Result in practice:** The platform supports marketplace and tournament workflows with explicit state handling, scoped roles, and AI features embedded in existing flows rather than separate demos.
+
+<Heading id="what-i-would-improve" level={2}>
+  {'What I would improve'}
+</Heading>
+
+I would define policy rules and evidence references even earlier, before expanding AI-assisted paths. I would also measure explanation quality and reversibility more explicitly, not only decision outcomes, because those signals show whether the system is understandable in real cases.

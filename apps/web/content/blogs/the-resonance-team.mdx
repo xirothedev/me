@@ -28,7 +28,7 @@ TaxEasy is a tax management SaaS. Five apps, a shared data layer, an email inges
 
 The ingest pipeline is the part I know best. An email arrives, a worker picks it up, an XML invoice or a receipt image is parsed, the OCR result is checked against a schema, and the document is written to PostgreSQL. Each step can fail in a different way. The job state is the interface between the system and the person who has to fix it.
 
-We cut the Docker build from about ten minutes to about thirty seconds with pnpm cache mounts and multi-stage builds. The platform passed 400+ PRs. The number is a record of volume. The useful measure is that the pipeline still runs on a Monday morning.
+We cut the Docker build from about ten minutes to about thirty seconds with pnpm cache mounts and multi-stage builds. The platform passed 309 merged PRs in the main repository. The number is a record of volume. The useful measure is that the pipeline still runs on a Monday morning.
 
 The other platforms came later: Ecopick, a marketplace and tournament system with state machines for rentals, listings, inspections, and refunds; XaDaoXa, a government e-services platform with a Zalo MiniApp and a staff CMS. Each had its own constraint. The hospital is the one that changed how I think about AI.
 

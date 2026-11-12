@@ -1,0 +1,74 @@
+export const meta = {
+  title: 'XaDaoXa',
+  description:
+    'A government e-services platform for Xã Đào Xá (Thanh Thủy, Phú Thọ): a Zalo MiniApp for citizens and a staff CMS for commune officials, live for citizens.',
+  kind: 'page',
+};
+
+<Heading id="overview" level={2}>
+  {'Overview'}
+</Heading>
+
+XaDaoXa is a government e-services platform for Xã Đào Xá, Thanh Thủy district, Phú Thọ province. It serves two groups: citizens using a Zalo MiniApp and commune officials using a staff CMS.
+
+The core constraint is trust. A submission must be received, visible to staff, and handled through a system that people can rely on.
+
+<Heading id="context-and-constraint" level={2}>
+  {'Context and constraint'}
+</Heading>
+
+This platform has two user experiences for the same process. A citizen submits a form in the MiniApp, and an official reviews it in the CMS. If one side sees success and the other side cannot act on the submission, the service fails in practice.
+
+Because the service is live for citizens, authentication, permissions, and deployment reliability are part of the product, not background concerns.
+
+<Heading id="role-and-ownership" level={2}>
+  {'My role and ownership'}
+</Heading>
+
+I worked on XaDaoXa as part of The Resonance Team, contributing to delivery across the platform's applications. The work focused on building and maintaining the citizen and staff surfaces, access control, and the operational behavior needed for a public-facing service.
+
+This is a private codebase, so this page describes verified platform facts and constraints rather than internal implementation details.
+
+<Heading id="system-and-capabilities" level={2}>
+  {'System and capabilities'}
+</Heading>
+
+- **Apps:** 3 apps (`api`, `cms`, `miniapp`).
+- **Citizen experience:** Zalo MiniApp built with ZaUI and the ZMP SDK.
+- **Staff experience:** Next.js 16 CMS for commune officials.
+- **Access and security:** JWT access and refresh tokens and role-based access control.
+- **Deployment shape:** Separate clusters for independent deployment.
+
+<Figure name="xadaoxa-submission-flow" />
+
+<XaDaoXaPlatformDiagram />
+
+<Heading id="technical-highlights" level={2}>
+  {'Technical highlights'}
+</Heading>
+
+- **Dual-surface workflow:** The same service must work for citizens and officials, so form submission, visibility, and follow-up need to align across both interfaces.
+- **Independent deployment:** Separate clusters support deployment independence, which helps isolate changes and reduce blast radius during updates.
+- **Public-service reliability:** Because the platform is used by citizens, keeping the service available during deploys and failures is a core requirement.
+
+<Heading id="challenges-and-trade-offs" level={2}>
+  {'Challenges and trade-offs'}
+</Heading>
+
+The main challenge is end-to-end trust across two clients and one workflow. A confirmation message in the MiniApp is not enough if the CMS does not receive the expected data or if permissions block the next step.
+
+The trade-off is to favor clear, reliable flows over extra complexity: authentication and role boundaries must be explicit, and deployment changes must preserve service continuity for citizens.
+
+<Heading id="outcome-and-status" level={2}>
+  {'Outcome and status'}
+</Heading>
+
+- **Status:** Live for citizens.
+- **Scale signal:** 203 merged PRs in the main platform repository (verified via GitHub CLI).
+- **Result in practice:** The platform provides a citizen-facing Zalo MiniApp and a staff CMS for commune e-services, with authenticated access and role-based operations.
+
+<Heading id="what-i-would-improve" level={2}>
+  {'What I would improve'}
+</Heading>
+
+I would continue strengthening end-to-end checks across citizen submission and staff handling flows, especially around deployment and failure scenarios. Clearer operational signals for cross-surface issues would make it faster to detect and fix gaps that affect trust.

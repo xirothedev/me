@@ -35,6 +35,18 @@ const TemperatureFigure = dynamic(
   () => import('./temperature').then((module) => module.TemperatureFigure),
   { loading: FigureLoading },
 );
+const TaxEasyIngestFigure = dynamic(
+  () => import('./taxeasy-ingest').then((module) => module.TaxEasyIngestFigure),
+  { loading: FigureLoading },
+);
+const EcopickRefundGateFigure = dynamic(
+  () => import('./ecopick-refund-gate').then((module) => module.EcopickRefundGateFigure),
+  { loading: FigureLoading },
+);
+const XaDaoXaSubmissionFlowFigure = dynamic(
+  () => import('./xadaoxa-submission-flow').then((module) => module.XaDaoXaSubmissionFlowFigure),
+  { loading: FigureLoading },
+);
 
 const FIGURES = {
   llm: LlmFigure,
@@ -44,6 +56,9 @@ const FIGURES = {
   'self-attention': SelfAttentionFigure,
   rlhf: RlhfFigure,
   temperature: TemperatureFigure,
+  'taxeasy-ingest': TaxEasyIngestFigure,
+  'ecopick-refund-gate': EcopickRefundGateFigure,
+  'xadaoxa-submission-flow': XaDaoXaSubmissionFlowFigure,
 } as const;
 
 interface FigureProps {

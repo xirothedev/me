@@ -4,9 +4,9 @@
 
 @theme inline {
   --font-reading:
-    'Iowan Old Style Local', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
-  --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-code: 'SF Mono', Monaco, Inconsolata, 'Fira Code', monospace;
+    "Iowan Old Style Local", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code: "SF Mono", Monaco, Inconsolata, "Fira Code", monospace;
 
   --color-canvas: var(--canvas);
   --color-ink: var(--ink);
@@ -343,10 +343,14 @@
   .site-footer {
     margin-inline: auto;
   }
+}
 
+@layer utilities {
   @media (min-width: 68.75rem) {
     body:has(.home-visual) .site-footer {
-      margin-inline: 0;
+      width: 100%;
+      max-width: min(100cqi, 93.75rem);
+      margin-inline: auto;
     }
   }
 }
