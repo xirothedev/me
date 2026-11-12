@@ -1,8 +1,29 @@
+import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   reactCompiler: true,
+  devIndicators: false,
+  transpilePackages: ['@repo/ui'],
+  typescript: {
+    ignoreBuildErrors: Boolean(process.env.CI),
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'shiki', 'date-fns'],
+    turbopackRustReactCompiler: true,
+    turbopackFileSystemCacheForBuild: !process.env.CI,
+  },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+  async redirects() {
+    return [
+      { source: '/tabs', destination: '/lab', permanent: true },
+      { source: '/tabs/:slug', destination: '/lab', permanent: true },
+      { source: '/bronco', destination: '/hospital', permanent: true },
+    ];
+  },
   turbopack: {
     rules: {
       '*.css': {
@@ -13,4 +34,22 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: ['remark-gfm'],
+    rehypePlugins: [
+      [
+        'rehype-pretty-code',
+        {
+          theme: 'github-light',
+          keepBackground: false,
+          defaultLang: 'text',
+        },
+      ],
+      'rehype-slug',
+    ],
+  },
+});
+
+export default withMDX(nextConfig);

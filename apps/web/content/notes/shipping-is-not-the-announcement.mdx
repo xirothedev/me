@@ -1,0 +1,63 @@
+export const meta = {
+  title: 'Shipping Is Not the Announcement',
+  description:
+    'A launch is a date. Adoption is a sequence of small proofs that the product is useful.',
+  kind: 'note',
+  label: 'Shipping is not the announcement',
+  order: 4,
+};
+
+A launch gets attention. The next week decides whether it was useful. Someone uses the thing for the second time without being asked.
+
+I have shipped features on three live platforms and one hospital pilot. The launch post never told me whether the feature was useful. The next week did.
+
+<Heading id="the-first-ten-users" level={2}>
+  {'The first ten users'}
+</Heading>
+
+On XaDaoXa, a citizen submits a form in the Zalo MiniApp and a commune official opens it in the CMS. The feature has two users. If the citizen sees a confirmation but the official sees an empty attachment, the feature is not done for either of them. The first users find that gap by trying to finish the task.
+
+The same is true on a tax platform. A tax agent does not want a demo. They want to file a client’s return before the deadline. If the OCR reads the vendor name wrong, they will not admire the model. They will correct it, or they will stop using it.
+
+The first users tell you which part of the workflow is real. They do it by trying to finish a task, not by answering a survey.
+
+<Heading id="demos-and-docs" level={2}>
+  {'Demos and docs'}
+</Heading>
+
+A demo is a story with a controlled input. Docs are a promise about the uncontrolled input.
+
+If the feature needs a paragraph of explanation before the first click, the interface is not done. If the error message says “something went wrong,” the error is not done. If the only person who can run the flow is the person who built it, the feature is not done.
+
+On the hospital project, the docs are part of the product. The runbook tells the operator how to restart the stack, how to check retrieval, and how to tell a model problem from a chunking problem. Without that, the pilot depends on me being awake.
+
+<Heading id="instrument-the-first-week" level={2}>
+  {'Instrument the first week'}
+</Heading>
+
+You cannot improve adoption if you cannot see it. The first week should answer a few plain questions:
+
+- Did the user finish the flow?
+- Where did they stop?
+- How long did the step take?
+- How often did the system ask a human for help?
+
+On TaxEasy, the anomaly detectors are only useful if someone acts on them. We added an auto-close lifecycle and notifications because a flag with no owner is noise. The useful metric is how many anomalies were resolved, not how many were detected.
+
+That distinction changes the dashboard. It also changes the product.
+
+<Heading id="the-quiet-launch" level={2}>
+  {'The quiet launch'}
+</Heading>
+
+I prefer a quiet launch to a big one. A small group, a clear path, and a short feedback loop. The big announcement can come later, when the product has earned it.
+
+On Ecopick, the AI features shipped into an existing marketplace. The support assistant, the product matcher, and the refund gate had to work inside the flow people already used. That is a harder test than a new brand.
+
+<Heading id="what-i-would-do-differently" level={2}>
+  {'What I would do differently'}
+</Heading>
+
+I would instrument the first week before the launch, not after. I would write the runbook with the operator, not for them. And I would measure resolution, not activity.
+
+Schedule the launch. Then watch the first week.

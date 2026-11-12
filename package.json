@@ -4,14 +4,16 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "bun lint --no-script --max-warnings=0 --allow-unsupported",
+    "lint": "bun --no-script lint --max-warnings=0 --allow-unsupported",
     "format": "bun fmt",
     "format:check": "bun fmt --check",
     "check-types": "turbo run check-types",
     "typecheck": "turbo run check-types",
     "lint:boundaries": "depcruise \"packages/**/*.ts\" \"packages/**/*.tsx\" \"packages/**/*.js\" \"packages/**/*.jsx\" \"packages/**/*.mjs\" \"packages/**/*.cjs\"",
-    "check": "bun run lint && bun run typecheck && bun run lint:boundaries",
-    "prepare": "husky"
+    "check": "turbo run check",
+    "prepare": "husky",
+    "start": "bun run --cwd apps/web start",
+    "test": "bun run --cwd apps/web test"
   },
   "devDependencies": {
     "dependency-cruiser": "^18.7.2",

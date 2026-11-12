@@ -1,0 +1,58 @@
+export const meta = {
+  title: 'Building in Public Without Performing',
+  description:
+    'Public work is useful when it reports what changed, what broke, and what it cost. The rest is noise.',
+  kind: 'note',
+  label: 'Building in public',
+  order: 5,
+};
+
+I post on X and Facebook. The posts I keep are the ones that report something checkable: what changed, what broke, what it cost.
+
+The posts I regret are the ones that performed the work: the big announcement, the vague lesson, the screenshot with no context. They asked for attention and left nothing behind.
+
+<Heading id="the-useful-post" level={2}>
+  {'The useful post'}
+</Heading>
+
+A useful post has a subject, a change, and a consequence.
+
+“Shipped the OCR pipeline” says nothing. “The OCR pipeline now validates every extraction against a schema before the invoice is accepted” says what changed and where the failure goes. It tells another engineer what to try and what to expect.
+
+The same rule applies to open source. A release note is more useful than a teaser. A migration guide is more useful than a launch thread. A reproducible bug report is more useful than a strong opinion.
+
+<Heading id="what-stays-private" level={2}>
+  {'What stays private'}
+</Heading>
+
+Most production work is not mine to publish. The repositories are private. XaDaoXa is live for citizens, but the code and the data are not public. I can describe the shape of the work, the stack, and the lesson. I cannot publish a client’s data, a patient’s record, a private schema, or a screenshot with a real name.
+
+The boundary is part of the job. The useful question is: what can I say that is true and still safe?
+
+For the hospital project, that means no hospital name, no patient data, no internal screenshots. The architecture and the constraints are enough. The reader can learn from the shape without seeing the record.
+
+<Heading id="the-metric-trap" level={2}>
+  {'The metric trap'}
+</Heading>
+
+Public work rewards the wrong numbers. Views, likes, stars, followers. Those numbers are easy to see and easy to chase.
+
+The numbers I care about are slower: did someone use the tool, did the bug get fixed, did the doc answer the question, did the release survive the week? A star on a repository is a nice signal. It is not evidence that the code works.
+
+I try to keep the public post tied to a private number I can verify. “The build is faster” needs a before and after. “The agent writes better code” needs a review sample. “The docs are better” needs a user who found the answer.
+
+<Heading id="the-quiet-account" level={2}>
+  {'The quiet account'}
+</Heading>
+
+I do not post every day. I do not have a content calendar. I write when I have something that would have helped me six months ago.
+
+That makes the account quiet. A quiet account with three useful posts is better than a loud one with thirty variations of the same announcement.
+
+<Heading id="what-i-would-do-differently" level={2}>
+  {'What I would do differently'}
+</Heading>
+
+I would write the post before the launch, when the uncertainty is still fresh. I would include the failure, not just the result. And I would link to the artifact: the repository, the doc, the demo, the issue.
+
+A useful post leaves a trail. The trail is more useful when it is specific.

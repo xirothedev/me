@@ -16,17 +16,41 @@
       }
     ],
     "no-explicit-any": "error",
-    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
     "no-debugger": "warn",
     "react/react-in-jsx-scope": "off",
     "react/no-array-index-key": "warn",
     "eslint/no-underscore-dangle": "off",
-    "import/no-duplicates": ["error", { "prefer-inline": true }],
+    "import/no-duplicates": [
+      "error",
+      {
+        "prefer-inline": true
+      }
+    ],
     "import/no-named-as-default-member": "off",
     "import/no-unassigned-import": "off",
     "max-lines": ["error", 300]
   },
   "overrides": [
+    {
+      "files": ["apps/web/scripts/**/*.ts"],
+      "rules": {
+        "no-await-in-loop": "off"
+      }
+    },
+    {
+      "files": ["apps/web/src/**/*.tsx"],
+      "rules": {
+        "react-perf/jsx-no-new-function-as-prop": "off",
+        "react-perf/jsx-no-new-object-as-prop": "off",
+        "react-perf/jsx-no-jsx-as-prop": "off"
+      }
+    },
     {
       "files": ["**/*.{test,spec}.{ts,tsx}"],
       "plugins": ["jest", "vitest"],

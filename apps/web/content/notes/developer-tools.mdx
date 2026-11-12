@@ -1,0 +1,60 @@
+export const meta = {
+  title: 'What I Look For in Developer Tools',
+  description:
+    'I judge a developer tool by the first ten minutes, the first error, and the first month.',
+  kind: 'note',
+  label: 'Developer tools',
+  order: 6,
+};
+
+I keep a tool if it survives the first ten minutes, the first error, and the first month.
+
+<Heading id="the-first-ten-minutes" level={2}>
+  {'The first ten minutes'}
+</Heading>
+
+The first test is a working example. One command, one page, no book.
+
+The best tools answer this with one command and one page. `bun install` and a clear quick start. `npx create-next-app` and a dev server. A Prisma schema and `prisma migrate dev`. The tool does not need to be simple. It needs to make the first step obvious.
+
+I care about the install path because it tells me how the team thinks about users. If the quick start is stale, the docs are stale. If the example needs three undocumented environment variables, the tool is not ready.
+
+<Heading id="the-first-error" level={2}>
+  {'The first error'}
+</Heading>
+
+The first error is where the tool tells the truth.
+
+A good error says what happened, where, and what to try next. A bad error says “failed” and leaves me to search. A good error saves a search. A bad error starts one.
+
+This is where a lot of AI tooling still loses me. The model returns a wrong shape, and the error is a stack trace inside a provider adapter. The fix is somewhere between the prompt, the schema, and the SDK. A good tool makes that boundary visible.
+
+Prisma is good at this. The schema error points to the field. The migration error tells me what changed. I still have to think, but I am not guessing.
+
+<Heading id="the-first-month" level={2}>
+  {'The first month'}
+</Heading>
+
+The first month is about maintenance. Does the tool upgrade cleanly? Does it have a way to escape? Does it still work when the happy path is not enough?
+
+Turborepo is a good example. The first ten minutes are easy. The first month is where the cache, the task graph, and the remote cache matter. The tool earns its place when the repository grows and the build stays fast.
+
+RAGFlow is a different kind of tool. The first ten minutes are a self-hosted install and a UI. The first month is parsing, chunking, retrieval quality, and upgrades. It stays because the problem is hard and the tool gives me the pieces. The demo is not why it stays.
+
+<Heading id="the-escape-hatch" level={2}>
+  {'The escape hatch'}
+</Heading>
+
+Every tool should have an escape hatch. A CLI flag, a config file, an API, a way to get the data out.
+
+A tool without an escape hatch is a trap. I will tolerate a lot of opinionated defaults if I can see the underlying thing and replace one piece. I will not tolerate a black box that owns the data.
+
+This is one reason I like open source for infrastructure. The license matters less than the ability to read the code when the error is strange, and to fix it without waiting for a roadmap.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would stop judging tools by the demo. I would ask for the upgrade guide, the error catalog, and the issue that has been open for a year. Those tell me more about the first month than any launch post.
+
+The tool I keep is the one whose upgrade guide is still accurate in month two.

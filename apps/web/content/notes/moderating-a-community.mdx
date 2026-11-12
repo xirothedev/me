@@ -1,0 +1,57 @@
+export const meta = {
+  title: 'Moderating a Developer Community',
+  description:
+    'Moderation is product work. The rules, the labels, and the appeals path decide who stays.',
+  kind: 'note',
+  label: 'Moderating a community',
+  order: 8,
+};
+
+A filter that matches single slurs will miss Vietnamese toxicity. “chăn rau” alone is harmless. “Đi chăn rau khu Cầu Giấy, cho xin số điện thoại em nhé?” is not.
+
+That is why [openmod-vn](https://github.com/xirothedev/openmod-vn) starts with context, not a word list.
+
+<Heading id="rules-before-tools" level={2}>
+  {'Rules before tools'}
+</Heading>
+
+The project is an open Vietnamese moderation dataset and a four-layer pipeline.
+
+- **L0 normalizer** handles diacritics, teencode, and leetspeak.
+- **L1 lexical matcher** checks 435+ terms with variant spellings.
+- **L2 compositional detector** reads 13 skip-gram rules and scores suspicion.
+- **L3 decision engine** returns an action, a severity, spans, and a rationale.
+
+The layers exist because the same word can be a slur, a joke, or a legitimate technical term. A keyword list will fail. The label set has to be specific enough for two annotators to agree, and the policy has to be specific enough for a moderator to apply.
+
+<Heading id="policy-profiles" level={2}>
+  {'Policy profiles'}
+</Heading>
+
+A community is not one audience. openmod-vn ships policy profiles: `kid_safe`, `standard_social`, and `relaxed_gaming`. Each profile sets its own thresholds.
+
+That is the part most moderation tools skip. A rule that is right for a gaming server is wrong for a school group. The policy is a product decision, not a model setting.
+
+<Heading id="the-bot-is-not-the-moderator" level={2}>
+  {'The bot is not the moderator'}
+</Heading>
+
+The pipeline returns an action, not a verdict. A message can be `ALLOW`, `WARN`, or `BLOCK`. A `WARN` can delete the message and reply with the reason. An `ALLOW` can leave it alone because the context is benign.
+
+The output includes the span and the category, so the moderator can see why. “Blocked” is not enough. “Blocked because this phrase targets a person in this sentence” is a decision someone can review.
+
+<Heading id="the-appeal-path" level={2}>
+  {'The appeal path'}
+</Heading>
+
+A disputed label needs a review path. The dataset is CC-BY-SA-4.0 with citations, and a label change goes through a review batch. The point is not to defend the model. The point is to make the label inspectable.
+
+A community needs the same path for a moderation action: a private review, the rule, the evidence, and a recorded outcome. The appeal path protects the person from a bad call and the moderator from the assumption that every call is final.
+
+<Heading id="what-i-would-change" level={2}>
+  {'What I would change'}
+</Heading>
+
+I would write the policy with the community, not for it. I would test the bot against the last batch of reports before turning it on. And I would publish the appeal outcome, even when the answer is “the action stands.”
+
+The label, the span, and the rationale are the product.

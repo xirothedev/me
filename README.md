@@ -1,159 +1,106 @@
-# Turborepo starter
+# Portfolio
 
-This Turborepo starter is maintained by the Turborepo core team.
+Personal site of Lê Thành Trung. Built with Next.js 16, React 19, Tailwind CSS v4, and MDX.
 
-## Using this example
+Live target: [xirothedev.resonance.io.vn](https://xirothedev.resonance.io.vn)
 
-Run the following command:
+The reading layout is inspired by [Lee Robinson](https://leerob.com). The footer keeps the credit: “Inspired by @leerob on X.” The code is a clean rebuild. The content and identity are original. The hero illustration is supplied by the author.
 
-```sh
-npx create-turbo@latest
-```
+## Routes
 
-## What's inside?
+- **Home** — work, two bio lengths, Notes, Blogs, and the Nha Trang hero illustration.
+- **10 Notes** — undated pieces on production, AI, repositories, docs, tools, and community.
+- **8 Blogs** — dated pieces on TaxEasy, Ecopick, OCR, Prisma 7, code review, and the team.
+- **`/hospital`** — the Hospital AI Assistant case study.
+- **`/bookmarks`** — links from GitHub stars and daily tools. It links to the hidden Lab.
+- **`/lab`** — the Tuner, a token-cost estimator, and a WCAG contrast checker. `noindex`.
+- **404** — the custom not-found page.
 
-This Turborepo includes the following packages/apps:
+The old clone routes redirect: `/tabs` → `/lab`, `/tabs/:slug` → `/lab`, `/bronco` → `/hospital`.
 
-### Apps and Packages
+## Stack
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `@next/eslint-plugin-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- Next.js 16 App Router, React 19, Turbopack
+- Tailwind CSS v4 with `@theme` tokens
+- MDX for Notes and Blogs, JSON for Bookmarks
+- `next/image`, `next/og`
+- Bun 1.4 tests
+- `@repo/ui` for the icon vocabulary
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+## Commands
 
 ```sh
-cd my-turborepo
-turbo build
+bun install
+bun dev                 # http://localhost:3000
+bun build
+bun start               # production server for apps/web
+bun run --cwd apps/web hero:build     # rebuild the hero WebP from the master art
+bun run --cwd apps/web og:build       # rebuild the 1200x630 OG card from the landscape art
+bun run --cwd apps/web favicon:build  # rebuild the favicon and Apple touch icon
+
+bun test                # unit tests
+bun check               # lint, typecheck, and boundaries
+bun fmt                 # format
+bun fmt --check         # format check
 ```
 
-Without global `turbo`, use your package manager:
+## Structure
 
-```sh
-cd my-turborepo
-npx turbo build
-bun exec turbo build
-bun exec turbo build
+```txt
+apps/web/
+  assets/brand/         favicon master art, not served
+  assets/hero/          hero master art, not served
+  assets/og/            landscape master art for the OG card
+  content/              Notes, Blogs, Hospital, Home bios, Bookmarks
+  scripts/              asset build scripts
+  public/               avatar, favicon, bookmark icons
+  src/app/              routes, metadata, sitemap, robots, OG image
+  src/components/       site, home, content, figures, lab
+  src/content/          schema and route registry
+  src/lib/              site config, work data, formatting
+packages/ui/            Icon + ICON entry point
+docs/plans/             content brief and copy gate
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+## Content model
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+Every Note and Blog is an MDX module with validated metadata:
 
-```sh
-turbo build --filter=docs
+```mdx
+export const meta = {
+  title: "How I Work",
+  description: "A short summary.",
+  kind: "note",
+  order: 1,
+};
 ```
 
-Without global `turbo`:
+- `kind`: `note`, `blog`, or `page`.
+- Notes carry `order`. Blogs carry `date` (`YYYY-MM`).
+- `src/content/registry.ts` is the single route source.
+- `src/lib/site-config.ts` holds the identity, social links, and the design credit.
+- `src/lib/work.ts` holds the five rows on Home.
 
-```sh
-npx turbo build --filter=docs
-bun exec turbo build --filter=docs
-bun exec turbo build --filter=docs
-```
+## Quality state
 
-### Develop
+- `bun fmt --check`, `bun lint`, `bun check`, `bun test`, and `bun build` pass.
+- The build renders 27 static routes.
+- Lighthouse scores 100 for accessibility, best practices, and SEO on `/`, `/hospital`, `/bookmarks`, and `/how-i-work`. `/lab` scores 100 for accessibility and best practices; its SEO score is lower because the page is `noindex` by design.
+- The home hero is an SVG scene over one local WebP: three masked planes, five palm canopies, foam, and sparkle. The ocean tide advances at rest and surges on hover; the park and city planes drift; palms sway up to 3°; reduced motion shows the untouched image.
+- The copy passed two independent review agents against `docs/plans/content-brief.md`; no blockers remain and every piece scores 2 or lower on the slop scale.
 
-To develop all apps and packages, run the following command:
+## Assets
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+The avatar is still a temporary placeholder. Replace `apps/web/public/avatar.webp` with the final headshot before public deployment. The site does not ship Lee Robinson’s other photographs, painting, or written content.
 
-```sh
-cd my-turborepo
-turbo dev
-```
+The hero master is `apps/web/assets/hero/nha-trang.png` (3 MB, not served). From `apps/web`, `bun run hero:build` writes the served WebP at `public/media/hero/nha-trang.webp`.
 
-Without global `turbo`, use your package manager:
+The OG card is `apps/web/src/app/opengraph-image.jpg` (1200x630). Its landscape master is `apps/web/assets/og/nha-trang-landscape.png`. From `apps/web`, `bun run og:build` rebuilds the card with ImageMagick and writes the JPEG.
 
-```sh
-cd my-turborepo
-npx turbo dev
-bun exec turbo dev
-bun exec turbo dev
-```
+The favicon master is `apps/web/assets/brand/favicon-source.jpg`. The build crops to the eye so the mark stays readable at 16 px. From `apps/web`, `bun run favicon:build` writes `public/favicon.ico`, `public/favicon.png`, and `public/apple-icon.png`.
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+Bookmark icons live in `apps/web/public/media/bookmarks/`. They are favicons from the linked sites, used at 16 px.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+## Deploy
 
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-bun exec turbo dev --filter=web
-bun exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-bun exec turbo login
-bun exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-bun exec turbo link
-bun exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+The target is `https://xirothedev.resonance.io.vn`. No deployment is configured in this repository. Set the domain in the hosting provider after the headshot is replaced.

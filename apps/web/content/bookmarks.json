@@ -1,0 +1,184 @@
+{
+  "groups": [
+    {
+      "title": "Daily",
+      "links": [
+        {
+          "title": "GitHub",
+          "href": "https://github.com",
+          "favicon": "/media/bookmarks/github.png"
+        },
+        {
+          "title": "Next.js docs",
+          "href": "https://nextjs.org/docs",
+          "favicon": "/media/bookmarks/nextjs.png"
+        },
+        {
+          "title": "NestJS docs",
+          "href": "https://docs.nestjs.com",
+          "favicon": "/media/bookmarks/nestjs.png"
+        },
+        {
+          "title": "Prisma docs",
+          "href": "https://www.prisma.io/docs",
+          "favicon": "/media/bookmarks/prisma.png"
+        },
+        {
+          "title": "Bun docs",
+          "href": "https://bun.com/docs",
+          "favicon": "/media/bookmarks/bun.png"
+        },
+        {
+          "title": "Turborepo docs",
+          "href": "https://turborepo.com/docs",
+          "favicon": "/media/bookmarks/turborepo.png"
+        },
+        {
+          "title": "Playwright docs",
+          "href": "https://playwright.dev/docs/intro",
+          "favicon": "/media/bookmarks/playwright.png"
+        },
+        {
+          "title": "OpenCode docs",
+          "href": "https://opencode.ai/docs",
+          "favicon": "/media/bookmarks/opencode.png"
+        }
+      ]
+    },
+    {
+      "title": "AI",
+      "links": [
+        {
+          "title": "Vercel AI SDK",
+          "href": "https://ai-sdk.dev/docs",
+          "favicon": "/media/bookmarks/ai-sdk.png"
+        },
+        {
+          "title": "RAGFlow docs",
+          "href": "https://ragflow.io/docs",
+          "favicon": "/media/bookmarks/ragflow.png"
+        },
+        {
+          "title": "Agent Skills spec",
+          "href": "https://agentskills.io",
+          "favicon": "/media/bookmarks/agent-skills.png"
+        },
+        {
+          "title": "Anthropic skills",
+          "href": "https://github.com/anthropics/skills",
+          "favicon": "/media/bookmarks/anthropic.png"
+        },
+        {
+          "title": "Context7",
+          "href": "https://github.com/upstash/context7",
+          "favicon": "/media/bookmarks/context7.png"
+        },
+        {
+          "title": "Cursor plugins",
+          "href": "https://github.com/cursor/plugins",
+          "favicon": "/media/bookmarks/cursor.png"
+        },
+        {
+          "title": "Chrome DevTools MCP",
+          "href": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+          "favicon": "/media/bookmarks/chrome.png"
+        }
+      ]
+    },
+    {
+      "title": "Infra",
+      "links": [
+        {
+          "title": "Docker docs",
+          "href": "https://docs.docker.com",
+          "favicon": "/media/bookmarks/docker.png"
+        },
+        {
+          "title": "Grafana docs",
+          "href": "https://grafana.com/docs",
+          "favicon": "/media/bookmarks/grafana.png"
+        },
+        {
+          "title": "OpenTelemetry",
+          "href": "https://opentelemetry.io/docs",
+          "favicon": "/media/bookmarks/opentelemetry.png"
+        },
+        {
+          "title": "Cloudflare docs",
+          "href": "https://developers.cloudflare.com",
+          "favicon": "/media/bookmarks/cloudflare.png"
+        },
+        {
+          "title": "Nginx docs",
+          "href": "https://nginx.org/en/docs",
+          "favicon": "/media/bookmarks/nginx.png"
+        },
+        {
+          "title": "MinIO docs",
+          "href": "https://min.io/docs",
+          "favicon": "/media/bookmarks/minio.png"
+        }
+      ]
+    },
+    {
+      "title": "Design",
+      "links": [
+        {
+          "title": "Tailwind CSS",
+          "href": "https://tailwindcss.com/docs",
+          "favicon": "/media/bookmarks/tailwind.png"
+        },
+        {
+          "title": "shadcn/ui",
+          "href": "https://ui.shadcn.com/docs",
+          "favicon": "/media/bookmarks/shadcn.png"
+        },
+        {
+          "title": "Motion",
+          "href": "https://motion.dev/docs",
+          "favicon": "/media/bookmarks/motion.png"
+        },
+        {
+          "title": "Type Scale",
+          "href": "https://typescale.com",
+          "favicon": "/media/bookmarks/typescale.png"
+        },
+        {
+          "title": "Modern Web Guidance",
+          "href": "https://github.com/GoogleChrome/modern-web-guidance",
+          "favicon": "/media/bookmarks/chrome.png"
+        }
+      ]
+    },
+    {
+      "title": "Reading",
+      "links": [
+        {
+          "title": "Google Engineering Practices",
+          "href": "https://google.github.io/eng-practices",
+          "favicon": "/media/bookmarks/google.png"
+        },
+        {
+          "title": "System Design Primer",
+          "href": "https://github.com/donnemartin/system-design-primer",
+          "favicon": "/media/bookmarks/github.png"
+        },
+        {
+          "title": "Build Your Own X",
+          "href": "https://github.com/codecrafters-io/build-your-own-x",
+          "favicon": "/media/bookmarks/github.png"
+        },
+        {
+          "title": "Simon Willison",
+          "href": "https://simonwillison.net",
+          "favicon": "/media/bookmarks/simonwillison.png"
+        },
+        {
+          "title": "Dan Luu",
+          "href": "https://danluu.com",
+          "favicon": null
+        }
+      ]
+    }
+  ]
+}

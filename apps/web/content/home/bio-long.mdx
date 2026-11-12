@@ -1,0 +1,41 @@
+In April 2025 I joined [The Resonance Team](https://github.com/The-Resonance-Team). My first project was TaxEasy, a tax platform. The first bug I saw did not produce a stack trace. It produced a tax agent who could not file.
+
+That is still the bar.
+
+<Heading id="before-production" level={2}>
+  {'Before production'}
+</Heading>
+
+I grew up in Nha Trang. I moved to Ho Chi Minh City to study computer science at International University, and I started building in public there. One of my first public projects was a Discord bot. I kept building small tools and public projects after that.
+
+The stack changed. The question stayed the same: the person on the other side of the request, and what happens when it fails.
+
+<Heading id="the-work" level={2}>
+  {'The work'}
+</Heading>
+
+The team runs four platforms. Each one has a different constraint.
+
+**TaxEasy** is a tax management SaaS. The constraint is the deadline. The platform ingests invoices and receipts, extracts the fields, and watches for anomalies. A failed document is a tax agent who cannot file.
+
+**Ecopick** is a marketplace and tournament platform. The constraint is the state. Rentals, listings, inspections, and refunds each have a lifecycle, and the code has to respect it.
+
+**XaDaoXa** is a government e-services platform. The constraint is trust. Citizens use a Zalo MiniApp; commune officials use a staff CMS. The work is authentication, permissions, forms, and keeping the service up when a deploy goes wrong.
+
+The **Hospital AI Assistant** is the newest. A provincial hospital in Phú Thọ keeps its documents inside its own network. The constraint is custody. We run local models on an NVIDIA DGX Spark, self-host RAGFlow, and expose retrieval to an agent harness through a proxy.
+
+<Heading id="how-i-work" level={2}>
+  {'How I work'}
+</Heading>
+
+I care about the index that is missing, the retry that loops, the error message that says nothing, and the dashboard nobody reads until the page is down.
+
+I also care about the repository as a product. A service should expose domain verbs, not the shape of its database. A module should have one obvious place to change. An agent should be able to read the rules and follow them. That is why I wrote [Agent Skills](https://github.com/xirothedev/agent-skills), a set of NestJS rules for coding agents, and [opencode-office-plugin](https://github.com/xirothedev/opencode-office-plugin), which lets an agent work with Word, Excel, and PowerPoint files instead of pretending they are plain text.
+
+<Heading id="what-im-doing-now" level={2}>
+  {'What I’m doing now'}
+</Heading>
+
+I am finishing my B.S. in Computer Science in 2029. I am leading the team, shipping code, and writing about the parts of the job that do not fit in a launch post: migrations, review queues, retrieval that misses, and the quiet work of keeping a platform alive.
+
+I am open to remote software engineering roles where the product has real users and the team ships. The best way to reach me is [email](mailto:lethanhtrung.trungle@gmail.com).

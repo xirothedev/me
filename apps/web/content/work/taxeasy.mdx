@@ -1,0 +1,69 @@
+export const meta = {
+  title: 'TaxEasy',
+  description:
+    'A private tax management SaaS for tax agents and businesses: document ingest, OCR extraction, anomaly detection, and observability across a five-app monorepo.',
+  kind: 'page',
+};
+
+<Heading id="overview" level={2}>
+  {'Overview'}
+</Heading>
+
+TaxEasy is a private tax management SaaS for tax agents and businesses. The work centers on documents: invoices, receipts, bank notifications, declarations, and the evidence behind a filing.
+
+The core constraint is the deadline. A failed document is not only a technical error. It is a tax agent who cannot file on time.
+
+<Heading id="context-and-constraint" level={2}>
+  {'Context and constraint'}
+</Heading>
+
+The platform serves people working against filing deadlines. When an invoice or receipt does not arrive, the support problem is urgent and specific. The system has to show where a document is in the pipeline, why it failed, and what to do next.
+
+That changes what "done" means. Reliability, visible job state, and a clear runbook matter as much as feature delivery.
+
+<Heading id="role-and-ownership" level={2}>
+  {'My role and ownership'}
+</Heading>
+
+I worked on TaxEasy as part of The Resonance Team (Technical Lead, Apr 2025 to present) in a team of five, contributing across platform delivery and operations. My ownership included implementation work and the engineering practices that kept the system operable: pipeline behavior, failure handling, build and deploy improvements, and cross-app consistency.
+
+<Heading id="system-and-capabilities" level={2}>
+  {'System and capabilities'}
+</Heading>
+
+- **Monorepo and apps:** 5 apps in a Turborepo monorepo (`api`, `web`, `portal`, `mobile-rn`, `mobile-flutter`).
+- **Document ingest:** Email ingest flow via Cloudflare Email Routing → Worker → webhook → NestJS → PostgreSQL + S3. The platform processes XML invoices, SMS bank notifications, and receipt OCR through BullMQ.
+- **AI and extraction:** Vercel AI SDK v7+ LLM gateway with multi-provider abstraction, and an OCR vision pipeline for receipt and invoice extraction with zod-validated structured output.
+- **Anomaly detection:** 8 detectors (including late filing, missing declaration, partner KPI breach, high refund rate, and revenue mismatch), with an auto-close lifecycle and ZNS notifications.
+- **Operations visibility:** Observability with Grafana, Loki, Tempo, Prometheus, and an OpenTelemetry collector so document and job states can be traced.
+
+<Heading id="technical-highlights" level={2}>
+  {'Technical highlights'}
+</Heading>
+
+- **Queues and job states:** BullMQ jobs can succeed, fail, retry, or wait for a human. Making that state visible is a key product behavior for support and on-call response.
+- **Build and delivery:** Docker build time reduced from about 10 minutes to about 30 seconds with pnpm cache mounts and multi-stage builds. Self-hosted GitHub Actions runners with Turborepo remote cache; tag-push CD (build → GHCR → VPS over SSH → docker compose); Nginx reverse proxy and SSL termination across 5 domains.
+- **Cross-platform parity:** React Native app brought to pixel parity with a Flutter baseline across 12 money screens, with token parity checked by a Jest diff and behavioral parity by 6 Maestro flows.
+- **Data layer maintenance:** Prisma 7 `prisma-client` migration across 75 files and missing foreign-key indexes added.
+
+<Heading id="challenges-and-trade-offs" level={2}>
+  {'Challenges and trade-offs'}
+</Heading>
+
+The hardest trade-off was balancing fast delivery with operational clarity. A detector that flags everything becomes noise for tax agents, and a pipeline without explicit states turns every failure into a long hunt.
+
+We treated lifecycle and visibility as first-class work: detector flags needed owners and resolution paths (auto-close and notifications), and failed documents needed a short runbook path (find the job, inspect state and parser/OCR/schema results, replay or route to a human, and communicate clearly).
+
+<Heading id="outcome-and-status" level={2}>
+  {'Outcome and status'}
+</Heading>
+
+- **Status:** Private platform.
+- **Scale signal:** 309 merged PRs in the main platform repository (verified via GitHub CLI).
+- **Result in practice:** The platform supports document ingest, extraction, anomaly workflows, and observable operations for tax agents working under deadline pressure.
+
+<Heading id="what-i-would-improve" level={2}>
+  {'What I would improve'}
+</Heading>
+
+I would build the failure queue and document lifecycle instrumentation earlier, before expanding detection coverage. I would also invest sooner in support-facing error messages and runbook quality, because those are often the fastest way to reduce the real cost of failure for users.

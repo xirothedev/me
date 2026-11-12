@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.tsx"
+    ".": "./index.ts"
   },
   "scripts": {
-    "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "check": "bun run lint && bun run format:check && bun --no-script check",
+    "lint": "bun --no-script lint --max-warnings=0 --allow-unsupported",
+    "format": "bun fmt",
+    "format:check": "bun fmt --check",
+    "check-types": "bun --no-script check"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
@@ -17,6 +20,7 @@
     "typescript": "7.0.2"
   },
   "dependencies": {
+    "lucide-react": "^1.72.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   }
