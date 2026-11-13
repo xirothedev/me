@@ -1,11 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { PageEntry } from '@/content/registry';
+import type { ComponentType } from 'react';
+import type { ContentMeta } from '@/content/schema';
 import { formatMonth } from '@/lib/format';
 import { siteConfig } from '@/lib/site-config';
 
 interface ArticleProps {
-  entry: PageEntry;
+  entry: {
+    meta: ContentMeta;
+    Content: ComponentType;
+  };
 }
 
 export function Article({ entry }: ArticleProps) {
