@@ -16,6 +16,7 @@ const OUTPUTS = [
   { token: 'major', width: [0, 18, 30, 42] },
 ];
 
+export const figureRegistration = { name: 'llm' } as const;
 export function LlmFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
 

@@ -18,6 +18,7 @@ const DOTS = [
   { x: 140, y: 78 },
 ];
 
+export const figureRegistration = { name: 'training-loop' } as const;
 export function TrainingLoopFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
   const dot = DOTS[player.step];
