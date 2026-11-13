@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Article } from '@/components/site/article';
-import { getWorkPage, workPageSlugs } from '@/content/work-registry';
-import { work } from '@/lib/work';
+import { getWorkPage, workPageSlugs } from '@/content/work-catalog';
 import { siteConfig } from '@/lib/site-config';
 
 interface PageProps {
@@ -20,7 +19,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const entry = getWorkPage(slug);
   if (!entry) return {};
-  const workEntry = work.find((item) => item.slug === slug);
   const description = entry.meta.description || siteConfig.description;
   const title = entry.meta.title;
   return {
@@ -33,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url: `/work/${slug}`,
     },
-    other: workEntry ? { 'work:status': workEntry.meta } : undefined,
+    other: { 'work:status': entry.status },
   };
 }
 
@@ -41,7 +39,6 @@ export default async function WorkPage({ params }: PageProps) {
   const { slug } = await params;
   const entry = getWorkPage(slug);
   if (!entry) notFound();
-  const workEntry = work.find((item) => item.slug === slug);
 
   return (
     <>
@@ -52,9 +49,7 @@ export default async function WorkPage({ params }: PageProps) {
         >
           ← Work
         </Link>
-        {workEntry ? (
-          <p className="font-ui text-meta text-ink-soft mt-3">{workEntry.meta}</p>
-        ) : null}
+        <p className="font-ui text-meta text-ink-soft mt-3">{entry.status}</p>
       </div>
       <Article entry={entry} />
     </>

@@ -18,6 +18,7 @@ const POINTS = [
   { label: 'woman', x: 62, y: 62, tone: 'pink' },
 ];
 
+export const figureRegistration = { name: 'embeddings' } as const;
 export function EmbeddingsFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
 

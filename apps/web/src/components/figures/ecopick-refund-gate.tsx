@@ -11,6 +11,7 @@ const CAPTIONS = [
   'The result is recorded; human review handles exceptions and unclear cases.',
 ];
 
+export const figureRegistration = { name: 'ecopick-refund-gate' } as const;
 export function EcopickRefundGateFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
 

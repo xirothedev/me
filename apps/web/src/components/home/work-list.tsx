@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ICON, Icon } from '@repo/ui';
-import { work } from '@/lib/work';
+import { workEntries } from '@/content/work-catalog';
 
 export function WorkList() {
   return (
@@ -12,7 +12,7 @@ export function WorkList() {
         Work
       </h2>
       <div>
-        {work.map((entry) => {
+        {workEntries.map((entry) => {
           const body = (
             <>
               <span className="min-w-0">
@@ -27,8 +27,8 @@ export function WorkList() {
                 </span>
               </span>
               <span className="font-ui text-meta text-ink-soft flex items-center gap-1 whitespace-nowrap sm:justify-self-end">
-                {entry.meta}
-                {entry.external ? <Icon icon={ICON.external} size="xs" /> : null}
+                {entry.status}
+                {entry.type === 'external' ? <Icon icon={ICON.external} size="xs" /> : null}
               </span>
             </>
           );
@@ -36,7 +36,7 @@ export function WorkList() {
           const className =
             'border-line grid grid-cols-1 items-baseline gap-1 border-b py-[0.85em] no-underline sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6';
 
-          if (entry.href && entry.external) {
+          if (entry.type === 'external') {
             return (
               <a
                 key={entry.name}
@@ -50,18 +50,10 @@ export function WorkList() {
             );
           }
 
-          if (entry.href) {
-            return (
-              <Link key={entry.name} href={entry.href} className={`${className} text-ink`}>
-                {body}
-              </Link>
-            );
-          }
-
           return (
-            <div key={entry.name} className={className}>
+            <Link key={entry.name} href={entry.href} className={`${className} text-ink`}>
               {body}
-            </div>
+            </Link>
           );
         })}
       </div>

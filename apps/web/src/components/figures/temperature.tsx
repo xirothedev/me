@@ -39,6 +39,7 @@ const CAPTIONS = [
   'The sample button draws one token from the distribution',
 ];
 
+export const figureRegistration = { name: 'temperature' } as const;
 export function TemperatureFigure() {
   const player = useFigurePlayer(4);
   const [temperature, setTemperature] = useState(0.8);

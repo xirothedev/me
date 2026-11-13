@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { blogs, notes, pages } from '@/content/registry';
-import { workPageSlugs } from '@/content/work-registry';
+import { workPageSlugs } from '@/content/work-catalog';
 import { siteConfig } from '@/lib/site-config';
 
 const LAST_MODIFIED = new Date('2026-11-11T00:00:00Z');

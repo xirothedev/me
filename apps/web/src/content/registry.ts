@@ -36,7 +36,13 @@ export interface PageEntry {
   Content: ComponentType;
 }
 
-const SOURCES = [
+interface PageSource {
+  slug: string;
+  meta: unknown;
+  Content: ComponentType;
+}
+
+const SOURCES: PageSource[] = [
   { slug: 'how-i-work', meta: howIWorkMeta, Content: HowIWork },
   {
     slug: 'how-llms-fail-in-production',
@@ -84,28 +90,32 @@ const SOURCES = [
     Content: ResonanceTeam,
   },
   { slug: 'hospital', meta: hospitalMeta, Content: Hospital },
-] as const;
+];
 
-const ENTRIES: PageEntry[] = SOURCES.map((source) => ({
-  slug: source.slug,
-  meta: contentMetaSchema.parse(source.meta),
-  Content: source.Content,
-}));
+function parsePageEntry(source: PageSource): PageEntry {
+  return {
+    slug: source.slug,
+    meta: contentMetaSchema.parse(source.meta),
+    Content: source.Content,
+  };
+}
 
-const BY_SLUG = new Map(ENTRIES.map((entry) => [entry.slug, entry]));
+const entries = SOURCES.map(parsePageEntry);
+const entriesBySlug = new Map(entries.map((entry) => [entry.slug, entry]));
 
-export const notes = ENTRIES.filter((entry) => entry.meta.kind === 'note').sort(
-  (left, right) => (left.meta.order ?? 0) - (right.meta.order ?? 0),
-);
+function byNoteOrder(left: PageEntry, right: PageEntry): number {
+  return (left.meta.order ?? 0) - (right.meta.order ?? 0);
+}
 
-export const blogs = ENTRIES.filter((entry) => entry.meta.kind === 'blog').sort((left, right) =>
-  (right.meta.date ?? '').localeCompare(left.meta.date ?? ''),
-);
+function byBlogDateDesc(left: PageEntry, right: PageEntry): number {
+  return (right.meta.date ?? '').localeCompare(left.meta.date ?? '');
+}
 
-export const pages = ENTRIES.filter((entry) => entry.meta.kind === 'page');
-
-export const pageSlugs = ENTRIES.map((entry) => entry.slug);
+export const notes = entries.filter((entry) => entry.meta.kind === 'note').sort(byNoteOrder);
+export const blogs = entries.filter((entry) => entry.meta.kind === 'blog').sort(byBlogDateDesc);
+export const pages = entries.filter((entry) => entry.meta.kind === 'page');
+export const pageSlugs = entries.map((entry) => entry.slug);
 
 export function getPage(slug: string): PageEntry | undefined {
-  return BY_SLUG.get(slug);
+  return entriesBySlug.get(slug);
 }
