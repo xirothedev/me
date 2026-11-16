@@ -1,0 +1,32 @@
+# Lê Thành Trung (xirothedev)
+
+> AI Driven Software Engineer and Technical Lead at The Resonance Team.
+> Canonical site: https://xirothedev.resonance.io.vn
+
+## Summary
+Lê Thành Trung is an AI-driven software engineer based in Vietnam (studying Computer Science at International University, Vietnam National University HCMC). He builds and ships production systems for tax, marketplace, government, and healthcare contexts, including AI features such as OCR/document extraction and document retrieval (RAG).
+
+## Services
+- AI and software engineering for remote roles and contract engagements
+- AI feature integration: OCR/document extraction, document processing, RAG/document retrieval assistants
+- Backend and platform development: TypeScript, Node.js, NestJS, Next.js, product and service delivery
+
+## Selected work & projects
+- TaxEasy: tax management SaaS with invoice/receipt ingestion, field extraction, and anomaly monitoring
+- Ecopick: marketplace and tournament platform with lifecycle-driven domains (rentals, listings, inspections, refunds)
+- XaDaoXa: government e-services platform (citizen Zalo MiniApp and staff CMS)
+- Hospital AI Assistant: on-premise document retrieval/RAG for a provincial hospital environment
+- Open source: https://github.com/xirothedev/agent-skills
+- Open source: https://github.com/xirothedev/opencode-office-plugin
+- Portfolio and writing: https://xirothedev.resonance.io.vn
+
+## Work with me
+Open to remote software engineering roles and contract engagements where the product has real users and the team ships.
+Preferred contact: lethanhtrung.trungle@gmail.com
+
+## Links
+- Website: https://xirothedev.resonance.io.vn
+- Email: mailto:lethanhtrung.trungle@gmail.com
+- GitHub: https://github.com/xirothedev
+- X: https://x.com/xirothedev
+- LinkedIn: https://www.linkedin.com/in/xirothedev/

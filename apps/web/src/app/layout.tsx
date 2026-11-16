@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { siteConfig } from '@/lib/site-config';
 import './globals.css';
 
@@ -90,6 +91,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
         />
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        ) : null}
       </body>
     </html>
   );
