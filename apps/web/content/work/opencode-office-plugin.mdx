@@ -1,0 +1,40 @@
+export const meta = {
+  title: 'OpenCode Office Plugin',
+  description:
+    'An OpenCode 2 plugin that automates Office document work through a draft lifecycle: safe edits, version history, review comments, and format conversion for DOCX, XLSX, PPTX, PDF, and images.',
+  kind: 'page',
+};
+
+<Heading id="overview" level={2}>
+  {'Overview'}
+</Heading>
+
+OpenCode Office Plugin (`@xirothedev/openoffice-plugin-opencode`) is a plugin for OpenCode 2. It registers the `officecli` tool and routes Office document operations through one path, so an agent does not edit binary Office files as plain text.
+
+- **GitHub:** [xirothedev/opencode-office-plugin](https://github.com/xirothedev/opencode-office-plugin)
+- **npm:** [`@xirothedev/openoffice-plugin-opencode`](https://www.npmjs.com/package/@xirothedev/openoffice-plugin-opencode)
+
+<Heading id="draft-lifecycle" level={2}>
+  {'Draft lifecycle'}
+</Heading>
+
+Each change lands in a draft under an exclusive lock. The real file does not change until `accept`.
+
+- `create`, `edit`, and `comment` update the draft.
+- `read`, `diff`, and `preview` inspect the draft without writing the real file.
+- `accept` writes the real file, records a snapshot, and releases the lock.
+- `undo` discards the draft. `history` lists snapshots, and `revert` restores one as a new draft.
+
+<Heading id="supported-work" level={2}>
+  {'Supported work'}
+</Heading>
+
+The tool supports a read and write cycle for text, PDF, DOCX, XLSX, PPTX, and images through a Markdown pipeline. PDF write needs a LaTeX engine, such as `xelatex`, or a configured engine.
+
+The action set also covers review and output flows: comments and track changes, export, preview, metadata, watermark, annotate, and validate. Template flows include `clone`, `substitute`, `generate`, and `verify-l3` for format-preserving document generation.
+
+<Heading id="install" level={2}>
+  {'Install'}
+</Heading>
+
+Add the package to the OpenCode 2 `plugins` config and install the `office` skill so the agent routes document work through `officecli`. See the repository docs for setup, options, and format-specific skills.
