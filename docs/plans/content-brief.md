@@ -157,7 +157,7 @@ Additional banned phrases: “in today’s fast-paced world”, “it’s import
 
 ### Home
 
-- Work first. Five rows: TaxEasy, Ecopick, XaDaoXa, Hospital AI Assistant, Agent Skills.
+- Work first. Six rows: TaxEasy, Ecopick, XaDaoXa, OpenCode Office Plugin, Hospital AI Assistant, Agent Skills.
 - Default bio: 60–90 words. Work, AI, writing.
 - Long bio: 600–900 words. Start at the tax platform, then Nha Trang, IU, Discord bots, The Resonance Team, the hospital, writing, open source, degree, CTA.
 - Notes and Blogs lists stay.

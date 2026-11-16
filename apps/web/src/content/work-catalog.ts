@@ -2,6 +2,9 @@ import type { ComponentType } from 'react';
 import TaxEasy, { meta as taxEasyMeta } from '@content/work/taxeasy.mdx';
 import Ecopick, { meta as ecopickMeta } from '@content/work/ecopick.mdx';
 import XaDaoXa, { meta as xadaoxaMeta } from '@content/work/xadaoxa.mdx';
+import OpenCodeOfficePlugin, {
+  meta as openCodeOfficePluginMeta,
+} from '@content/work/opencode-office-plugin.mdx';
 import { contentMetaSchema, type ContentMeta } from './schema';
 
 interface WorkPageSource {
@@ -76,6 +79,16 @@ const PAGE_SOURCES: WorkPageSource[] = [
     kind: 'Government e-services',
     summary: 'A Zalo MiniApp for citizens and a staff CMS for commune officials.',
     status: 'Live for citizens · 203 PRs merged',
+  },
+  {
+    slug: 'opencode-office-plugin',
+    meta: openCodeOfficePluginMeta,
+    Content: OpenCodeOfficePlugin,
+    name: 'OpenCode Office Plugin',
+    kind: 'OpenCode plugin',
+    summary:
+      'Draft-first Office document automation for OpenCode: read, edit, review, and convert DOCX, XLSX, PPTX, PDF, and images through one safe tool.',
+    status: 'Open source',
   },
 ];
 

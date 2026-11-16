@@ -3,7 +3,7 @@ import { blogs, notes, pages } from '@/content/registry';
 import { workPageSlugs } from '@/content/work-catalog';
 import { siteConfig } from '@/lib/site-config';
 
-const LAST_MODIFIED = new Date('2026-11-11T00:00:00Z');
+const LAST_MODIFIED = new Date('2026-11-16T00:00:00Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries = [

@@ -57,7 +57,7 @@ apps/web/
   src/app/              routes, metadata, sitemap, robots, OG image
   src/components/       site, home, content, figures, lab
   src/content/          schema and route registry
-  src/lib/              site config, work data, formatting
+  src/lib/              site config and formatting
 packages/ui/            Icon + ICON entry point
 docs/plans/             content brief and copy gate
 ```
@@ -77,9 +77,9 @@ export const meta = {
 
 - `kind`: `note`, `blog`, or `page`.
 - Notes carry `order`. Blogs carry `date` (`YYYY-MM`).
-- `src/content/registry.ts` is the single route source.
+- `src/content/registry.ts` is the single route source for Notes, Blogs, and other pages.
+- `src/content/work-catalog.ts` is the single source for Work pages and Home Work entries.
 - `src/lib/site-config.ts` holds the identity, social links, and the design credit.
-- `src/lib/work.ts` holds the five rows on Home.
 
 ## Quality state
 
