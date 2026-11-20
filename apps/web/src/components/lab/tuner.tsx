@@ -59,7 +59,7 @@ export function Tuner() {
         if (frequency) {
           history.push(frequency);
           if (history.length > 5) history.shift();
-          const sorted = [...history].sort((left, right) => left - right);
+          const sorted = history.toSorted((left, right) => left - right);
           const stable = sorted[Math.floor(sorted.length / 2)];
           setReading(frequencyToReading(stable));
         }
