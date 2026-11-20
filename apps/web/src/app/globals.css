@@ -207,6 +207,37 @@
 }
 
 @layer components {
+  .content-frame figure:not(:first-of-type) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto none auto 300px;
+  }
+
+  .bio-modes:has(#bio-default:checked) .bio-long,
+  .bio-modes:has(#bio-long:checked) .bio-default {
+    display: none;
+  }
+
+  .bio-modes:has(#bio-default:checked) label[for='bio-default'],
+  .bio-modes:has(#bio-long:checked) label[for='bio-long'] {
+    color: var(--ink);
+  }
+
+  .bio-modes:has(#bio-default:checked) label[for='bio-default']::after,
+  .bio-modes:has(#bio-long:checked) label[for='bio-long']::after {
+    position: absolute;
+    inset-inline: 0;
+    bottom: -0.62rem;
+    height: 1px;
+    background: currentColor;
+    content: '';
+  }
+
+  #bio-default:focus-visible ~ .bio-header label[for='bio-default'],
+  #bio-long:focus-visible ~ .bio-header label[for='bio-long'] {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
   .home-hero {
     --hero-wind: 0;
     transition: --hero-wind 1.2s ease-out;
@@ -218,15 +249,22 @@
     overflow: hidden;
   }
 
-  .hero-scene {
+  .hero-base,
+  .hero-plane,
+  .hero-details {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    display: block;
   }
 
-  .hero-plane,
-  .hero-palm {
-    will-change: transform;
+  .hero-base,
+  .hero-plane {
+    object-fit: cover;
+  }
+
+  .hero-details {
+    pointer-events: none;
   }
 
   .hero-ocean {

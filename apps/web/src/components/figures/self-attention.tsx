@@ -20,7 +20,6 @@ const CAPTIONS = [
   'The model links "it" back to "cat"',
 ];
 
-export const figureRegistration = { name: 'self-attention' } as const;
 export function SelfAttentionFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
   const [manual, setManual] = useState<string | null>(null);

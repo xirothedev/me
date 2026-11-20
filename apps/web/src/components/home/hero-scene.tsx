@@ -1,6 +1,9 @@
-import { preload } from 'react-dom';
+import Image from 'next/image';
 
 const HERO_IMAGE = '/media/hero/nha-trang.webp';
+const OCEAN_PLANE = '/media/hero/plane-ocean.webp';
+const PARK_PLANE = '/media/hero/plane-park.webp';
+const CITY_PLANE = '/media/hero/plane-city.webp';
 
 const PALMS = [
   { x: 460, y: 310, rx: 72, ry: 64, delay: '-0.8s' },
@@ -20,35 +23,58 @@ const SPARKLES = [
 
 const FOAM_PATHS = [
   'M 209 0 C 210.0 21.3, 216.8 85.3, 215 128 C 213.2 170.7, 201.8 213.3, 198 256 C 194.2 298.7, 193.3 341.3, 192 384 C 190.7 426.7, 191.0 469.3, 190 512 C 189.0 554.7, 186.8 597.3, 186 640 C 185.2 682.7, 186.0 725.3, 185 768 C 184.0 810.7, 181.7 853.3, 180 896 C 178.3 938.7, 178.3 981.3, 175 1024 C 171.7 1066.7, 163.2 1109.3, 160 1152 C 156.8 1194.7, 157.0 1237.3, 156 1280 C 155.0 1322.7, 154.7 1365.3, 154 1408 C 153.3 1450.7, 152.3 1514.7, 152 1536',
-  'M 184 0 C 185.0 21.3, 191.8 85.3, 190 128 C 188.2 170.7, 176.8 213.3, 173 256 C 169.2 298.7, 168.3 341.3, 167 384 C 165.7 426.7, 166.0 469.3, 165 512 C 164.0 554.7, 161.8 597.3, 161 640 C 160.2 682.7, 161.0 725.3, 160 768 C 159.0 810.7, 156.7 853.3, 155 896 C 153.3 938.7, 153.3 981.3, 150 1024 C 146.7 1066.7, 138.2 1109.3, 135 1152 C 131.8 1194.7, 132.0 1237.3, 131 1280 C 130.0 1322.7, 129.7 1365.3, 129 1408 C 128.3 1450.7, 127.3 1514.7, 127 1536',
+  'M 184 0 C 185.0 21.3, 191.8 85.3, 190 128 C 188.2 170.7, 176.8 213.3, 173 256 C 169.2 298.7, 168.3 341.3, 167 384 C 165.7 426.7, 166.0 469.3, 165 512 C 164.0 554.7, 161.8 597.3, 161 640 C 160.2 682.7, 161.0 725.3, 160 768 C 159.0 810.7, 156.8 853.3, 155 896 C 153.3 938.7, 153.3 981.3, 150 1024 C 146.7 1066.7, 138.2 1109.3, 135 1152 C 131.8 1194.7, 132.0 1237.3, 131 1280 C 130.0 1322.7, 129.7 1365.3, 129 1408 C 128.3 1450.7, 127.3 1514.7, 127 1536',
   'M 154 0 C 155.0 21.3, 161.8 85.3, 160 128 C 158.2 170.7, 146.8 213.3, 143 256 C 139.2 298.7, 138.3 341.3, 137 384 C 135.7 426.7, 136.0 469.3, 135 512 C 134.0 554.7, 131.8 597.3, 131 640 C 130.2 682.7, 131.0 725.3, 130 768 C 129.0 810.7, 126.7 853.3, 125 896 C 123.3 938.7, 123.3 981.3, 120 1024 C 116.7 1066.7, 108.2 1109.3, 105 1152 C 101.8 1194.7, 102.0 1237.3, 101 1280 C 100.0 1322.7, 99.7 1365.3, 99 1408 C 98.3 1450.7, 97.3 1514.7, 97 1536',
 ];
 
+// ponytail: three baked plane images, one per motion layer. Upgrade if: art direction changes mask geometry.
 export function HeroScene() {
-  preload(HERO_IMAGE, { as: 'image', fetchPriority: 'high' });
-
   return (
     <div
       className="home-hero"
       role="img"
       aria-label="A top-down illustration of a tropical beach, palm-lined park, and bright city street."
     >
+      <Image
+        className="hero-base"
+        src={HERO_IMAGE}
+        alt=""
+        width={1024}
+        height={1536}
+        priority
+        unoptimized
+      />
+      <Image
+        className="hero-plane hero-ocean"
+        src={OCEAN_PLANE}
+        alt=""
+        width={1024}
+        height={1536}
+        loading="eager"
+        unoptimized
+      />
+      <Image
+        className="hero-plane hero-park"
+        src={PARK_PLANE}
+        alt=""
+        width={1024}
+        height={1536}
+        loading="eager"
+        unoptimized
+      />
+
       <svg
-        className="hero-scene"
+        className="hero-scene hero-details"
         viewBox="0 0 1024 1536"
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
         focusable="false"
       >
         <defs>
+          <image id="hero-photo" href={HERO_IMAGE} width="1024" height="1536" />
+
           <filter id="hero-soft-30" x="-30%" y="-10%" width="160%" height="120%">
             <feGaussianBlur stdDeviation="30" />
-          </filter>
-          <filter id="hero-soft-26" x="-10%" y="-10%" width="120%" height="120%">
-            <feGaussianBlur stdDeviation="26" />
-          </filter>
-          <filter id="hero-soft-18" x="-10%" y="-10%" width="120%" height="120%">
-            <feGaussianBlur stdDeviation="18" />
           </filter>
           <filter id="hero-soft-14" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="14" />
@@ -59,28 +85,6 @@ export function HeroScene() {
               d="M 241 0 L 247 128 L 230 256 L 224 384 L 222 512 L 218 640 L 217 768 L 212 896 L 207 1024 L 192 1152 L 188 1280 L 186 1408 L 184 1536 L 0 1536 L 0 0 Z"
               fill="#fff"
               filter="url(#hero-soft-30)"
-            />
-          </mask>
-
-          <mask id="hero-park" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1536">
-            <rect
-              x="320"
-              y="-100"
-              width="386"
-              height="1736"
-              fill="#fff"
-              filter="url(#hero-soft-26)"
-            />
-          </mask>
-
-          <mask id="hero-city" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1536">
-            <rect
-              x="690"
-              y="-100"
-              width="334"
-              height="1736"
-              fill="#fff"
-              filter="url(#hero-soft-18)"
             />
           </mask>
 
@@ -106,14 +110,7 @@ export function HeroScene() {
           ))}
         </defs>
 
-        <image href={HERO_IMAGE} width="1024" height="1536" />
-
-        <g className="hero-plane hero-ocean" mask="url(#hero-ocean)">
-          <image href={HERO_IMAGE} width="1024" height="1536" />
-        </g>
-
-        <g className="hero-plane hero-park" mask="url(#hero-park)">
-          <image href={HERO_IMAGE} width="1024" height="1536" />
+        <g className="hero-plane hero-park">
           {PALMS.map((palm, index) => (
             <g
               key={`${palm.x}-${palm.y}`}
@@ -124,13 +121,17 @@ export function HeroScene() {
                 animationDelay: palm.delay,
               }}
             >
-              <image href={HERO_IMAGE} width="1024" height="1536" />
+              <svg
+                x={palm.x - palm.rx}
+                y={palm.y - palm.ry}
+                width={palm.rx * 2}
+                height={palm.ry * 2}
+                viewBox={`${palm.x - palm.rx} ${palm.y - palm.ry} ${palm.rx * 2} ${palm.ry * 2}`}
+              >
+                <use href="#hero-photo" />
+              </svg>
             </g>
           ))}
-        </g>
-
-        <g className="hero-plane hero-city" mask="url(#hero-city)">
-          <image href={HERO_IMAGE} width="1024" height="1536" />
         </g>
 
         <g className="hero-foam" mask="url(#hero-ocean)">
@@ -152,6 +153,16 @@ export function HeroScene() {
           ))}
         </g>
       </svg>
+
+      <Image
+        className="hero-plane hero-city"
+        src={CITY_PLANE}
+        alt=""
+        width={1024}
+        height={1536}
+        loading="eager"
+        unoptimized
+      />
     </div>
   );
 }

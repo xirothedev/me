@@ -42,7 +42,6 @@ function Pill({
   );
 }
 
-export const figureRegistration = { name: 'taxeasy-ingest' } as const;
 export function TaxEasyIngestFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
   const step = player.step;

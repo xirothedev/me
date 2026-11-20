@@ -1,15 +1,5 @@
 import dynamic from 'next/dynamic';
 import { createElement, type ComponentType } from 'react';
-import { figureRegistration as ecopickRefundGateRegistration } from './ecopick-refund-gate';
-import { figureRegistration as embeddingsRegistration } from './embeddings';
-import { figureRegistration as llmRegistration } from './llm';
-import { figureRegistration as rlhfRegistration } from './rlhf';
-import { figureRegistration as selfAttentionRegistration } from './self-attention';
-import { figureRegistration as taxEasyIngestRegistration } from './taxeasy-ingest';
-import { figureRegistration as temperatureRegistration } from './temperature';
-import { figureRegistration as tokenizationRegistration } from './tokenization';
-import { figureRegistration as trainingLoopRegistration } from './training-loop';
-import { figureRegistration as xaDaoXaSubmissionFlowRegistration } from './xadaoxa-submission-flow';
 
 interface FigureEntry {
   name: string;
@@ -27,65 +17,65 @@ function FigureLoading() {
 
 const FIGURES: FigureEntry[] = [
   {
-    name: llmRegistration.name,
+    name: 'llm',
     Component: dynamic(() => import('./llm').then((module) => module.LlmFigure), {
       loading: FigureLoading,
     }),
   },
   {
-    name: tokenizationRegistration.name,
+    name: 'tokenization',
     Component: dynamic(() => import('./tokenization').then((module) => module.TokenizationFigure), {
       loading: FigureLoading,
     }),
   },
   {
-    name: trainingLoopRegistration.name,
+    name: 'training-loop',
     Component: dynamic(
       () => import('./training-loop').then((module) => module.TrainingLoopFigure),
       { loading: FigureLoading },
     ),
   },
   {
-    name: embeddingsRegistration.name,
+    name: 'embeddings',
     Component: dynamic(() => import('./embeddings').then((module) => module.EmbeddingsFigure), {
       loading: FigureLoading,
     }),
   },
   {
-    name: selfAttentionRegistration.name,
+    name: 'self-attention',
     Component: dynamic(
       () => import('./self-attention').then((module) => module.SelfAttentionFigure),
       { loading: FigureLoading },
     ),
   },
   {
-    name: rlhfRegistration.name,
+    name: 'rlhf',
     Component: dynamic(() => import('./rlhf').then((module) => module.RlhfFigure), {
       loading: FigureLoading,
     }),
   },
   {
-    name: temperatureRegistration.name,
+    name: 'temperature',
     Component: dynamic(() => import('./temperature').then((module) => module.TemperatureFigure), {
       loading: FigureLoading,
     }),
   },
   {
-    name: taxEasyIngestRegistration.name,
+    name: 'taxeasy-ingest',
     Component: dynamic(
       () => import('./taxeasy-ingest').then((module) => module.TaxEasyIngestFigure),
       { loading: FigureLoading },
     ),
   },
   {
-    name: ecopickRefundGateRegistration.name,
+    name: 'ecopick-refund-gate',
     Component: dynamic(
       () => import('./ecopick-refund-gate').then((module) => module.EcopickRefundGateFigure),
       { loading: FigureLoading },
     ),
   },
   {
-    name: xaDaoXaSubmissionFlowRegistration.name,
+    name: 'xadaoxa-submission-flow',
     Component: dynamic(
       () =>
         import('./xadaoxa-submission-flow').then((module) => module.XaDaoXaSubmissionFlowFigure),

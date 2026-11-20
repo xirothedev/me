@@ -17,7 +17,6 @@ const REPLIES = [
   { label: 'Reply C', detail: 'Unhelpful refusal' },
 ];
 
-export const figureRegistration = { name: 'rlhf' } as const;
 export function RlhfFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
 

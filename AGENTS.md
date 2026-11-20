@@ -28,3 +28,7 @@ Multi-context layout. See `docs/agents/domain.md`.
 UI tokens, primitives, icon vocabulary, responsive rules, and copy terms: see [DESIGN.md](./DESIGN.md).
 
 Packages are deep modules: see [packages/README.md](./packages/README.md) before adding or importing one.
+
+### Load memory budget
+
+The first-load memory metric is peak renderer process RSS on a cold production load. Budget: &lt;120 MB peak renderer RSS and &lt;25 MB used JS heap per Page. See [ADR-0001](./docs/adr/0001-load-memory-budget.md). Re-measure after changes to the Hero, Figures or client boundaries.
