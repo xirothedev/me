@@ -15,7 +15,6 @@ const PIECES = [
   { text: 'isco', id: '9012' },
 ];
 
-export const figureRegistration = { name: 'tokenization' } as const;
 export function TokenizationFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
   const split = player.step >= 1;

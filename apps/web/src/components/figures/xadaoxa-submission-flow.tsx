@@ -39,7 +39,6 @@ function Panel({
   );
 }
 
-export const figureRegistration = { name: 'xadaoxa-submission-flow' } as const;
 export function XaDaoXaSubmissionFlowFigure() {
   const player = useFigurePlayer(CAPTIONS.length);
 

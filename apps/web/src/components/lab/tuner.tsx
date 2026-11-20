@@ -23,10 +23,15 @@ export function Tuner() {
     stream: MediaStream;
     frame: number;
   } | null>(null);
+  const visibility = useRef<(() => void) | null>(null);
 
   const stop = useCallback(() => {
     const current = audio.current;
     audio.current = null;
+    if (visibility.current) {
+      document.removeEventListener('visibilitychange', visibility.current);
+      visibility.current = null;
+    }
     if (!current) return;
     cancelAnimationFrame(current.frame);
     current.stream.getTracks().forEach((track) => track.stop());
@@ -54,13 +59,31 @@ export function Tuner() {
         if (frequency) {
           history.push(frequency);
           if (history.length > 5) history.shift();
-          const sorted = [...history].sort((left, right) => left - right);
+          const sorted = history.toSorted((left, right) => left - right);
           const stable = sorted[Math.floor(sorted.length / 2)];
           setReading(frequencyToReading(stable));
         }
         const current = audio.current;
-        if (current) current.frame = requestAnimationFrame(tick);
+        if (current) {
+          current.frame = 0;
+          if (!document.hidden) current.frame = requestAnimationFrame(tick);
+        }
       };
+
+      const onVisibility = () => {
+        const current = audio.current;
+        if (!current) return;
+        if (document.hidden) {
+          if (current.frame) {
+            cancelAnimationFrame(current.frame);
+            current.frame = 0;
+          }
+        } else if (!current.frame) {
+          current.frame = requestAnimationFrame(tick);
+        }
+      };
+      document.addEventListener('visibilitychange', onVisibility);
+      visibility.current = onVisibility;
 
       setStatus('listening');
       tick();

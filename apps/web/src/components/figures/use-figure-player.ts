@@ -25,7 +25,15 @@ export function useFigurePlayer(steps: number, intervalMs = 2400) {
   const [override, setOverride] = useState<boolean | null>(null);
   const [speed, setSpeed] = useState<FigureSpeed>(1);
   const [step, setStep] = useState(0);
-  const playing = override ?? !reduced;
+  const [pageVisible, setPageVisible] = useState(true);
+
+  useEffect(() => {
+    const sync = () => setPageVisible(!document.hidden);
+    document.addEventListener('visibilitychange', sync);
+    return () => document.removeEventListener('visibilitychange', sync);
+  }, []);
+
+  const playing = (override ?? !reduced) && pageVisible;
 
   useEffect(() => {
     if (!playing || steps < 2) return;
